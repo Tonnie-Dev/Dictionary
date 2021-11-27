@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class Phonetic(
+data class PhoneticDTO(
     val audio: String,
     val text: String
 )

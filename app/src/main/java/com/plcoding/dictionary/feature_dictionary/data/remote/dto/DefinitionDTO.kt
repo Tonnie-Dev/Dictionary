@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class Definition(
+data class DefinitionDTO(
     val antonyms: List<String>,
     val definition: String,
     val example: String,
