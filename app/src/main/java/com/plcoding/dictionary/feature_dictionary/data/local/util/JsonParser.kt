@@ -9,8 +9,8 @@ interface JsonParser {
     * and to parse an object to JSON String*/
 
     //takes the actual JSON String and the type to convert into and return an object of our type
-    fun <T> fromJson(json:String, type:Type):T?
+    fun <T> fromJson(json: String, type: Type): T?
 
-    //takes the objected to be converted, type of that object
-    fun <T>toJson(obj:T, type:Type):String?
+    //takes the object to be converted, type of that object
+    fun <T> toJson(obj: T, type: Type): String?
 }
