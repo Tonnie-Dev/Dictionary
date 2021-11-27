@@ -8,6 +8,6 @@ import com.squareup.moshi.JsonClass
 data class DefinitionDTO(
     val antonyms: List<String>,
     val definition: String,
-    val example: String,
+    val example: String?,
     val synonyms: List<String>
 )
