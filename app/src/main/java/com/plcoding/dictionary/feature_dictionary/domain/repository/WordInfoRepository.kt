@@ -4,7 +4,7 @@ import com.plcoding.dictionary.core.util.Resource
 import com.plcoding.dictionary.feature_dictionary.domain.model.WordInfo
 import kotlinx.coroutines.flow.Flow
 
-interface WordInfoInterface {
+interface WordInfoRepository {
 
 
     /*We use a flow to emit multiple values over a perion of time
