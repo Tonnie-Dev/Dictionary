@@ -14,12 +14,13 @@ class WordInfoRepositoryImpl(private val dao: WordDAO, private val api: Dictiona
     WordInfoRepository {
     override fun getWordInfo(word: String): Flow<Resource<List<WordInfo>>> = flow {
 
-
-        //we first emit loading when we start the request to display progress bar
+//EMIT LOADING
+        //we first emit loading before we start the request to display progress bar
 
         emit(Resource.Loading())
 
-        //get data from the database and convert it to domail level object
+        //EMIT FROM DATABASE
+        // read the current word from database and convert it to domail level object
         val wordInfos = dao.getWordInfos(word = word).map { it.toWordInfo() }
 
         //emit the cache in the meantime while awaiting an update from the API
@@ -28,25 +29,52 @@ class WordInfoRepositoryImpl(private val dao: WordDAO, private val api: Dictiona
         * that there is word info to display*/
         emit(Resource.Loading(wordInfos))
 
-        //initiate API request
 
+//GET INFO FROM API & SAVE INTO THE DB
         try {
+            //initiate the API call
             val remoteWordInfos = api.getWordInfo(word)
 
             //at this point the request is successful and we can delete wordInfo from the db
             dao.deleteWordInfos(remoteWordInfos.map { it.word })
 
-            //then insert the word infos
+            //then we replace the word infos in the db with info from the API
             dao.insertWordInfos(remoteWordInfos.map { it.toWordInfoEntity() })
 
         }
+
+        //EMIT ERRORS IF ANY
         //if the request did not complete/ invalid response
         catch (e: HttpException) {
+
+            emit(
+                Resource.Error(
+                    "Ooops something went wrong",
+                    //in error case we can potentially get data from the db
+
+                    data = wordInfos
+                )
+            )
 
 
         }
         //servers unreachable, parsing issue, no internet connection
         catch (e: IOException) {
+
+            emit(
+                Resource.Error(
+                    "Couldn't reach serve, check your internet connection",
+                    //in error case we can potentially get data from the db
+
+                    data = wordInfos
+                )
+            )
         }
+
+        //read again from the database after the remote update
+
+        //EMIT FROM THE DB WITH UPDATED INFO
+        val newWordInfos = dao.getWordInfos(word).map { it.toWordInfo() }
+        emit(Resource.Success(data = newWordInfos))
     }
 }
