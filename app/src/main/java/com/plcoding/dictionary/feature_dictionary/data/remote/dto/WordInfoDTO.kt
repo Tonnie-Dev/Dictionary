@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class WordInfoDTOItem(
+data class WordInfoDTO(
     val meanings: List<MeaningDTO>,
     val origin: String,
     val phonetic: String,
