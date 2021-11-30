@@ -5,6 +5,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.plcoding.dictionary.feature_dictionary.data.local.WordDAO
 import com.plcoding.dictionary.feature_dictionary.data.local.WordInfoDatabase
+import com.plcoding.dictionary.feature_dictionary.data.local.util.MoshiParser
 import com.plcoding.dictionary.feature_dictionary.data.remote.DictionaryAPI
 import com.plcoding.dictionary.feature_dictionary.data.repository.WordInfoRepositoryImpl
 import com.plcoding.dictionary.feature_dictionary.domain.repository.WordInfoRepository
@@ -25,6 +26,15 @@ import javax.inject.Singleton
 
 
 object AppModule {
+    lateinit var moshi: Moshi
+
+    init {
+
+        //initialize moshi
+        moshi = Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
+    }
 
     //USE CASE
     @Provides
@@ -54,7 +64,7 @@ object AppModule {
     fun providesAPI(): DictionaryAPI {
 
         //initialize moshi
-        val moshi = Moshi.Builder()
+       moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
             .build()
 
@@ -73,8 +83,15 @@ object AppModule {
 
     fun providesDatabase(@ApplicationContext context:Context): WordInfoDatabase {
 
+        //initialize moshi
+       moshi = Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
 
-        return Room.databaseBuilder(context, WordInfoDatabase::class.java, "word_db").build()
+
+        return Room.databaseBuilder(context, WordInfoDatabase::class.java, "word_db")
+            .addTypeConverter(MoshiParser(moshi))
+            .build()
     }
 
 
