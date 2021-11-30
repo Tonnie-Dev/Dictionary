@@ -4,6 +4,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.plcoding.dictionary.feature_dictionary.domain.use_case.GetWordInfo
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableSharedFlow
 import javax.inject.Inject
 
@@ -20,7 +21,15 @@ class WordInfoViewModel @Inject constructor(private val useCase: GetWordInfo) :
 
     var eventFlow = MutableSharedFlow<UIEvent>()
     private set
-    
+
+
+    //job to manage coroutines
+    private var searchJob: Job? = null
+
+    fun onSearch(query: String) {
+
+        
+    }
 
     //EVENT FLOW
 
