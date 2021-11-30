@@ -7,9 +7,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.rememberScaffoldState
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.*
+
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -59,9 +59,14 @@ class MainActivity : ComponentActivity() {
 
                         Column(modifier = Modifier.fillMaxSize()) {
 
-                            
+                           TextField(value = viewModel.searchQuery.value,
+                               onValueChange = viewModel::onSearch,
+                           placeholder = { Text(text = "Search ...")})
+
 
                         }
+
+
 
                     }
                 }
