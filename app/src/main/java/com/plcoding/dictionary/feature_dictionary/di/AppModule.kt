@@ -1,7 +1,10 @@
 package com.plcoding.dictionary.feature_dictionary.di
 
+import android.content.Context
+import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.plcoding.dictionary.feature_dictionary.data.local.WordDAO
+import com.plcoding.dictionary.feature_dictionary.data.local.WordInfoDatabase
 import com.plcoding.dictionary.feature_dictionary.data.remote.DictionaryAPI
 import com.plcoding.dictionary.feature_dictionary.data.repository.WordInfoRepositoryImpl
 import com.plcoding.dictionary.feature_dictionary.domain.repository.WordInfoRepository
@@ -11,6 +14,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -36,10 +40,10 @@ object AppModule {
     @Provides
     @Singleton
 
-    fun providesRepository(dao: WordDAO, api: DictionaryAPI): WordInfoRepository {
+    fun providesRepository(db:WordInfoDatabase, api: DictionaryAPI): WordInfoRepository {
 
 
-        return WordInfoRepositoryImpl(dao, api)
+        return WordInfoRepositoryImpl(db.wordDAO, api)
     }
 
     //API
@@ -59,6 +63,18 @@ object AppModule {
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
             .create(DictionaryAPI::class.java)
+    }
+
+
+    //DATABASE
+
+    @Provides
+    @Singleton
+
+    fun providesDatabase(@ApplicationContext context:Context): WordInfoDatabase {
+
+
+        return Room.databaseBuilder(context, WordInfoDatabase::class.java, "word_db").build()
     }
 
 
