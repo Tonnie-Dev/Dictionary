@@ -3,8 +3,10 @@ package com.plcoding.dictionary.feature_dictionary.presentation
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.LaunchedEffect
@@ -51,7 +53,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold(scaffoldState = scaffoldState) {
 
 
-                    Box(modifier = Modifier.fillMaxSize()){
+                    Box(modifier = Modifier.background(color = MaterialTheme.colors.background)){
 
 
 
