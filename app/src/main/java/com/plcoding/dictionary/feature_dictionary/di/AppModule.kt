@@ -6,10 +6,13 @@ import com.plcoding.dictionary.feature_dictionary.data.remote.DictionaryAPI
 import com.plcoding.dictionary.feature_dictionary.data.repository.WordInfoRepositoryImpl
 import com.plcoding.dictionary.feature_dictionary.domain.repository.WordInfoRepository
 import com.plcoding.dictionary.feature_dictionary.domain.use_case.GetWordInfo
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import retrofit2.Retrofit
 import javax.inject.Singleton
 
 @Module
@@ -18,10 +21,10 @@ import javax.inject.Singleton
 
 object AppModule {
 
-//USE CASE
+    //USE CASE
     @Provides
     @Singleton
-    fun providesUseCase(repository: WordInfoRepository): GetWordInfo{
+    fun providesUseCase(repository: WordInfoRepository): GetWordInfo {
 
         return GetWordInfo(repo = repository)
     }
@@ -32,11 +35,28 @@ object AppModule {
     @Provides
     @Singleton
 
-    fun providesRepository(dao: WordDAO, api: DictionaryAPI):WordInfoRepository{
+    fun providesRepository(dao: WordDAO, api: DictionaryAPI): WordInfoRepository {
 
 
         return WordInfoRepositoryImpl(dao, api)
     }
+
+    //API
+
+    @Provides
+    @Singleton
+
+    fun providesAPI(): DictionaryAPI {
+val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+
+        return Retrofit.Builder().
+        baseUrl(DictionaryAPI.BASE_URL).
+        addConverterFactory(MoshiConverterFactory())
+            .build()
+            .create(DictionaryAPI::class.java)
+    }
+
+
 }
 
 
