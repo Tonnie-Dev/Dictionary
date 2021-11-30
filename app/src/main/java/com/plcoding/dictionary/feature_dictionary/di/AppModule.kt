@@ -13,6 +13,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -47,11 +48,15 @@ object AppModule {
     @Singleton
 
     fun providesAPI(): DictionaryAPI {
-val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 
-        return Retrofit.Builder().
-        baseUrl(DictionaryAPI.BASE_URL).
-        addConverterFactory(MoshiConverterFactory())
+        //initialize moshi
+        val moshi = Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
+
+//Retrofit is not on our project - so we need a builder to create its instance
+        return Retrofit.Builder().baseUrl(DictionaryAPI.BASE_URL)
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
             .create(DictionaryAPI::class.java)
     }
