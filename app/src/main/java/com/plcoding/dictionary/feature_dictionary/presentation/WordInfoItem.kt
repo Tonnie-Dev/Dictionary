@@ -63,8 +63,9 @@ fun WordInfoItem(wordInfo: WordInfo, modifier: Modifier = Modifier) {
                     
                     Text(text = "Example: $example")
                 }
+                Spacer(modifier = Modifier.height(8.dp))
             }
-
+            Spacer(modifier = Modifier.height(8.dp))
 
 
 
