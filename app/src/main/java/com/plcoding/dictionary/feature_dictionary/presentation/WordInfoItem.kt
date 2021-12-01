@@ -45,6 +45,29 @@ fun WordInfoItem(wordInfo: WordInfo, modifier: Modifier = Modifier) {
             //part of speech e.g. noun, adjective, verb etc
             
             Text(text = meaning.partOfSpeech, fontWeight = FontWeight.Bold)
+
+            //loop over the meaning of the word
+
+            meaning.definitions.forEachIndexed { i, definition ->
+
+                Text(text = "${i + 1}. ${definition.definition}")
+
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                //loop over examples
+                
+                definition.example?.let { 
+                    
+                    example ->
+                    
+                    Text(text = "Example: $example")
+                }
+            }
+
+
+
+
         }
     }
 
