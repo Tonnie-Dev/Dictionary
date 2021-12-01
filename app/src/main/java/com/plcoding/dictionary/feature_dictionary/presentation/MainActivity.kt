@@ -61,21 +61,42 @@ class MainActivity : ComponentActivity() {
 
                         Column(modifier = Modifier.fillMaxSize()) {
 
-                           TextField(value = viewModel.searchQuery.value,
-                               onValueChange = viewModel::onSearch,
-                           placeholder = { Text(text = "Search ...")})
+                            TextField(value = viewModel.searchQuery.value,
+                                onValueChange = viewModel::onSearch,
+                                placeholder = { Text(text = "Search ...") })
 
                             Spacer(modifier = Modifier.height(16.dp))
 
 
 
-                            LazyColumn(modifier = Modifier.fillMaxSize()){
+                            LazyColumn(modifier = Modifier.fillMaxSize()) {
 
-                              
+                                items(count = state.wordInfoItems.size) { i ->
+
+                                    val wordInfo = state.wordInfoItems[i]
+
+                                    //add a spacer for every item apart from the first item
+                                    if (i > 0) {
+
+                                        Spacer(modifier = Modifier.height(8.dp))
+                                    }
+
+
+
+                                    WordInfoItem(wordInfo = wordInfo)
+                                    
+                                    //add a spacer for every item apart from the last item
+                                    if (i < state.wordInfoItems.size - 1) {
+
+                                        Divider()
+                                    }
+
+                                }
+
+
                             }
 
                         }
-
 
 
                     }
