@@ -1,11 +1,12 @@
 package com.plcoding.dictionary.feature_dictionary.data.local
 
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.plcoding.dictionary.feature_dictionary.data.local.entity.WordInfoEntity
 import kotlinx.coroutines.flow.Flow
-
+@Dao
 interface WordDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
