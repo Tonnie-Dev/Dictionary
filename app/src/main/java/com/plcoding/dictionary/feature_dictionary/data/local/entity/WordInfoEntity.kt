@@ -6,16 +6,18 @@ import com.plcoding.dictionary.feature_dictionary.domain.model.Meaning
 import com.plcoding.dictionary.feature_dictionary.domain.model.WordInfo
 
 @Entity(tableName = "wordinfoentity")
-data class WordInfoEntity(val meanings: List<Meaning>,
-                          val origin: String,
-                          val phonetic: String,
-                          val word: String,
+data class WordInfoEntity(
+    val meanings: List<Meaning>,
+    val origin: String,
+    val phonetic: String,
+    val word: String,
 
-                          @PrimaryKey
-val id:Int? = null){
+    @PrimaryKey
+    val id: Int? = null
+) {
 
     //helper method to convert entity to the model class
-    fun toWordInfo():WordInfo{
+    fun toWordInfo(): WordInfo {
 
         return WordInfo(
             meanings = meanings,
