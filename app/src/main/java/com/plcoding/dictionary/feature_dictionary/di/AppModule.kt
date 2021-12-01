@@ -3,6 +3,7 @@ package com.plcoding.dictionary.feature_dictionary.di
 import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.plcoding.dictionary.feature_dictionary.data.local.Converters
 import com.plcoding.dictionary.feature_dictionary.data.local.WordDAO
 import com.plcoding.dictionary.feature_dictionary.data.local.WordInfoDatabase
 import com.plcoding.dictionary.feature_dictionary.data.local.util.MoshiParser
@@ -26,14 +27,13 @@ import javax.inject.Singleton
 
 
 object AppModule {
-    lateinit var moshi: Moshi
+    var moshi: Moshi = Moshi.Builder()
+        .add(KotlinJsonAdapterFactory())
+        .build()
 
     init {
 
         //initialize moshi
-        moshi = Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()
     }
 
     //USE CASE
@@ -63,10 +63,10 @@ object AppModule {
 
     fun providesAPI(): DictionaryAPI {
 
-        //initialize moshi
+    /*    //initialize moshi
        moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
-            .build()
+            .build()*/
 
 //Retrofit is not on our project - so we need a builder to create its instance
         return Retrofit.Builder().baseUrl(DictionaryAPI.BASE_URL)
@@ -83,14 +83,14 @@ object AppModule {
 
     fun providesDatabase(@ApplicationContext context:Context): WordInfoDatabase {
 
-        //initialize moshi
+     /*   //initialize moshi
        moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
-            .build()
+            .build()*/
 
 
         return Room.databaseBuilder(context, WordInfoDatabase::class.java, "word_db")
-            .addTypeConverter(MoshiParser(moshi))
+            .addTypeConverter(Converters(MoshiParser(moshi)))
             .build()
     }
 

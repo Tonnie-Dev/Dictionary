@@ -97,7 +97,10 @@ class MainActivity : ComponentActivity() {
                             }
 
                         }
+if (state.isLoading){
 
+    CircularProgressIndicator()
+}
 
                     }
                 }
