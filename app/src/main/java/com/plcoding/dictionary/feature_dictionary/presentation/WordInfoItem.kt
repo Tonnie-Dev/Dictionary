@@ -16,13 +16,17 @@ fun WordInfoItem(wordInfo: WordInfo, modifier: Modifier = Modifier) {
 
     Column(modifier = modifier) {
 
-        //Word Header
+        //title
         Text(
             text = wordInfo.word,
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = Color.Black
         )
+        
+        //phonetic
+        
+        Text(text = wordInfo.phonetic, fontWeight = FontWeight.Light)
 
     }
 
