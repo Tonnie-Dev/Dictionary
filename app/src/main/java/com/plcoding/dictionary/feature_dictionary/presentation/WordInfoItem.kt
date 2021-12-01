@@ -36,6 +36,16 @@ fun WordInfoItem(wordInfo: WordInfo, modifier: Modifier = Modifier) {
         //origin
         Text(text = wordInfo.origin)
 
+
+        //loop over the meanings
+
+        wordInfo.meanings.forEach { meaning ->
+
+
+            //part of speech e.g. noun, adjective, verb etc
+            
+            Text(text = meaning.partOfSpeech, fontWeight = FontWeight.Bold)
+        }
     }
 
 
