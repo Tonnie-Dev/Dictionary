@@ -10,6 +10,7 @@ import androidx.compose.material.*
 
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -61,9 +62,14 @@ class MainActivity : ComponentActivity() {
 
                         Column(modifier = Modifier.fillMaxSize()) {
 
-                            TextField(value = viewModel.searchQuery.value,
+                            TextField(
+                                value = viewModel.searchQuery.value,
                                 onValueChange = viewModel::onSearch,
-                                placeholder = { Text(text = "Search ...") })
+                                placeholder = { Text(text = "Search ...") },
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(8.dp)
+                            )
 
                             Spacer(modifier = Modifier.height(16.dp))
 
@@ -84,7 +90,7 @@ class MainActivity : ComponentActivity() {
 
 
                                     WordInfoItem(wordInfo = wordInfo)
-                                    
+
                                     //add a spacer for every item apart from the last item
                                     if (i < state.wordInfoItems.size - 1) {
 
@@ -97,10 +103,10 @@ class MainActivity : ComponentActivity() {
                             }
 
                         }
-if (state.isLoading){
+                        if (state.isLoading) {
 
-    CircularProgressIndicator()
-}
+                            CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+                        }
 
                     }
                 }
