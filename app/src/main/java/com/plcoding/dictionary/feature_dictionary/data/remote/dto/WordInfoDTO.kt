@@ -1,11 +1,8 @@
 package com.plcoding.dictionary.feature_dictionary.data.remote.dto
 
 import com.plcoding.dictionary.feature_dictionary.data.local.entity.WordInfoEntity
-import com.plcoding.dictionary.feature_dictionary.domain.model.WordInfo
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
 
-@JsonClass(generateAdapter = true)
+
 data class WordInfoDTO(
     val meanings: List<MeaningDTO>,
     val origin: String,
