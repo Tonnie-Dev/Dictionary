@@ -31,9 +31,7 @@ import javax.inject.Singleton
 
 
 object AppModule {
-    var moshi: Moshi = Moshi.Builder()
-        .add(KotlinJsonAdapterFactory())
-        .build()
+   
 
     init {
 
