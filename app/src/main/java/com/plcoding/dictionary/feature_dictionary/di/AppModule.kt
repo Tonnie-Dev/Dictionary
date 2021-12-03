@@ -1,11 +1,14 @@
 package com.plcoding.dictionary.feature_dictionary.di
 
+import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.google.gson.Gson
 import com.plcoding.dictionary.feature_dictionary.data.local.Converters
 import com.plcoding.dictionary.feature_dictionary.data.local.WordDAO
 import com.plcoding.dictionary.feature_dictionary.data.local.WordInfoDatabase
+import com.plcoding.dictionary.feature_dictionary.data.local.util.GsonParser
 import com.plcoding.dictionary.feature_dictionary.data.local.util.MoshiParser
 import com.plcoding.dictionary.feature_dictionary.data.remote.DictionaryAPI
 import com.plcoding.dictionary.feature_dictionary.data.repository.WordInfoRepositoryImpl
@@ -77,20 +80,12 @@ object AppModule {
 
 
     //DATABASE
-
     @Provides
     @Singleton
-
-    fun providesDatabase(@ApplicationContext context:Context): WordInfoDatabase {
-
-     /*   //initialize moshi
-       moshi = Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()*/
-
-
-        return Room.databaseBuilder(context, WordInfoDatabase::class.java, "word_db")
-            .addTypeConverter(Converters(MoshiParser(moshi)))
+    fun provideWordInfoDatabase(app: Application): WordInfoDatabase {
+        return Room.databaseBuilder(
+            app, WordInfoDatabase::class.java, "word_db"
+        ).addTypeConverter(Converters(GsonParser(Gson())))
             .build()
     }
 
