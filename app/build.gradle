@@ -88,6 +88,7 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.2"
     implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
     implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+
     // Room
     implementation "androidx.room:room-runtime:2.3.0"
     kapt "androidx.room:room-compiler:2.3.0"
@@ -99,7 +100,5 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:5.0.1'
 
 
-    //Moshi Library Dependencies - Core Moshi JSON Library and Moshi's Kotlin support and converter factory
-    implementation "com.squareup.moshi:moshi:1.12.0"
-    implementation "com.squareup.moshi:moshi-kotlin:1.12.0"
+    
 }
