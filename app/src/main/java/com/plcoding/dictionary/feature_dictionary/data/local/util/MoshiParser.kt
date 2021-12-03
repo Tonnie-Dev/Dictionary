@@ -1,14 +1,7 @@
 package com.plcoding.dictionary.feature_dictionary.data.local.util
 
 import com.google.gson.Gson
-import com.plcoding.dictionary.feature_dictionary.domain.model.Meaning
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.adapter
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import java.lang.reflect.Type
-
-
 
 
 //JsonParser implementation
