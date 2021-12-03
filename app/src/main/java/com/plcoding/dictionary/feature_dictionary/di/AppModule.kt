@@ -22,6 +22,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
@@ -53,7 +54,7 @@ object AppModule {
     @Provides
     @Singleton
 
-    fun providesRepository(db:WordInfoDatabase, api: DictionaryAPI): WordInfoRepository {
+    fun providesRepository(db: WordInfoDatabase, api: DictionaryAPI): WordInfoRepository {
 
 
         return WordInfoRepositoryImpl(db.wordDAO, api)
@@ -66,14 +67,10 @@ object AppModule {
 
     fun providesAPI(): DictionaryAPI {
 
-    /*    //initialize moshi
-       moshi = Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()*/
 
 //Retrofit is not on our project - so we need a builder to create its instance
         return Retrofit.Builder().baseUrl(DictionaryAPI.BASE_URL)
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(DictionaryAPI::class.java)
     }
