@@ -8,31 +8,11 @@ import com.squareup.moshi.adapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import java.lang.reflect.Type
 
-class MoshiParser ():JsonParser {
-    override fun <T> fromJson(json: String, type: Type): T? {
-        val moshi:Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
-
-      /*  //val jsonAdapter: JsonAdapter<T> = moshi.adapter()*/
-
-        //return jsonAdapter.fromJson(json)
-TODO()
-    }
-
-    override fun <T> toJson(obj: T, type: Type): String? {
-
-        val moshi:Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
-
-        val jsonAdapter: JsonAdapter<String> = moshi.adapter(String::class.java)
-
-        return jsonAdapter.toJson(obj.toString())
-
-    }
-}
 
 
-/*
-* //JsonParser implementation
-class MoshiParser (private val gson: Gson):JsonParser {
+
+//JsonParser implementation
+class GsonParser (private val gson: Gson):JsonParser {
     override fun <T> fromJson(json: String, type: Type): T? {
 
         return gson.fromJson(json,type)
@@ -42,5 +22,3 @@ class MoshiParser (private val gson: Gson):JsonParser {
         return gson.toJson(obj,type)
     }
 }
-*
-* */
