@@ -18,8 +18,8 @@ import com.plcoding.dictionary.feature_dictionary.presentation.ui.theme.Dictiona
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
-
 @AndroidEntryPoint
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

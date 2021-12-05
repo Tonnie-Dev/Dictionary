@@ -27,7 +27,7 @@ import javax.inject.Singleton
 
 
 object AppModule {
-    var moshi: Moshi = Moshi.Builder()
+   private val moshi: Moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
         .build()
 
@@ -90,7 +90,7 @@ object AppModule {
 
 
         return Room.databaseBuilder(context, WordInfoDatabase::class.java, "word_db")
-            .addTypeConverter(Converters(MoshiParser(moshi)))
+            .addTypeConverter(Converters(MoshiParser()))
             .build()
     }
 

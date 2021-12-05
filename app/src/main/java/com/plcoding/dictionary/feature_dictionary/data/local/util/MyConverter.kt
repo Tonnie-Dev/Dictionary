@@ -15,12 +15,12 @@ class MyConverter {
       return  jsonAdapter.fromJson(json)
 
     }
-    fun toJson(obj: T):String?{
+    fun toJson(meanings: Meaning):String?{
 
 
 
 
-        return jsonAdapter.toJson(meaning)
+        return jsonAdapter.toJson(meanings)
     }
 
 }

@@ -1,17 +1,30 @@
 package com.plcoding.dictionary.feature_dictionary.data.local.util
 
+import com.plcoding.dictionary.feature_dictionary.domain.model.Meaning
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import java.lang.reflect.Type
 
-class MoshiParser ():JsonParser {
+class MoshiParser() : JsonParser {
+
+    private val moshi: Moshi = Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
+
+
     override fun <T> fromJson(json: String, type: Type): T? {
-        TODO("Not yet implemented")
+
+        val jsonAdapter: JsonAdapter<T> = moshi.adapter<T>(type::class.java)
+        return jsonAdapter.fromJson(json)
+
     }
 
     override fun <T> toJson(obj: T, type: Type): String? {
-        TODO("Not yet implemented")
+
+        val jsonAdapter: JsonAdapter<T> = moshi.adapter<T>(type::class.java)
+
+        return jsonAdapter.toJson(obj)
     }
 
 }
