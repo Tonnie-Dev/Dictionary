@@ -8,6 +8,7 @@ import com.plcoding.dictionary.feature_dictionary.domain.repository.WordInfoRepo
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
+import timber.log.Timber
 import java.io.IOException
 
 class WordInfoRepositoryImpl(private val dao: WordDAO, private val api: DictionaryAPI) :
@@ -35,11 +36,14 @@ class WordInfoRepositoryImpl(private val dao: WordDAO, private val api: Dictiona
             //initiate the API call
             val remoteWordInfos = api.getWordInfo(word)
 
+
+            Timber.i("Response: $remoteWordInfos")
+
             //at this point the request is successful and we can delete wordInfo from the db
-            dao.deleteWordInfos(remoteWordInfos.map { it.word })
+            //dao.deleteWordInfos(remoteWordInfos.map { it.word })
 
             //then we replace the word infos in the db with info from the API
-            dao.insertWordInfos(remoteWordInfos.map { it.toWordInfoEntity() })
+          //  dao.insertWordInfos(remoteWordInfos.map { it.toWordInfoEntity() })
 
         }
 
