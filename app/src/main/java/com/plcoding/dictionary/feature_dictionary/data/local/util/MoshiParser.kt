@@ -6,7 +6,14 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import java.lang.reflect.Type
 
 class MoshiParser ():JsonParser {
-   
+    override fun <T> fromJson(json: String, type: Type): T? {
+        TODO("Not yet implemented")
+    }
+
+    override fun <T> toJson(obj: T, type: Type): String? {
+        TODO("Not yet implemented")
+    }
+
 }
 
 
