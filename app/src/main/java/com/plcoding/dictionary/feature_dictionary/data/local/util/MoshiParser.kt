@@ -15,14 +15,14 @@ class MoshiParser() : JsonParser {
 
     override fun <T> fromJson(json: String, type: Type): T? {
 
-        val jsonAdapter: JsonAdapter<T> = moshi.adapter<T>(type::class.java)
+        val jsonAdapter: JsonAdapter<T> = moshi.adapter<T>(type)
         return jsonAdapter.fromJson(json)
 
     }
 
     override fun <T> toJson(obj: T, type: Type): String? {
 
-        val jsonAdapter: JsonAdapter<T> = moshi.adapter<T>(type::class.java)
+        val jsonAdapter: JsonAdapter<T> = moshi.adapter<T>(type)
 
         return jsonAdapter.toJson(obj)
     }
