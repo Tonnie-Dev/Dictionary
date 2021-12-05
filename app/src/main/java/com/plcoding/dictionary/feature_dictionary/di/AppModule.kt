@@ -27,14 +27,7 @@ import javax.inject.Singleton
 
 
 object AppModule {
-   private val moshi: Moshi = Moshi.Builder()
-        .add(KotlinJsonAdapterFactory())
-        .build()
 
-    init {
-
-        //initialize moshi
-    }
 
     //USE CASE
     @Provides
@@ -50,7 +43,7 @@ object AppModule {
     @Provides
     @Singleton
 
-    fun providesRepository(db:WordInfoDatabase, api: DictionaryAPI): WordInfoRepository {
+    fun providesRepository(db: WordInfoDatabase, api: DictionaryAPI): WordInfoRepository {
 
 
         return WordInfoRepositoryImpl(db.wordDAO, api)
@@ -63,16 +56,17 @@ object AppModule {
 
     fun providesAPI(): DictionaryAPI {
 
-    /*    //initialize moshi
-       moshi = Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()*/
+        //initialize moshi
+        val moshi: Moshi = Moshi.Builder()
+                .add(KotlinJsonAdapterFactory())
+                .build()
 
 //Retrofit is not on our project - so we need a builder to create its instance
-        return Retrofit.Builder().baseUrl(DictionaryAPI.BASE_URL)
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
-            .build()
-            .create(DictionaryAPI::class.java)
+        return Retrofit.Builder()
+                .baseUrl(DictionaryAPI.BASE_URL)
+                .addConverterFactory(MoshiConverterFactory.create(moshi))
+                .build()
+                .create(DictionaryAPI::class.java)
     }
 
 
@@ -81,17 +75,17 @@ object AppModule {
     @Provides
     @Singleton
 
-    fun providesDatabase(@ApplicationContext context:Context): WordInfoDatabase {
+    fun providesDatabase(@ApplicationContext context: Context): WordInfoDatabase {
 
-     /*   //initialize moshi
-       moshi = Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()*/
+        /*   //initialize moshi
+          moshi = Moshi.Builder()
+               .add(KotlinJsonAdapterFactory())
+               .build()*/
 
 
         return Room.databaseBuilder(context, WordInfoDatabase::class.java, "word_db")
-            .addTypeConverter(Converters(MoshiParser()))
-            .build()
+                .addTypeConverter(Converters(MoshiParser()))
+                .build()
     }
 
 

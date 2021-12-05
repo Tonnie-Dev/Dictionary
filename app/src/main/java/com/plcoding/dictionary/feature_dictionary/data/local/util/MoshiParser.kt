@@ -15,7 +15,7 @@ class MoshiParser() : JsonParser {
 
 
     override fun <T> fromJson(json: String, type: Type): T? {
-        
+
         //use jsonAdapter<T> for generic adapter
         val jsonAdapter: JsonAdapter<T> = moshi.adapter(type)
         return jsonAdapter.fromJson(json)
