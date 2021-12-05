@@ -8,13 +8,15 @@ import java.lang.reflect.Type
 
 class MoshiParser() : JsonParser {
 
+    //initialize Moshi
     private val moshi: Moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
             .build()
 
 
     override fun <T> fromJson(json: String, type: Type): T? {
-
+        
+        //use jsonAdapter<T> for generic adapter
         val jsonAdapter: JsonAdapter<T> = moshi.adapter(type)
         return jsonAdapter.fromJson(json)
 
@@ -22,6 +24,7 @@ class MoshiParser() : JsonParser {
 
     override fun <T> toJson(obj: T, type: Type): String? {
 
+    //use jsonAdapter<T> for generic adapter
         val jsonAdapter: JsonAdapter<T> = moshi.adapter(type)
 
         return jsonAdapter.toJson(obj)
