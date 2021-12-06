@@ -60,7 +60,7 @@ class MainActivity : ComponentActivity() {
                     Box(modifier = Modifier.background(color = MaterialTheme.colors.background)) {
 
 
-                        Column(modifier = Modifier.fillMaxSize()) {
+                        Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
 
                             TextField(
                                 value = viewModel.searchQuery.value,
