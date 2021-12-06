@@ -12,6 +12,7 @@ data class MeaningDTO(
 
     fun toMeaning():Meaning{
 
-        return Meaning(definitions = definitions.map { it.toDefinition() }, partOfSpeech = partOfSpeech)
+        return Meaning(definitions = definitions.map { it.toDefinition() },
+            partOfSpeech = partOfSpeech)
     }
 }

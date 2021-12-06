@@ -1,7 +1,6 @@
 package com.plcoding.dictionary.feature_dictionary.domain.model
 
-import com.squareup.moshi.JsonClass
-
+//checked on example:String? matches Phill's src code
 
 data class Definition (   val antonyms: List<String>,
                      val definition: String,

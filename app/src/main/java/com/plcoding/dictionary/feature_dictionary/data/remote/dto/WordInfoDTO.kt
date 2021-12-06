@@ -9,20 +9,36 @@ import com.squareup.moshi.JsonClass
 data class WordInfoDTO(
     val meanings: List<MeaningDTO>,
     val origin: String,
-    val phonetic: String,
-    val phonetics: List<PhoneticDTO>?,
+    val phonetic: String? = null,
+    val phonetics: List<PhoneticDTO>,
     val word: String
-){
+)
 
-    fun  toWordInfoEntity():WordInfoEntity{
+fun WordInfoDTO.toWordInfoEntity(): WordInfoEntity {
+
+
+    if (phonetic != null) {
 
         return WordInfoEntity(
             meanings = meanings.map { it.toMeaning() },
             origin = origin,
             phonetic = phonetic,
-            word =word
+            word = word
         )
+
+    } else {
+
+        return WordInfoEntity(
+            meanings = meanings.map { it.toMeaning() },
+            origin = origin,
+            phonetic = "",
+            word = word
+        )
+
     }
-
-
 }
+
+
+
+
+
