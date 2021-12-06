@@ -64,8 +64,15 @@ fun WordInfoItem(wordInfo: WordInfo, modifier: Modifier = Modifier) {
                     Text(text = "Example: $example")
                 }
                 Spacer(modifier = Modifier.height(8.dp))
+
+                definition.synonyms.forEach {
+
+                    Text(text = "Syn: $it")
+
+                }
             }
             Spacer(modifier = Modifier.height(8.dp))
+
 
 
 
