@@ -1,5 +1,8 @@
 package com.plcoding.dictionary.feature_dictionary.domain.model
 
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
 data class Definition (   val antonyms: List<String>,
                      val definition: String,
                      val example: String?,
