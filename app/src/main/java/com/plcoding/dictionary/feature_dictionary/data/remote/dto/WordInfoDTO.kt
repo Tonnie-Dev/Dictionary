@@ -10,7 +10,7 @@ data class WordInfoDTO(
     val meanings: List<MeaningDTO>,
     val origin: String? = null,
     val phonetic: String? = null,
-    val phonetics: List<PhoneticDTO>,
+    //val phonetics: List<PhoneticDTO>,
     val word: String
 )
 
