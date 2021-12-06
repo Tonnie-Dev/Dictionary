@@ -68,7 +68,7 @@ class MainActivity : ComponentActivity() {
                                 placeholder = { Text(text = "Search ...") },
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(8.dp)
+                                   
                             )
 
                             Spacer(modifier = Modifier.height(16.dp))
