@@ -8,7 +8,7 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class WordInfoDTO(
     val meanings: List<MeaningDTO>,
-    val origin: String,
+    val origin: String? = null,
     val phonetic: String? = null,
     val phonetics: List<PhoneticDTO>,
     val word: String
@@ -17,12 +17,12 @@ data class WordInfoDTO(
 fun WordInfoDTO.toWordInfoEntity(): WordInfoEntity {
 
 
-    if (phonetic != null) {
+    if (phonetic === null || origin == null) {
 
         return WordInfoEntity(
             meanings = meanings.map { it.toMeaning() },
-            origin = origin,
-            phonetic = phonetic,
+            origin = "origin: _ _",
+            phonetic = "phonetic: _ _",
             word = word
         )
 
@@ -31,7 +31,7 @@ fun WordInfoDTO.toWordInfoEntity(): WordInfoEntity {
         return WordInfoEntity(
             meanings = meanings.map { it.toMeaning() },
             origin = origin,
-            phonetic = "",
+            phonetic = phonetic,
             word = word
         )
 
