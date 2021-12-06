@@ -9,11 +9,11 @@ data class PhoneticDTO(
     val text: String
 ){
 
-    fun toPhonetic(): Phonetic {
+    /*fun toPhonetic(): Phonetic {
 
         return Phonetic(
             audio = audio,
             text = text
         )
-    }
+    }*/
 }
