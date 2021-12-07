@@ -106,6 +106,7 @@ class WordInfoViewModel @Inject constructor(private val useCase: GetWordInfo) :
     sealed class UIEvent {
 
         data class ShowSnackbar(val message: String) : UIEvent()
+        object HideKeyboard:UIEvent()
 
     }
 }
