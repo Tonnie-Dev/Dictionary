@@ -15,7 +15,7 @@ class GetWordInfo(private val repo: WordInfoRepository) {
 
         if (word.isBlank()){
             //return empty flow so that no API call takes place
-            return flow {  }
+            return flow {}
         }
 
         //else get word info

@@ -11,7 +11,8 @@ import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
 import java.io.IOException
 
-class WordInfoRepositoryImpl(private val dao: WordDAO, private val api: DictionaryAPI) :
+class WordInfoRepositoryImpl(private val dao: WordDAO,
+                             private val api: DictionaryAPI) :
     WordInfoRepository {
     override fun getWordInfo(word: String): Flow<Resource<List<WordInfo>>> = flow {
 
@@ -41,7 +42,9 @@ class WordInfoRepositoryImpl(private val dao: WordDAO, private val api: Dictiona
 
             //then we replace the word infos in the db with info from the API
             dao.insertWordInfos(remoteWordInfos.map { it.toWordInfoEntity() })
-
+            //EMIT FROM THE DB WITH UPDATED INFO
+            val newWordInfos = dao.getWordInfos(word).map { it.toWordInfo() }
+            emit(Resource.Success(data = newWordInfos))
         }
 
         //EMIT ERRORS IF ANY
@@ -64,7 +67,7 @@ class WordInfoRepositoryImpl(private val dao: WordDAO, private val api: Dictiona
 
             emit(
                 Resource.Error(
-                    "Couldn't reach serve, check your internet connection",
+                    "Couldn't reach server, check your internet connection",
                     //in error case we can potentially get data from the db
 
                     data = wordInfos
@@ -74,8 +77,6 @@ class WordInfoRepositoryImpl(private val dao: WordDAO, private val api: Dictiona
 
         //read again from the database after the remote update
 
-        //EMIT FROM THE DB WITH UPDATED INFO
-        val newWordInfos = dao.getWordInfos(word).map { it.toWordInfo() }
-        emit(Resource.Success(data = newWordInfos))
+
     }
 }

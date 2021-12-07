@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -40,6 +41,7 @@ class WordInfoViewModel @Inject constructor(private val useCase: GetWordInfo) :
         //update query state
         searchQuery.value = query
 
+        Timber.i("Query is: $query")
         //cancel current coroutine job when we type a new character
         searchJob?.cancel()
 
@@ -64,14 +66,21 @@ class WordInfoViewModel @Inject constructor(private val useCase: GetWordInfo) :
 
 
                     is Resource.Success -> {
+                        Timber.i("Success Block")
+
 
                         state.value = state.value.copy(
                             wordInfoItems = result.data ?: emptyList(),
                             isLoading = false
                         )
+                         eventFlow.emit(UIEvent.HideKeyboard)
+
                     }
 
                     is Resource.Error -> {
+
+                        Timber.i("Error Block")
+
                         /*here we show the same info as success as we may still get
                             data from the db to show to the UI*/
 
@@ -80,14 +89,17 @@ class WordInfoViewModel @Inject constructor(private val useCase: GetWordInfo) :
                             isLoading = false
                         )
 
-                        //also snackbar
 
+
+                        eventFlow.emit(UIEvent.HideKeyboard)
+                        //show
                         eventFlow.emit(UIEvent.ShowSnackbar(result.message?: "Unknown error"))
 
 
                     }
                     is Resource.Loading -> {
 
+Timber.i("Loading Block")
 
                         state.value = state.value.copy(
                             //we might also have some data to display
@@ -105,7 +117,7 @@ class WordInfoViewModel @Inject constructor(private val useCase: GetWordInfo) :
 
     sealed class UIEvent {
 
-        data class ShowSnackbar(val message: String) : UIEvent()
+       data class ShowSnackbar(val message: String) : UIEvent()
         object HideKeyboard:UIEvent()
 
     }

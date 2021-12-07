@@ -11,18 +11,24 @@ import androidx.compose.material.*
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.plcoding.dictionary.feature_dictionary.presentation.ui.theme.DictionaryTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import timber.log.Timber
 
 @AndroidEntryPoint
-
+@ExperimentalComposeUiApi
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Timber.i("oncreate() called here")
         setContent {
             DictionaryTheme {
 
@@ -32,6 +38,12 @@ class MainActivity : ComponentActivity() {
                 val viewModel: WordInfoViewModel = hiltViewModel()
                 val state by viewModel.state
                 val scaffoldState = rememberScaffoldState()
+                val keyboardController = LocalSoftwareKeyboardController.current
+
+/*You can perform some action on state changes and you can do it
+using the side effects.For example you can use the LaunchedEffect
+function, where as a key you can pass a state you want to listen.*/
+
 
                 /*This will be needed to actually listen to events from the
                 event flow that we have inside the ViewModel*/
@@ -48,6 +60,16 @@ class MainActivity : ComponentActivity() {
                             is WordInfoViewModel.UIEvent.ShowSnackbar -> {
 
                                 scaffoldState.snackbarHostState.showSnackbar(event.message)
+
+                                Timber.i("Snackbar activated")
+                            }
+
+                            is WordInfoViewModel.UIEvent.HideKeyboard ->{
+
+
+                                keyboardController?.hide()
+
+                                Timber.i("HKeyboard activated")
                             }
                         }
                     }
@@ -60,14 +82,18 @@ class MainActivity : ComponentActivity() {
                     Box(modifier = Modifier.background(color = MaterialTheme.colors.background)) {
 
 
-                        Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+                        Column(
+                            modifier = Modifier
+                                    .fillMaxSize()
+                                    .padding(16.dp)
+                        ) {
 
                             TextField(
                                 value = viewModel.searchQuery.value,
                                 onValueChange = viewModel::onSearch,
                                 placeholder = { Text(text = "Search ...") },
                                 modifier = Modifier
-                                    .fillMaxWidth()
+                                        .fillMaxWidth()
 
                             )
 
