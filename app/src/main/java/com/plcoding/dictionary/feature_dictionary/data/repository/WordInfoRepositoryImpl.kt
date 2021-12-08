@@ -2,6 +2,7 @@ package com.plcoding.dictionary.feature_dictionary.data.repository
 
 import com.plcoding.dictionary.core.util.Resource
 import com.plcoding.dictionary.feature_dictionary.data.local.WordDAO
+import com.plcoding.dictionary.feature_dictionary.data.local.entity.toWordInfo
 import com.plcoding.dictionary.feature_dictionary.data.remote.DictionaryAPI
 import com.plcoding.dictionary.feature_dictionary.data.remote.dto.toWordInfoEntity
 import com.plcoding.dictionary.feature_dictionary.domain.model.WordInfo
@@ -23,7 +24,7 @@ class WordInfoRepositoryImpl(private val dao: WordDAO,
 
         //EMIT FROM DATABASE
         // read the current word from database and convert it to domail level object
-        val wordInfos = dao.getWordInfos(word = word).map { it.toWordInfo() }
+        val wordInfos = dao.getWordInfos(word = word).map { it.toWordInfo()}
 
         //emit the cache in the meantime while awaiting an update from the API
 

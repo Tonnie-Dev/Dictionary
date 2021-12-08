@@ -16,7 +16,7 @@ interface WordDAO {
     suspend fun deleteWordInfos(words:List<String>)
 
 
-    // Pipe || is for String concatenation '%' is a string place holder
+    // Pipe || is for String concatenation '%' is a string placeholder
     @Query("SELECT * FROM wordinfoentity WHERE word LIKE '%' || :word || '%'")
     suspend fun getWordInfos(word:String): List<WordInfoEntity>
 }

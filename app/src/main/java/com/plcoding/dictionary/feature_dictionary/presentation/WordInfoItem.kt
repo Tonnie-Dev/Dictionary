@@ -27,10 +27,8 @@ fun WordInfoItem(wordInfo: WordInfo, modifier: Modifier = Modifier) {
             color = Color.Black
         )
 
-        
         Spacer(modifier = Modifier.height(16.dp))
         
-       
 
         //loop over the meanings
 
