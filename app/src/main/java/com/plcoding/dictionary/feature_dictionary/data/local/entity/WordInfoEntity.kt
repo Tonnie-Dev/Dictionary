@@ -28,3 +28,10 @@ data class WordInfoEntity(
         )
     }
 }
+
+
+fun WordInfoEntity.toWordInfo():WordInfo {
+
+    return WordInfo(  meanings = meanings,
+        word = word)
+}

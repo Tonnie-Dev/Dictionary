@@ -10,4 +10,4 @@ data class WordInfo(
     val word: String
 )
 /*  val origin: String,
-                   val phonetic: String,*/
+  val phonetic: String,*/
