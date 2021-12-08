@@ -64,12 +64,9 @@ class WordInfoViewModel @Inject constructor(private val useCase: GetWordInfo) :
 
                 when (result) {
 
-
                     is Resource.Success -> {
-                        Timber.i("Success Block")
-
-
-                        state.value = state.value.copy(
+                     
+                       state.value = state.value.copy(
                             wordInfoItems = result.data ?: emptyList(),
                             isLoading = false
                         )
@@ -78,8 +75,6 @@ class WordInfoViewModel @Inject constructor(private val useCase: GetWordInfo) :
                     }
 
                     is Resource.Error -> {
-
-                        Timber.i("Error Block")
 
                         /*here we show the same info as success as we may still get
                             data from the db to show to the UI*/
@@ -99,7 +94,7 @@ class WordInfoViewModel @Inject constructor(private val useCase: GetWordInfo) :
                     }
                     is Resource.Loading -> {
 
-Timber.i("Loading Block")
+
 
                         state.value = state.value.copy(
                             //we might also have some data to display

@@ -56,20 +56,16 @@ function, where as a key you can pass a state you want to listen.*/
 
                         when (event) {
 
-
                             is WordInfoViewModel.UIEvent.ShowSnackbar -> {
 
                                 scaffoldState.snackbarHostState.showSnackbar(event.message)
 
-                                Timber.i("Snackbar activated")
                             }
 
                             is WordInfoViewModel.UIEvent.HideKeyboard ->{
 
-
                                 keyboardController?.hide()
 
-                                Timber.i("HKeyboard activated")
                             }
                         }
                     }
