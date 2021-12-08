@@ -8,12 +8,12 @@ import com.plcoding.dictionary.feature_dictionary.domain.model.WordInfo
 @Entity(tableName = "wordinfoentity")
 data class WordInfoEntity(
     val meanings: List<Meaning>,
-    val origin: String,
-    val phonetic: String,
     val word: String,
-
     @PrimaryKey
     val id: Int? = null
+
+/* val origin: String,
+    val phonetic: String,*/
 ) {
 
     //helper method to convert entity to the model class
@@ -21,9 +21,10 @@ data class WordInfoEntity(
 
         return WordInfo(
             meanings = meanings,
-            origin = origin,
-            phonetic = phonetic,
             word = word
+
+        /*origin = origin,
+            phonetic = phonetic,*/
         )
     }
 }
