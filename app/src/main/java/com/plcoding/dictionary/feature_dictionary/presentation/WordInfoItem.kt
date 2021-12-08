@@ -26,13 +26,11 @@ fun WordInfoItem(wordInfo: WordInfo, modifier: Modifier = Modifier) {
             fontWeight = FontWeight.Bold,
             color = Color.Black
         )
-       
+
         
         Spacer(modifier = Modifier.height(16.dp))
         
-        //origin
-        Text(text = wordInfo.origin)
-
+       
 
         //loop over the meanings
 
