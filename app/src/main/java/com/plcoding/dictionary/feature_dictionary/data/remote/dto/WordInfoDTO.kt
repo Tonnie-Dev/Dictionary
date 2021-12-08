@@ -18,6 +18,8 @@ data class WordInfoDTO(
 
 fun WordInfoDTO.toWordInfoEntity(): WordInfoEntity {
 
+    return WordInfoEntity(meanings = listOf(), origin = "", phonetic = "", word = "", id = null)
+
 }
 
 
