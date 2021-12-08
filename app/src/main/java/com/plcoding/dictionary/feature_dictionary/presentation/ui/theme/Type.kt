@@ -1,7 +1,9 @@
 package com.plcoding.dictionary.feature_dictionary.presentation.ui.theme
 
 
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Typography
+import androidx.compose.material.icons.materialIcon
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -26,11 +28,29 @@ private val RobotoCondensed = FontFamily(
 
 // Set of Material typography styles to start with
 val Typography = Typography(
+
+    h6 = TextStyle(
+        color = Teal300,
+        fontSize = 20.sp,
+        fontFamily = RobotoCondensed,
+        fontWeight =FontWeight.Medium
+    ),
+
+
+
     body1 = TextStyle(
         fontFamily = RobotoCondensed,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp
-    )
+
+    ),
+
+    body2 = TextStyle(),
+
+    caption = TextStyle()
+
+
+
     /* Other default text styles to override
     button = TextStyle(
         fontFamily = FontFamily.Default,
