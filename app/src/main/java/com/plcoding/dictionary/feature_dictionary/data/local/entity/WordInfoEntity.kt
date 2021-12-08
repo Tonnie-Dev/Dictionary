@@ -10,9 +10,28 @@ data class WordInfoEntity(
     val meanings: List<Meaning>,
     val word: String,
     @PrimaryKey
-    val id: Int? = null
+    val id: Int? = null)
 
-/* val origin: String,
+
+//helper method to convert entity to the model class
+fun WordInfoEntity.toWordInfo():WordInfo {
+
+    return WordInfo(
+        word = word,
+        meanings = meanings
+        )
+}
+
+
+
+
+
+
+
+
+
+
+/*/* val origin: String,
     val phonetic: String,*/
 ) {
 
@@ -27,11 +46,4 @@ data class WordInfoEntity(
             phonetic = phonetic,*/
         )
     }
-}
-
-
-fun WordInfoEntity.toWordInfo():WordInfo {
-
-    return WordInfo(  meanings = meanings,
-        word = word)
-}
+}*/

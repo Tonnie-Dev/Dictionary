@@ -26,10 +26,7 @@ fun WordInfoItem(wordInfo: WordInfo, modifier: Modifier = Modifier) {
             fontWeight = FontWeight.Bold,
             color = Color.Black
         )
-        
-        //phonetic
-        
-        Text(text = wordInfo.phonetic, fontWeight = FontWeight.Light)
+       
         
         Spacer(modifier = Modifier.height(16.dp))
         
