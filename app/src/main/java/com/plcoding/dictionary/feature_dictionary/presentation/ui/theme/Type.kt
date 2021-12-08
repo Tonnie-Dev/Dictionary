@@ -21,9 +21,7 @@ private val RobotoCondensed = FontFamily(
     Font(resId = R.font.roboto_condensed_light_italic, weight = FontWeight.W300),
     Font(resId = R.font.roboto_condensed_regular, weight = FontWeight.W400),
     Font(resId = R.font.roboto_condensed_bold, weight = FontWeight.W700)
-    )
-
-
+)
 
 
 // Set of Material typography styles to start with
@@ -31,24 +29,35 @@ val Typography = Typography(
 
     h6 = TextStyle(
         color = Teal300,
-        fontSize = 20.sp,
         fontFamily = RobotoCondensed,
-        fontWeight =FontWeight.Medium
-    ),
-
+        fontSize = 20.sp,
+        fontWeight = FontWeight.Bold),
 
 
     body1 = TextStyle(
+        color = Black100,
         fontFamily = RobotoCondensed,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp
+        fontSize = 16.sp,
+        fontWeight = FontWeight.SemiBold),
+
+    body2 = TextStyle(
+        color = Black100,
+        fontFamily = RobotoCondensed,
+        fontSize = 12.sp,
+        fontWeight = FontWeight.Normal
+
+
 
     ),
 
-    body2 = TextStyle(),
+    caption = TextStyle(
 
-    caption = TextStyle()
 
+        color = Black100,
+        fontFamily = RobotoCondensed,
+        fontSize = 10.sp,
+        fontWeight = FontWeight.Light
+    )
 
 
     /* Other default text styles to override
