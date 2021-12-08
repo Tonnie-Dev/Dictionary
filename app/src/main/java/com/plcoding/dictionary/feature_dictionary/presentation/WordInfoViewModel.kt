@@ -65,7 +65,7 @@ class WordInfoViewModel @Inject constructor(private val useCase: GetWordInfo) :
                 when (result) {
 
                     is Resource.Success -> {
-                     
+
                        state.value = state.value.copy(
                             wordInfoItems = result.data ?: emptyList(),
                             isLoading = false

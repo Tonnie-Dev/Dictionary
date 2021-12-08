@@ -8,8 +8,8 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class WordInfoDTO(
     val meanings: List<MeaningDTO>,
-    val origin: String? = null,
-    val phonetic: String? = null,
+    //val origin: String? = null,
+    //val phonetic: String? = null,
     //val phonetics: List<PhoneticDTO>,
     val word: String
 )
