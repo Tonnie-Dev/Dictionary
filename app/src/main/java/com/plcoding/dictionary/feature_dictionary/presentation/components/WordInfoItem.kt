@@ -60,19 +60,22 @@ fun WordInfoItem(wordInfo: WordInfo, modifier: Modifier = Modifier) {
                         example ->
 
                     Text(text = "Example: $example")
+
                 }
                 Spacer(modifier = Modifier.height(8.dp))
 
-                Text(text = "Synonyms", style = MaterialTheme.typography.h6)
-                Spacer(modifier = Modifier.height(4.dp))
+
 
                 FlowRow(
                     mainAxisSpacing = 10.dp,
                     crossAxisSpacing = 10.dp,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    definition.synonyms.forEach { synonym ->
 
+
+
+                    definition.synonyms.forEach { synonym ->
+                       // Text(text = "Synonyms", style = MaterialTheme.typography.h6)
                         if (synonym.isEmpty()) {
                             Text(text = "No Synonyms Found", style = MaterialTheme.typography.body1)
 

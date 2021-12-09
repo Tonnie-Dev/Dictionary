@@ -47,7 +47,7 @@ val Typography = Typography(
         color = Black100,
         fontFamily = RobotoCondensed,
         fontSize = 16.sp,
-        fontWeight = FontWeight.SemiBold),
+        fontWeight = FontWeight.Normal),
 
     body2 = TextStyle(
         color = Black100,
