@@ -29,7 +29,7 @@ fun WordInfoItem(wordInfo: WordInfo, modifier: Modifier = Modifier) {
             color = MaterialTheme.colors.primary*/
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(8.dp))
         
 
         //loop over the meanings
