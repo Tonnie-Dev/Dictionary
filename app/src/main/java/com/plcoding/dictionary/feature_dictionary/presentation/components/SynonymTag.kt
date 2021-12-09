@@ -16,7 +16,7 @@ fun SynonymTag(synonym:String) {
 
     Box(modifier = Modifier.border(
         width = 1.dp,
-        color = MaterialTheme.colors.secondary,
+        color = MaterialTheme.colors.primary,
         shape = RoundedCornerShape(100.dp)
     )) {
 
