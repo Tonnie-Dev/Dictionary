@@ -62,6 +62,13 @@ val Typography = Typography(
     ),
 
     caption = TextStyle(
+        color = Teal200,
+        fontFamily = RobotoCondensed,
+        fontSize = 20.sp,
+        fontWeight = FontWeight.W900
+    ),
+
+    overline = TextStyle(
         color = Black100,
         fontFamily = RobotoCondensed,
         fontSize = 12.sp,
