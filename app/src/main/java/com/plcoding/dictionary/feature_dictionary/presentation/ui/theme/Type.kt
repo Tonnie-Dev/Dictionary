@@ -27,6 +27,8 @@ private val RobotoCondensed = FontFamily(
 // Set of Material typography styles to start with
 val Typography = Typography(
 
+    h5 = TextStyle(color = Teal300, fontFamily = RobotoCondensed, fontSize = 36.sp, fontWeight = FontWeight.W400),
+
     h6 = TextStyle(
         color = Teal300,
         fontFamily = RobotoCondensed,
