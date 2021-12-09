@@ -7,6 +7,7 @@ import androidx.compose.material.icons.materialIcon
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 
 import androidx.compose.ui.text.font.FontWeight
 
@@ -27,12 +28,18 @@ private val RobotoCondensed = FontFamily(
 // Set of Material typography styles to start with
 val Typography = Typography(
 
-    h5 = TextStyle(color = Teal300, fontFamily = RobotoCondensed, fontSize = 36.sp, fontWeight = FontWeight.W400),
-
-    h6 = TextStyle(
+    h5 = TextStyle(
         color = Teal300,
         fontFamily = RobotoCondensed,
         fontSize = 36.sp,
+        fontWeight = FontWeight.W400
+    ),
+
+    h6 = TextStyle(
+        color = Teal200,
+        fontFamily = RobotoCondensed,
+        fontSize = 20.sp,
+        fontStyle = FontStyle.Italic,
         fontWeight = FontWeight.W400),
 
 

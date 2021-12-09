@@ -23,7 +23,7 @@ fun WordInfoItem(wordInfo: WordInfo, modifier: Modifier = Modifier) {
         //title - Word
         Text(
             text = wordInfo.word,
-            style = MaterialTheme.typography.h6,
+            style = MaterialTheme.typography.h5,
             /*fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colors.primary*/
@@ -39,7 +39,7 @@ fun WordInfoItem(wordInfo: WordInfo, modifier: Modifier = Modifier) {
 
             //part of speech e.g. noun, adjective, verb etc
             
-            Text(text = meaning.partOfSpeech, fontWeight = FontWeight.Bold)
+            Text(text = meaning.partOfSpeech, style = MaterialTheme.typography.h6)
 
             //loop over the meaning of the word
 
