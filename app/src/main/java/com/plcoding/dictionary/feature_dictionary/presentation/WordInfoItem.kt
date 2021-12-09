@@ -3,6 +3,7 @@ package com.plcoding.dictionary.feature_dictionary.presentation
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -19,12 +20,13 @@ fun WordInfoItem(wordInfo: WordInfo, modifier: Modifier = Modifier) {
 
     Column(modifier = modifier) {
 
-        //title
+        //title - Word
         Text(
             text = wordInfo.word,
-            fontSize = 24.sp,
+            style = MaterialTheme.typography.h6,
+            /*fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
-            color = Color.Black
+            color = MaterialTheme.colors.primary*/
         )
 
         Spacer(modifier = Modifier.height(16.dp))

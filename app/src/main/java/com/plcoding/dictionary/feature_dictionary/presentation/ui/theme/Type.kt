@@ -18,9 +18,9 @@ import com.plcoding.dictionary.R
 
 private val RobotoCondensed = FontFamily(
     Font(resId = R.font.roboto_condensed_light, weight = FontWeight.W300),
-    Font(resId = R.font.roboto_condensed_light_italic, weight = FontWeight.W300),
+    Font(resId = R.font.roboto_condensed_light_italic, weight = FontWeight.W200),
     Font(resId = R.font.roboto_condensed_regular, weight = FontWeight.W400),
-    Font(resId = R.font.roboto_condensed_bold, weight = FontWeight.W700)
+    Font(resId = R.font.roboto_condensed_bold, weight = FontWeight.W900)
 )
 
 
@@ -30,8 +30,8 @@ val Typography = Typography(
     h6 = TextStyle(
         color = Teal300,
         fontFamily = RobotoCondensed,
-        fontSize = 20.sp,
-        fontWeight = FontWeight.Bold),
+        fontSize = 36.sp,
+        fontWeight = FontWeight.W400),
 
 
     body1 = TextStyle(
