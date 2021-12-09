@@ -14,6 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 
 import androidx.compose.ui.unit.sp
 import com.plcoding.dictionary.R
+import okhttp3.internal.notifyAll
 
 //initialize font family - FontFamily takes a list of fonts
 
@@ -52,20 +53,19 @@ val Typography = Typography(
     body2 = TextStyle(
         color = Black100,
         fontFamily = RobotoCondensed,
-        fontSize = 12.sp,
-        fontWeight = FontWeight.Normal
+        fontSize = 14.sp,
+        fontStyle = FontStyle.Italic,
+        fontWeight = FontWeight.Medium
 
 
 
     ),
 
     caption = TextStyle(
-
-
         color = Black100,
         fontFamily = RobotoCondensed,
-        fontSize = 10.sp,
-        fontWeight = FontWeight.Light
+        fontSize = 12.sp,
+        fontWeight = FontWeight.W900
     )
 
 

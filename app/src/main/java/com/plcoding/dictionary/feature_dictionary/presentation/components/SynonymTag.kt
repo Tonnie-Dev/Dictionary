@@ -17,15 +17,15 @@ fun SynonymTag(synonym:String) {
     Box(modifier = Modifier.border(
         width = 1.dp,
         color = MaterialTheme.colors.secondary,
-        shape = RoundedCornerShape(75.dp)
+        shape = RoundedCornerShape(100.dp)
     )) {
 
 
         Text(
             text = synonym,
-            style = MaterialTheme.typography.overline,
+            style = MaterialTheme.typography.caption,
             textAlign = TextAlign.Center,
-            modifier = Modifier.padding(5.dp)
+            modifier = Modifier.padding(8.dp)
         )
     }
 

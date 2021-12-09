@@ -48,7 +48,7 @@ fun WordInfoItem(wordInfo: WordInfo, modifier: Modifier = Modifier) {
 
             meaning.definitions.forEachIndexed { i, definition ->
 
-                Text(text = "${i + 1}. ${definition.definition}")
+                Text(text = "${i + 1}. ${definition.definition}", style = MaterialTheme.typography.body1)
 
 
                 Spacer(modifier = Modifier.height(8.dp))
@@ -59,7 +59,7 @@ fun WordInfoItem(wordInfo: WordInfo, modifier: Modifier = Modifier) {
 
                         example ->
 
-                    Text(text = "Example: $example")
+                    Text(text = "Example: $example", style = MaterialTheme.typography.body2)
 
                 }
                 Spacer(modifier = Modifier.height(8.dp))
@@ -92,7 +92,7 @@ fun WordInfoItem(wordInfo: WordInfo, modifier: Modifier = Modifier) {
 
                 }
 
-
+                Spacer(modifier = Modifier.height(8.dp))
 
             }
             Spacer(modifier = Modifier.height(8.dp))
