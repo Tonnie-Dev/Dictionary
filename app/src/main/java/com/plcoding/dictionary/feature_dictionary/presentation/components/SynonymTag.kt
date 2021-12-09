@@ -23,9 +23,9 @@ fun SynonymTag(synonym:String) {
 
         Text(
             text = synonym,
-            style = MaterialTheme.typography.caption,
+            style = MaterialTheme.typography.overline,
             textAlign = TextAlign.Center,
-            modifier = Modifier.padding(8.dp)
+            modifier = Modifier.padding(5.dp)
         )
     }
 

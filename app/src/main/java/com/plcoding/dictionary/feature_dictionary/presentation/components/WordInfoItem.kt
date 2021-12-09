@@ -48,7 +48,10 @@ fun WordInfoItem(wordInfo: WordInfo, modifier: Modifier = Modifier) {
 
             meaning.definitions.forEachIndexed { i, definition ->
 
-                Text(text = "${i + 1}. ${definition.definition}", style = MaterialTheme.typography.body1)
+                Text(
+                    text = "${i + 1}. ${definition.definition}",
+                    style = MaterialTheme.typography.body1
+                )
 
 
                 Spacer(modifier = Modifier.height(8.dp))
@@ -64,12 +67,12 @@ fun WordInfoItem(wordInfo: WordInfo, modifier: Modifier = Modifier) {
                 }
                 Spacer(modifier = Modifier.height(8.dp))
 
-if (definition.synonyms.isNotEmpty()){
+                if (definition.synonyms.isNotEmpty()) {
 
-    Text(text = "Synonyms", style = MaterialTheme.typography.body1)
+                    Text(text = "Synonyms", style = MaterialTheme.typography.caption)
 
-}
-
+                }
+                Spacer(modifier = Modifier.height(8.dp))
                 FlowRow(
                     mainAxisSpacing = 10.dp,
                     crossAxisSpacing = 10.dp,
@@ -77,9 +80,8 @@ if (definition.synonyms.isNotEmpty()){
                 ) {
 
 
-
                     definition.synonyms.forEach { synonym ->
-                       // Text(text = "Synonyms", style = MaterialTheme.typography.h6)
+                        // Text(text = "Synonyms", style = MaterialTheme.typography.h6)
                         if (synonym.isEmpty()) {
                             Text(text = "No Synonyms Found", style = MaterialTheme.typography.body1)
 

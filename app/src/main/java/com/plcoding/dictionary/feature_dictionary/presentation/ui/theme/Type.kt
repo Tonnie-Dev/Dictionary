@@ -33,13 +33,13 @@ val Typography = Typography(
         color = Teal300,
         fontFamily = RobotoCondensed,
         fontSize = 36.sp,
-        fontWeight = FontWeight.W400
+        fontWeight = FontWeight.W500
     ),
 
     h6 = TextStyle(
         color = Teal200,
         fontFamily = RobotoCondensed,
-        fontSize = 20.sp,
+        fontSize = 24.sp,
         fontStyle = FontStyle.Italic,
         fontWeight = FontWeight.W400),
 
@@ -47,13 +47,13 @@ val Typography = Typography(
     body1 = TextStyle(
         color = Black100,
         fontFamily = RobotoCondensed,
-        fontSize = 16.sp,
+        fontSize = 20.sp,
         fontWeight = FontWeight.Normal),
 
     body2 = TextStyle(
         color = Black100,
         fontFamily = RobotoCondensed,
-        fontSize = 14.sp,
+        fontSize = 18.sp,
         fontStyle = FontStyle.Italic,
         fontWeight = FontWeight.Medium
 
@@ -62,17 +62,18 @@ val Typography = Typography(
     ),
 
     caption = TextStyle(
-        color = Teal200,
+        color = Teal300,
         fontFamily = RobotoCondensed,
-        fontSize = 20.sp,
-        fontWeight = FontWeight.W900
+        fontSize = 16.sp,
+        fontWeight = FontWeight.W400
     ),
 
     overline = TextStyle(
         color = Black100,
+        fontStyle = FontStyle.Italic,
         fontFamily = RobotoCondensed,
-        fontSize = 12.sp,
-        fontWeight = FontWeight.W900
+        fontSize = 16.sp,
+        fontWeight = FontWeight.W500
     )
 
 
