@@ -64,7 +64,11 @@ fun WordInfoItem(wordInfo: WordInfo, modifier: Modifier = Modifier) {
                 }
                 Spacer(modifier = Modifier.height(8.dp))
 
+if (definition.synonyms.isNotEmpty()){
 
+    Text(text = "Synonyms", style = MaterialTheme.typography.body1)
+
+}
 
                 FlowRow(
                     mainAxisSpacing = 10.dp,
