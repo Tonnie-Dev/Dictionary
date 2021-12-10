@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -56,6 +57,14 @@ fun SearchTextField(value: String, onValueChange: (String) -> Unit) {
             )
         },
 
+        trailingIcon = {
+
+                       Icon(
+                           imageVector = Icons.Default.Clear,
+                           contentDescription = null
+                       )
+        },
+
         textStyle = TextStyle(
             color = MaterialTheme.colors.onSurface,
             fontSize = 28.sp,
@@ -70,8 +79,8 @@ fun SearchTextField(value: String, onValueChange: (String) -> Unit) {
 
 
                 modifier = Modifier
-                . fillMaxWidth (0.95f)
-                .padding(8.dp),
+                        .fillMaxWidth(0.95f)
+                        .padding(8.dp),
 
         maxLines = 1
 
