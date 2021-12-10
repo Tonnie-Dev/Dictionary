@@ -87,9 +87,11 @@ function, where as a key you can pass a state you want to listen.*/
                             TextField(
                                 value = viewModel.searchQuery.value,
                                 onValueChange = viewModel::onSearch,
-                                placeholder = { Text(text = "Search ...") },
+                               placeholder = { Text(text = "Search ...") },
+
+                                label = {Text(text = "Search ...")},
                                 modifier = Modifier
-                                        .fillMaxWidth()
+                                        .fillMaxWidth(0.9f)
 
                             )
 
