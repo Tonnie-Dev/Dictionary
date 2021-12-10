@@ -25,13 +25,11 @@ fun CustomSearchTextField(value: String, onValueChange: (String) -> Unit) {
     Surface(color = MaterialTheme.colors.primary, elevation = 8.dp) {
 
         Row(modifier = Modifier.fillMaxWidth()) {
-            SearchTextField(value= value, onValueChange = onValueChange)
+            SearchTextField(value = value, onValueChange = onValueChange)
 
         }
 
     }
-
-
 
 
 }
@@ -65,11 +63,18 @@ fun SearchTextField(value: String, onValueChange: (String) -> Unit) {
 
             ),
 
-        colors = TextFieldDefaults.textFieldColors(backgroundColor = MaterialTheme.colors.surface, leadingIconColor = MaterialTheme.colors.primaryVariant),
+        colors = TextFieldDefaults.textFieldColors(
+            backgroundColor = MaterialTheme.colors.surface,
+            leadingIconColor = MaterialTheme.colors.primaryVariant
+        ),
 
-        modifier = Modifier
-                .fillMaxWidth(0.9f)
+
+                modifier = Modifier
+                . fillMaxWidth (0.95f)
                 .padding(8.dp),
+
+        maxLines = 1
+
 
 
         )
@@ -81,7 +86,7 @@ fun SearchTextField(value: String, onValueChange: (String) -> Unit) {
 @Composable
 fun PreviewCustomSearchTextField() {
 
-    DictionaryTheme{
+    DictionaryTheme {
 
 
         CustomSearchTextField(value = "Text", onValueChange = {})

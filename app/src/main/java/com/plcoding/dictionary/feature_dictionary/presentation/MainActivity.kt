@@ -81,57 +81,60 @@ function, where as a key you can pass a state you want to listen.*/
 
                     Box(modifier = Modifier.background(color = MaterialTheme.colors.background)) {
 
+                        Surface(color = MaterialTheme.colors.surface, elevation = 10.dp) {
+                            Column(
+                                modifier = Modifier
+                                        .fillMaxSize().padding(8.dp)
 
-                        Column(
-                            modifier = Modifier
-                                    .fillMaxSize()
-                                   
-                        ) {
-
-
-                                    CustomSearchTextField(value = viewModel.searchQuery.value, onValueChange = viewModel::onSearch)
+                            ) {
 
 
+                                CustomSearchTextField(value = viewModel.searchQuery.value, onValueChange = viewModel::onSearch)
 
 
 
 
-                            Spacer(modifier = Modifier.height(16.dp))
+
+
+                                Spacer(modifier = Modifier.height(16.dp))
 
 
 
-                            LazyColumn(modifier = Modifier.fillMaxSize()) {
+                                LazyColumn(modifier = Modifier.fillMaxSize()) {
 
-                                items(count = state.wordInfoItems.size) { i ->
+                                    items(count = state.wordInfoItems.size) { i ->
 
-                                    val wordInfo = state.wordInfoItems[i]
+                                        val wordInfo = state.wordInfoItems[i]
 
-                                    //add a spacer for every item apart from the first item
-                                    if (i > 0) {
+                                        //add a spacer for every item apart from the first item
+                                        if (i > 0) {
 
-                                        Spacer(modifier = Modifier.height(8.dp))
+                                            Spacer(modifier = Modifier.height(8.dp))
+                                        }
+
+
+
+                                        WordInfoItem(wordInfo = wordInfo)
+
+                                        //add a spacer for every item apart from the last item
+                                        if (i < state.wordInfoItems.size - 1) {
+
+                                            Divider()
+                                        }
+
                                     }
 
-
-
-                                    WordInfoItem(wordInfo = wordInfo)
-
-                                    //add a spacer for every item apart from the last item
-                                    if (i < state.wordInfoItems.size - 1) {
-
-                                        Divider()
-                                    }
 
                                 }
 
-
                             }
+                            if (state.isLoading) {
 
+                                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+                            }
                         }
-                        if (state.isLoading) {
 
-                            CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-                        }
+
 
                     }
                 }
