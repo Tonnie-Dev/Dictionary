@@ -1,6 +1,5 @@
 package com.plcoding.dictionary.feature_dictionary.presentation.components
 
-import android.view.RoundedCorner
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,14 +26,18 @@ import com.plcoding.dictionary.feature_dictionary.presentation.ui.theme.Dictiona
 fun CustomSearchTextField(
     value: String,
     onValueChange: (String) -> Unit,
-    onTextClear: () -> Unit
+    onClearIconClick: () -> Unit
 ) {
 
 
     Surface(color = MaterialTheme.colors.primary, elevation = 8.dp) {
 
         Row(modifier = Modifier.fillMaxWidth()) {
-            SearchTextField(value = value, onValueChange = onValueChange)
+            SearchTextField(
+                value = value,
+                onValueChange = onValueChange,
+                onClearIconClick = onClearIconClick
+            )
 
         }
 
@@ -45,7 +48,7 @@ fun CustomSearchTextField(
 
 
 @Composable
-fun SearchTextField(value: String, onValueChange: (String) -> Unit,   onTextClear: () -> Unit) {
+fun SearchTextField(value: String, onValueChange: (String) -> Unit, onClearIconClick: () -> Unit) {
     TextField(
         value = value,
         onValueChange = onValueChange,
@@ -70,7 +73,7 @@ fun SearchTextField(value: String, onValueChange: (String) -> Unit,   onTextClea
             Icon(
                 imageVector = Icons.Default.Clear,
                 contentDescription = null,
-                Modifier.clickable { onTextClear ()}
+                Modifier.clickable { onClearIconClick() }
             )
         },
 
@@ -106,7 +109,11 @@ fun PreviewCustomSearchTextField() {
     DictionaryTheme {
 
 
-        CustomSearchTextField(value = "Text", onValueChange = {})
+        CustomSearchTextField(
+            value = "Text",
+            onValueChange = {},
+            onClearIconClick = {}
+        )
     }
 
 
