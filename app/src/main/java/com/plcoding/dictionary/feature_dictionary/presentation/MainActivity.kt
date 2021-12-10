@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -96,6 +98,14 @@ function, where as a key you can pass a state you want to listen.*/
                                     autoCorrect = true,
                                     keyboardType = KeyboardType.Text
                                 ),
+                                
+                                leadingIcon = {
+                                              
+                                              Icon(
+                                                  imageVector = Icons.Default.Search,
+                                                  contentDescription = null
+                                              )
+                                },
                                         modifier = Modifier
                                         . fillMaxWidth (0.9f)
 
