@@ -108,6 +108,14 @@ class WordInfoViewModel @Inject constructor(private val useCase: GetWordInfo) :
         }
     }
 
+
+
+    fun onTagClick(synonym:String){
+
+        searchQuery.value = synonym
+
+    }
+
     //EVENT FLOW
 
     sealed class UIEvent {
