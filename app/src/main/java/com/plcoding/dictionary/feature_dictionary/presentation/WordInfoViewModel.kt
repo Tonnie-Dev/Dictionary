@@ -116,6 +116,12 @@ class WordInfoViewModel @Inject constructor(private val useCase: GetWordInfo) :
 
     }
 
+
+    fun onClearIconClick(){
+
+        searchQuery.value = ""
+    }
+
     //EVENT FLOW
 
     sealed class UIEvent {
@@ -123,6 +129,7 @@ class WordInfoViewModel @Inject constructor(private val useCase: GetWordInfo) :
        data class ShowSnackbar(val message: String) : UIEvent()
         object HideKeyboard:UIEvent()
        data class TagClicked(val synonym:String):UIEvent()
+        object ClearIconClicked:UIEvent()
 
     }
 }

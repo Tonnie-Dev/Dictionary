@@ -1,6 +1,7 @@
 package com.plcoding.dictionary.feature_dictionary.presentation.components
 
 import android.view.RoundedCorner
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -23,7 +24,11 @@ import com.plcoding.dictionary.feature_dictionary.presentation.ui.theme.Dictiona
 
 
 @Composable
-fun CustomSearchTextField(value: String, onValueChange: (String) -> Unit) {
+fun CustomSearchTextField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    onTextClear: () -> Unit
+) {
 
 
     Surface(color = MaterialTheme.colors.primary, elevation = 8.dp) {
@@ -40,7 +45,7 @@ fun CustomSearchTextField(value: String, onValueChange: (String) -> Unit) {
 
 
 @Composable
-fun SearchTextField(value: String, onValueChange: (String) -> Unit) {
+fun SearchTextField(value: String, onValueChange: (String) -> Unit,   onTextClear: () -> Unit) {
     TextField(
         value = value,
         onValueChange = onValueChange,
@@ -62,10 +67,11 @@ fun SearchTextField(value: String, onValueChange: (String) -> Unit) {
 
         trailingIcon = {
 
-                       Icon(
-                           imageVector = Icons.Default.Clear,
-                           contentDescription = null
-                       )
+            Icon(
+                imageVector = Icons.Default.Clear,
+                contentDescription = null,
+                Modifier.clickable { onTextClear ()}
+            )
         },
 
         textStyle = TextStyle(
@@ -82,16 +88,13 @@ fun SearchTextField(value: String, onValueChange: (String) -> Unit) {
         ),
 
         maxLines = 1,
-                modifier = Modifier
-                        .fillMaxWidth(0.95f)
-                        .clip(shape = RoundedCornerShape(100f))
-                        .padding(8.dp)
+        modifier = Modifier
+                .fillMaxWidth(0.95f)
+                .padding(8.dp)
+                .clip(shape = RoundedCornerShape(75f))
 
 
-
-
-
-        )
+    )
 
 
 }
