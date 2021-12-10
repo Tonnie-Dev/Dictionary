@@ -6,10 +6,9 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.text.KeyboardOptions
+
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Search
+
 
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -17,9 +16,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.ui.text.input.KeyboardType
+
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.plcoding.dictionary.feature_dictionary.presentation.components.CustomSearchTextField
 import com.plcoding.dictionary.feature_dictionary.presentation.ui.theme.DictionaryTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -88,29 +88,7 @@ function, where as a key you can pass a state you want to listen.*/
                                     .padding(16.dp)
                         ) {
 
-                            TextField(
-                                value = viewModel.searchQuery.value,
-                                onValueChange = viewModel::onSearch,
-                                // placeholder = { Text(text = "Search ...") },
-
-                                label = { Text(text = "Search ...") },
-                                keyboardOptions = KeyboardOptions(
-                                    autoCorrect = true,
-                                    keyboardType = KeyboardType.Text
-                                ),
-                                
-                                leadingIcon = {
-                                              
-                                              Icon(
-                                                  imageVector = Icons.Default.Search,
-                                                  contentDescription = null
-                                              )
-                                },
-                                        modifier = Modifier
-                                        . fillMaxWidth (0.9f)
-
-                            )
-
+                            CustomSearchTextField(value = viewModel.searchQuery.value, onValueChange = viewModel::onSearch)
                             Spacer(modifier = Modifier.height(16.dp))
 
 
