@@ -71,6 +71,11 @@ function, where as a key you can pass a state you want to listen.*/
                                 keyboardController?.hide()
 
                             }
+
+                            is WordInfoViewModel.UIEvent.TagClicked -> run {
+
+                              //  viewModel::onTagClick
+                            }
                         }
                     }
                 })
@@ -89,7 +94,8 @@ function, where as a key you can pass a state you want to listen.*/
                             ) {
 
 
-                                CustomSearchTextField(value = viewModel.searchQuery.value, onValueChange = viewModel::onSearch)
+                                CustomSearchTextField(value = viewModel.searchQuery.value,
+                                    onValueChange = viewModel::onSearch)
 
 
 
@@ -114,7 +120,9 @@ function, where as a key you can pass a state you want to listen.*/
 
 
 
-                                        WordInfoItem(wordInfo = wordInfo)
+                                        WordInfoItem(wordInfo = wordInfo,
+
+                                            onClickTag =viewModel::onSearch)
 
                                         //add a spacer for every item apart from the last item
                                         if (i < state.wordInfoItems.size - 1) {

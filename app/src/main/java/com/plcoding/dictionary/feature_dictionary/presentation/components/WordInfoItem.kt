@@ -18,7 +18,7 @@ import com.plcoding.dictionary.feature_dictionary.presentation.components.Synony
 
 
 @Composable
-fun WordInfoItem(wordInfo: WordInfo, modifier: Modifier = Modifier) {
+fun WordInfoItem(wordInfo: WordInfo, modifier: Modifier = Modifier, onClickTag:(String)->Unit) {
 
 
     Column(modifier = modifier) {
@@ -87,7 +87,7 @@ fun WordInfoItem(wordInfo: WordInfo, modifier: Modifier = Modifier) {
 
                         } else {
 
-                            SynonymTag(synonym = synonym)
+                            SynonymTag(synonym = synonym, onClickTag = onClickTag)
                             //Text(text = "Syn: $it")
 
                         }
