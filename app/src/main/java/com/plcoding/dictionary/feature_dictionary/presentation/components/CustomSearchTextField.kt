@@ -2,10 +2,7 @@ package com.plcoding.dictionary.feature_dictionary.presentation.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
@@ -17,9 +14,7 @@ import androidx.compose.ui.unit.sp
 
 
 @Composable
-fun CustomSearchTextField(value:String, onValueChange:(String)->Unit) {
-
-
+fun CustomSearchTextField(value: String, onValueChange: (String) -> Unit) {
 
 
     TextField(
@@ -41,11 +36,21 @@ fun CustomSearchTextField(value:String, onValueChange:(String)->Unit) {
             )
         },
 
-     textStyle = TextStyle(color = MaterialTheme.colors.onSurface, fontSize = 28.sp, fontWeight = FontWeight.W700),
-        modifier = Modifier
-                . fillMaxWidth (0.9f)
+        textStyle = TextStyle(
+            color = MaterialTheme.colors.onSurface,
+            fontSize = 28.sp,
+            fontWeight = FontWeight.W700,
 
-    )
+        ),
+
+        colors = TextFieldDefaults.textFieldColors(backgroundColor = MaterialTheme.colors.surface),
+
+        modifier = Modifier
+                .fillMaxWidth(0.9f),
+
+
+        )
+
 
 }
 
