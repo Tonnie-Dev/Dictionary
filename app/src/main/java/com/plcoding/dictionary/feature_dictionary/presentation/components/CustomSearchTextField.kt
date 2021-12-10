@@ -74,7 +74,8 @@ fun SearchTextField(value: String, onValueChange: (String) -> Unit) {
 
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = MaterialTheme.colors.surface,
-            leadingIconColor = MaterialTheme.colors.primaryVariant
+            leadingIconColor = MaterialTheme.colors.primaryVariant,
+            trailingIconColor = MaterialTheme.colors.primaryVariant
         ),
 
 
