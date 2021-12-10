@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 
 import androidx.compose.runtime.LaunchedEffect
@@ -14,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.plcoding.dictionary.feature_dictionary.presentation.ui.theme.DictionaryTheme
@@ -62,7 +64,7 @@ function, where as a key you can pass a state you want to listen.*/
 
                             }
 
-                            is WordInfoViewModel.UIEvent.HideKeyboard ->{
+                            is WordInfoViewModel.UIEvent.HideKeyboard -> {
 
                                 keyboardController?.hide()
 
@@ -87,11 +89,15 @@ function, where as a key you can pass a state you want to listen.*/
                             TextField(
                                 value = viewModel.searchQuery.value,
                                 onValueChange = viewModel::onSearch,
-                               placeholder = { Text(text = "Search ...") },
+                                // placeholder = { Text(text = "Search ...") },
 
-                                label = {Text(text = "Search ...")},
-                                modifier = Modifier
-                                        .fillMaxWidth(0.9f)
+                                label = { Text(text = "Search ...") },
+                                keyboardOptions = KeyboardOptions(
+                                    autoCorrect = true,
+                                    keyboardType = KeyboardType.Text
+                                ),
+                                        modifier = Modifier
+                                        . fillMaxWidth (0.9f)
 
                             )
 
