@@ -36,7 +36,6 @@ val Typography = Typography(
         fontWeight = FontWeight.W500
     ),
     h5 = TextStyle(
-        color = Teal200,
         fontFamily = RobotoCondensed,
         fontSize = 24.sp,
         fontWeight = FontWeight.W400
