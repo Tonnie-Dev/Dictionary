@@ -85,7 +85,7 @@ function, where as a key you can pass a state you want to listen.*/
                         Column(
                             modifier = Modifier
                                     .fillMaxSize()
-                                    .padding(16.dp)
+                                   
                         ) {
 
 
