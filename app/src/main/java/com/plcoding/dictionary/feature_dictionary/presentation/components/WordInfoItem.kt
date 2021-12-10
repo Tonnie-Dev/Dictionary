@@ -26,7 +26,7 @@ fun WordInfoItem(wordInfo: WordInfo, modifier: Modifier = Modifier) {
         //title - Word
         Text(
             text = wordInfo.word,
-            style = MaterialTheme.typography.h5,
+            style = MaterialTheme.typography.h4,
             /*fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colors.primary*/
