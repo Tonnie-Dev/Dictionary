@@ -1,8 +1,10 @@
 package com.plcoding.dictionary.feature_dictionary.presentation.components
 
+import android.view.RoundedCorner
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -10,6 +12,7 @@ import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -78,12 +81,13 @@ fun SearchTextField(value: String, onValueChange: (String) -> Unit) {
             trailingIconColor = MaterialTheme.colors.primaryVariant
         ),
 
-
+        maxLines = 1,
                 modifier = Modifier
                         .fillMaxWidth(0.95f)
-                        .padding(8.dp),
+                        .clip(shape = RoundedCornerShape(100f))
+                        .padding(8.dp)
 
-        maxLines = 1
+
 
 
 
