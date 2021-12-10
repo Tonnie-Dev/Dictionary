@@ -84,7 +84,7 @@ function, where as a key you can pass a state you want to listen.*/
                         Surface(color = MaterialTheme.colors.surface, elevation = 10.dp) {
                             Column(
                                 modifier = Modifier
-                                        .fillMaxSize().padding(8.dp)
+                                        .fillMaxSize().padding(horizontal = 8.dp)
 
                             ) {
 

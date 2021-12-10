@@ -114,6 +114,7 @@ class WordInfoViewModel @Inject constructor(private val useCase: GetWordInfo) :
 
        data class ShowSnackbar(val message: String) : UIEvent()
         object HideKeyboard:UIEvent()
+       data class OnTagClicked(val synonym:String):UIEvent()
 
     }
 }
