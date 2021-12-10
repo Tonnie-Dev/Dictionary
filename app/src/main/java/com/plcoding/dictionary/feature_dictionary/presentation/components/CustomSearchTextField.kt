@@ -1,6 +1,7 @@
 package com.plcoding.dictionary.feature_dictionary.presentation.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -10,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 
@@ -43,10 +45,10 @@ fun CustomSearchTextField(value: String, onValueChange: (String) -> Unit) {
 
         ),
 
-        colors = TextFieldDefaults.textFieldColors(backgroundColor = MaterialTheme.colors.surface),
+        colors = TextFieldDefaults.textFieldColors(backgroundColor = MaterialTheme.colors.surface, leadingIconColor = MaterialTheme.colors.primaryVariant),
 
         modifier = Modifier
-                .fillMaxWidth(0.9f),
+                .fillMaxWidth(0.9f).padding(8.dp),
 
 
         )

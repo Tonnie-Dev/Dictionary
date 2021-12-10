@@ -88,7 +88,18 @@ function, where as a key you can pass a state you want to listen.*/
                                     .padding(16.dp)
                         ) {
 
-                            CustomSearchTextField(value = viewModel.searchQuery.value, onValueChange = viewModel::onSearch)
+                            Surface(color = MaterialTheme.colors.primary, elevation = 8.dp) {
+
+                                Row(modifier = Modifier.fillMaxWidth()) {
+
+                                    CustomSearchTextField(value = viewModel.searchQuery.value, onValueChange = viewModel::onSearch)
+                                }
+                                }
+
+
+
+
+
                             Spacer(modifier = Modifier.height(16.dp))
 
 
