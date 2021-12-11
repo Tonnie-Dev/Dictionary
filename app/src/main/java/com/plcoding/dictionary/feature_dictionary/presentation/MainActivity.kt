@@ -74,7 +74,7 @@ function, where as a key you can pass a state you want to listen.*/
 
                             is WordInfoViewModel.UIEvent.TagClicked -> run {
 
-                              //  viewModel::onTagClick
+                       viewModel::onTagClick
                             }
 
                             is WordInfoViewModel.UIEvent.ClearIconClicked -> run {
@@ -101,10 +101,6 @@ function, where as a key you can pass a state you want to listen.*/
 
                                 CustomSearchTextField(value = viewModel.searchQuery.value,
                                     onValueChange = viewModel::onSearch, viewModel::onClearIconClick)
-
-
-
-
 
 
                                 Spacer(modifier = Modifier.height(16.dp))

@@ -93,9 +93,6 @@ class WordInfoViewModel @Inject constructor(private val useCase: GetWordInfo) :
 
                     }
                     is Resource.Loading -> {
-
-
-
                         state.value = state.value.copy(
                             //we might also have some data to display
                             wordInfoItems = result.data ?: emptyList(),
