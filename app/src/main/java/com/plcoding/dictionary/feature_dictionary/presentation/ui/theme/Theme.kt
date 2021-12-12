@@ -21,7 +21,8 @@ private val LightColorPalette = lightColors(
 
     primary = Teal300,
     primaryVariant = Teal200,
-    secondary = Black100
+    secondary = Black100,
+    surface = LightGray
     /*primary = Purple500,
     primaryVariant = Purple700,
     secondary = Teal200*/
