@@ -74,7 +74,7 @@ function, where as a key you can pass a state you want to listen.*/
 
                             is WordInfoViewModel.UIEvent.TagClicked -> run {
 
-                       viewModel::onTagClick
+                                viewModel::onTagClick
                             }
 
                             is WordInfoViewModel.UIEvent.ClearIconClicked -> run {
@@ -86,7 +86,22 @@ function, where as a key you can pass a state you want to listen.*/
                 })
 
 
-                Scaffold(scaffoldState = scaffoldState) {
+                Scaffold(scaffoldState = scaffoldState, topBar = {
+
+
+                    Surface(
+                        elevation = 8.dp,
+                        color = MaterialTheme.colors.surface,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+
+                        CustomSearchTextField(
+                            value = viewModel.searchQuery.value,
+                            onValueChange = viewModel::onSearch, viewModel::onClearIconClick
+                        )
+                    }
+
+                }) {
 
 
                     Box(modifier = Modifier.background(color = MaterialTheme.colors.background)) {
@@ -94,13 +109,12 @@ function, where as a key you can pass a state you want to listen.*/
                         Surface(color = MaterialTheme.colors.surface, elevation = 10.dp) {
                             Column(
                                 modifier = Modifier
-                                        .fillMaxSize().padding(horizontal = 8.dp)
+                                        .fillMaxSize()
+                                        .padding(horizontal = 8.dp)
 
                             ) {
 
 
-                                CustomSearchTextField(value = viewModel.searchQuery.value,
-                                    onValueChange = viewModel::onSearch, viewModel::onClearIconClick)
 
 
                                 Spacer(modifier = Modifier.height(16.dp))
@@ -121,9 +135,11 @@ function, where as a key you can pass a state you want to listen.*/
 
 
 
-                                        WordInfoItem(wordInfo = wordInfo,
+                                        WordInfoItem(
+                                            wordInfo = wordInfo,
 
-                                            onClickTag =viewModel::onSearch)
+                                            onClickTag = viewModel::onSearch
+                                        )
 
                                         //add a spacer for every item apart from the last item
                                         if (i < state.wordInfoItems.size - 1) {
@@ -142,7 +158,6 @@ function, where as a key you can pass a state you want to listen.*/
                                 CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
                             }
                         }
-
 
 
                     }
