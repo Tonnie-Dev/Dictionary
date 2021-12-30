@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Timber.i("oncreate() called here")
+       
         setContent {
             DictionaryTheme {
 
@@ -95,10 +95,13 @@ function, where as a key you can pass a state you want to listen.*/
                         modifier = Modifier.fillMaxWidth()
                     ) {
 
-                        CustomSearchTextField(
+                      /*  CustomSearchTextField(
                             value = viewModel.searchQuery.value,
                             onValueChange = viewModel::onSearch, viewModel::onClearIconClick
-                        )
+                        )*/
+                        
+                        
+                        TextField(value = "", onValueChange = {}, label = { Text(text = "Search")})
                     }
 
                 }) {
