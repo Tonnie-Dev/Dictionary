@@ -48,7 +48,7 @@ fun CustomSearchTextField(
         onValueChange = onValueChange,
 
 
-        label = { Text(text = "Search ") },
+        label = { Text(text = "Search") },
         keyboardOptions = KeyboardOptions(
             autoCorrect = true,
             keyboardType = KeyboardType.Text
@@ -71,12 +71,7 @@ fun CustomSearchTextField(
             )
         },
 
-      /*  textStyle = TextStyle(
-            color = MaterialTheme.colors.onSurface,
-            fontSize = 28.sp,
-            fontWeight = FontWeight.W700,
-
-            ),*/
+      
         textStyle = TextStyle(color = MaterialTheme.colors.onSurface),
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = MaterialTheme.colors.surface,
@@ -94,31 +89,5 @@ fun CustomSearchTextField(
     )
 
 
-
-
 }
-
-
-@Composable
-fun SearchTextField(value: String, onValueChange: (String) -> Unit, onClearIconClick: () -> Unit) {
-
-}
-
-@Preview(name = "Search")
-@Composable
-fun PreviewCustomSearchTextField() {
-
-    DictionaryTheme {
-
-
-        CustomSearchTextField(
-            value = "Text",
-            onValueChange = {},
-            onClearIconClick = {}
-        )
-    }
-
-
-}
-
 
