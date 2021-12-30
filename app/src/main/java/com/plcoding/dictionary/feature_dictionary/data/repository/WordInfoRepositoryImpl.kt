@@ -54,10 +54,10 @@ class WordInfoRepositoryImpl(private val dao: WordDAO,
 
             emit(
                 Resource.Error(
-                    "Ooops something went wrong",
+                    "Ooops something went wrong"
                     //in error case we can potentially get data from the db
+//wordInfos is from database
 
-                    data = wordInfos
                 )
             )
 

@@ -92,9 +92,9 @@ fun SearchTextField(value: String, onValueChange: (String) -> Unit, onClearIconC
 
         maxLines = 1,
         modifier = Modifier
-                .fillMaxWidth(0.95f)
+                .fillMaxWidth(0.90f)
                 .padding(8.dp)
-                .clip(shape = RoundedCornerShape(75f))
+                //.clip(shape = RoundedCornerShape(75f))
 
 
     )

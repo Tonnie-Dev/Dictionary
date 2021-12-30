@@ -77,12 +77,6 @@ object AppModule {
 
     fun providesDatabase(@ApplicationContext context: Context): WordInfoDatabase {
 
-        /*   //initialize moshi
-          moshi = Moshi.Builder()
-               .add(KotlinJsonAdapterFactory())
-               .build()*/
-
-
         return Room.databaseBuilder(context, WordInfoDatabase::class.java, "word_db")
                 .addTypeConverter(Converters(MoshiParser()))
                 .build()

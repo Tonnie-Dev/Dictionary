@@ -12,5 +12,7 @@ interface WordInfoRepository {
     * then we get the actual WordInfo from cache
     * we can then make the request when we get the response we can emit
     * another list of WordInfo gotten from the API*/
+
+    //this is not a suspend fxn because we are using a Flow
     fun getWordInfo(word:String): Flow<Resource<List<WordInfo>>>
 }
