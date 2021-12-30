@@ -30,7 +30,7 @@ fun CustomSearchTextField(
 ) {
 
 
-    Surface(color = MaterialTheme.colors.primary, elevation = 8.dp) {
+/*    Surface(color = MaterialTheme.colors.primary, elevation = 8.dp) {
 
         Row(modifier = Modifier.fillMaxWidth()) {
             SearchTextField(
@@ -41,18 +41,12 @@ fun CustomSearchTextField(
 
         }
 
-    }
+    }*/
 
-
-}
-
-
-@Composable
-fun SearchTextField(value: String, onValueChange: (String) -> Unit, onClearIconClick: () -> Unit) {
     TextField(
         value = value,
         onValueChange = onValueChange,
-        // placeholder = { Text(text = "Search ...") },
+        placeholder = { Text(text = "Search ...") },
 
         label = { Text(text = "Search ...") },
         keyboardOptions = KeyboardOptions(
@@ -86,19 +80,27 @@ fun SearchTextField(value: String, onValueChange: (String) -> Unit, onClearIconC
 
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = MaterialTheme.colors.surface,
-            leadingIconColor = MaterialTheme.colors.primaryVariant,
-            trailingIconColor = MaterialTheme.colors.primaryVariant
+            leadingIconColor = MaterialTheme.colors.primary,
+            trailingIconColor = MaterialTheme.colors.primary
         ),
 
         maxLines = 1,
         modifier = Modifier
-                .fillMaxWidth(0.90f)
+                .fillMaxWidth(0.95f)
                 .padding(8.dp)
-                //.clip(shape = RoundedCornerShape(75f))
+        //.clip(shape = RoundedCornerShape(75f))
 
 
     )
 
+
+
+
+}
+
+
+@Composable
+fun SearchTextField(value: String, onValueChange: (String) -> Unit, onClearIconClick: () -> Unit) {
 
 }
 
