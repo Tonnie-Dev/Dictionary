@@ -46,9 +46,9 @@ fun CustomSearchTextField(
     TextField(
         value = value,
         onValueChange = onValueChange,
-        placeholder = { Text(text = "Search ...") },
 
-        label = { Text(text = "Search ...") },
+
+        label = { Text(text = "Search ") },
         keyboardOptions = KeyboardOptions(
             autoCorrect = true,
             keyboardType = KeyboardType.Text
@@ -71,13 +71,13 @@ fun CustomSearchTextField(
             )
         },
 
-        textStyle = TextStyle(
+      /*  textStyle = TextStyle(
             color = MaterialTheme.colors.onSurface,
             fontSize = 28.sp,
             fontWeight = FontWeight.W700,
 
-            ),
-
+            ),*/
+        textStyle = TextStyle(color = MaterialTheme.colors.onSurface),
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = MaterialTheme.colors.surface,
             leadingIconColor = MaterialTheme.colors.primary,
