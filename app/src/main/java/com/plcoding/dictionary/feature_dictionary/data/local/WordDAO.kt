@@ -19,4 +19,8 @@ interface WordDAO {
     // Pipe || is for String concatenation '%' is a string placeholder
     @Query("SELECT * FROM wordinfoentity WHERE word LIKE '%' || :word || '%'")
     suspend fun getWordInfos(word:String): List<WordInfoEntity>
+
+
+    @Query("SELECT * FROM wordinfoentity ORDER BY id DESC LIMIT 10")
+    suspend fun getLastTenWords():List<String>
 }

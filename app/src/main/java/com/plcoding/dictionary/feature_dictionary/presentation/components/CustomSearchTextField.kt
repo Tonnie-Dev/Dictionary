@@ -30,64 +30,63 @@ fun CustomSearchTextField(
 ) {
 
 
-/*    Surface(color = MaterialTheme.colors.primary, elevation = 8.dp) {
-
-        Row(modifier = Modifier.fillMaxWidth()) {
-            SearchTextField(
-                value = value,
-                onValueChange = onValueChange,
-                onClearIconClick = onClearIconClick
-            )
-
-        }
-
-    }*/
-
-    TextField(
-        value = value,
-        onValueChange = onValueChange,
+    Row (){
+        TextField(
+            value = value,
+            onValueChange = onValueChange,
 
 
-        label = { Text(text = "Search") },
-        keyboardOptions = KeyboardOptions(
-            autoCorrect = true,
-            keyboardType = KeyboardType.Text
-        ),
+            label = { Text("Search") },
+          keyboardOptions = KeyboardOptions(
+                autoCorrect = true,
+                keyboardType = KeyboardType.Text
+            ),
 
-        leadingIcon = {
+            leadingIcon = {
 
-            Icon(
-                imageVector = Icons.Default.Search,
-                contentDescription = null
-            )
-        },
+                Icon(
+                    imageVector = Icons.Default.Search,
+                    contentDescription = null
+                )
+            },
 
-        trailingIcon = {
+            trailingIcon = {
 
-            Icon(
-                imageVector = Icons.Default.Clear,
-                contentDescription = null,
-                Modifier.clickable { onClearIconClick() }
-            )
-        },
-
-      
-        textStyle = TextStyle(color = MaterialTheme.colors.onSurface),
-        colors = TextFieldDefaults.textFieldColors(
-            backgroundColor = MaterialTheme.colors.surface,
-            leadingIconColor = MaterialTheme.colors.primary,
-            trailingIconColor = MaterialTheme.colors.primary
-        ),
-
-        maxLines = 1,
-        modifier = Modifier
-                .fillMaxWidth(0.95f)
-                .padding(8.dp)
-        //.clip(shape = RoundedCornerShape(75f))
+                Icon(
+                    imageVector = Icons.Default.Clear,
+                    contentDescription = null,
+                    Modifier.clickable { onClearIconClick() }
+                )
+            },
 
 
-    )
+            textStyle = TextStyle(color = MaterialTheme.colors.onSurface),
+            colors = TextFieldDefaults.textFieldColors(
+                backgroundColor = MaterialTheme.colors.surface,
+                leadingIconColor = MaterialTheme.colors.primary,
+                trailingIconColor = MaterialTheme.colors.primary
+            ),
+
+            maxLines = 1,
+            modifier = Modifier
+                    .fillMaxWidth(0.95f)
+                    .padding(8.dp)
+            //.clip(shape = RoundedCornerShape(75f))
+
+
+        )
+    }
 
 
 }
 
+@Preview(name = "TextPreview")
+@Composable
+fun MyTextFieldPreview() {
+    TextField(
+        value = "",
+        onValueChange = {  },
+
+
+        label = { Text("Search") })
+}
