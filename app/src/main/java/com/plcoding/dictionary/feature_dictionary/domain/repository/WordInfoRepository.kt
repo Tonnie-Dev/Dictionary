@@ -15,4 +15,7 @@ interface WordInfoRepository {
 
     //this is not a suspend fxn because we are using a Flow
     fun getWordInfo(word:String): Flow<Resource<List<WordInfo>>>
+
+
+    fun getLastTenWords(): Flow<Resource<List<String>>>
 }
