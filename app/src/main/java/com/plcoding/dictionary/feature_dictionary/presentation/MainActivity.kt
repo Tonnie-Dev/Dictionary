@@ -95,10 +95,13 @@ function, where as a key you can pass a state you want to listen.*/
                         modifier = Modifier.fillMaxWidth()
                     ) {
 
-                     CustomSearchTextField(
-                            value = viewModel.searchQuery.value,
-                            onValueChange = viewModel::onSearch, viewModel::onClearIconClick
-                        )
+                        Column {
+                            CustomSearchTextField(
+                                value = viewModel.searchQuery.value,
+                                onValueChange = viewModel::onSearch, viewModel::onClearIconClick
+                            )
+                        }
+
                         
                         
                        // TextField(value = "", onValueChange = {}, label = { Text(text = "Search")})
