@@ -20,6 +20,7 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.plcoding.dictionary.feature_dictionary.presentation.components.CustomSearchTextField
+import com.plcoding.dictionary.feature_dictionary.presentation.components.WordChipsRow
 import com.plcoding.dictionary.feature_dictionary.presentation.ui.theme.DictionaryTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -103,8 +104,8 @@ function, where as a key you can pass a state you want to listen.*/
                         }
 
                         
-                        
-                       // TextField(value = "", onValueChange = {}, label = { Text(text = "Search")})
+                        WordChipsRow(words = , scrollState = , onClickChip = )
+                       
                     }
 
                 }) {
