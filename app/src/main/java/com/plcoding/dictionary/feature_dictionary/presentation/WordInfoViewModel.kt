@@ -1,5 +1,6 @@
 package com.plcoding.dictionary.feature_dictionary.presentation
 
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -32,6 +33,8 @@ class WordInfoViewModel @Inject constructor(
     var eventFlow = MutableSharedFlow<UIEvent>()
         private set
 
+    var words:MutableState<List<String>> = mutableStateOf(listOf())
+    private set
 
     //job to manage coroutines
     private var searchJob: Job? = null
@@ -108,6 +111,11 @@ class WordInfoViewModel @Inject constructor(
     }
 
 
+    fun getLastTenWords(){
+
+
+        getLastTenWords().onEach{}
+    }
 
     fun onTagClick(synonym:String){
 

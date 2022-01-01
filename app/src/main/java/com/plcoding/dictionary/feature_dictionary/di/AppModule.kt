@@ -10,6 +10,7 @@ import com.plcoding.dictionary.feature_dictionary.data.local.util.MoshiParser
 import com.plcoding.dictionary.feature_dictionary.data.remote.DictionaryAPI
 import com.plcoding.dictionary.feature_dictionary.data.repository.WordInfoRepositoryImpl
 import com.plcoding.dictionary.feature_dictionary.domain.repository.WordInfoRepository
+import com.plcoding.dictionary.feature_dictionary.domain.use_case.GetLastTenWords
 import com.plcoding.dictionary.feature_dictionary.domain.use_case.GetWordInfo
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -29,7 +30,7 @@ import javax.inject.Singleton
 object AppModule {
 
 
-    //USE CASE
+    //USE CASE 1
     @Provides
     @Singleton
     fun providesUseCase(repository: WordInfoRepository): GetWordInfo {
@@ -37,6 +38,15 @@ object AppModule {
         return GetWordInfo(repo = repository)
     }
 
+
+    //USE CASE 2
+    @Provides
+    @Singleton
+
+    fun provideLastTenWordsUseCase (repository: WordInfoRepository):GetLastTenWords{
+
+        return GetLastTenWords(repository = repository)
+    }
 
     //REPOSITORY
 
