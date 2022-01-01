@@ -1,10 +1,10 @@
 package com.plcoding.dictionary.feature_dictionary.presentation
 
-import android.provider.Contacts
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.plcoding.dictionary.core.util.Resource
+import com.plcoding.dictionary.feature_dictionary.domain.use_case.GetLastTenWords
 import com.plcoding.dictionary.feature_dictionary.domain.use_case.GetWordInfo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
@@ -17,7 +17,9 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class WordInfoViewModel @Inject constructor(private val useCase: GetWordInfo) :
+class WordInfoViewModel @Inject constructor(
+    private val getWordInfoUseCase: GetWordInfo,
+    private val getLastTenWords: GetLastTenWords) :
     ViewModel() {
 
     //STATES
@@ -58,7 +60,7 @@ class WordInfoViewModel @Inject constructor(private val useCase: GetWordInfo) :
 
 
             //call use case and listen to each flow emission
-            useCase(query).onEach {
+            getWordInfoUseCase(query).onEach {
 
                     result ->
 
