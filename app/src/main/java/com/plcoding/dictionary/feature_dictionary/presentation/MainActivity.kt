@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
 
 import androidx.compose.material.*
 
@@ -42,8 +43,10 @@ class MainActivity : ComponentActivity() {
 
                 val viewModel: WordInfoViewModel = hiltViewModel()
                 val state by viewModel.state
+                val words by viewModel.words
                 val scaffoldState = rememberScaffoldState()
                 val keyboardController = LocalSoftwareKeyboardController.current
+                val scrollState = rememberScrollState()
 
 /*You can perform some action on state changes and you can do it
 using the side effects.For example you can use the LaunchedEffect
@@ -104,7 +107,7 @@ function, where as a key you can pass a state you want to listen.*/
                         }
 
                         
-                        WordChipsRow(words = , scrollState = , onClickChip = )
+                        WordChipsRow(words = words , scrollState = scrollState, onClickChip = { })
                        
                     }
 

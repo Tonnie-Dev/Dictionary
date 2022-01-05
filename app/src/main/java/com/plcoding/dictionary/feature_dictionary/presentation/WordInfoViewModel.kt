@@ -20,7 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class WordInfoViewModel @Inject constructor(
     private val getWordInfoUseCase: GetWordInfo,
-    private val getLastTenWords: GetLastTenWords) :
+    private val getLastTenWordsUseCase: GetLastTenWords) :
     ViewModel() {
 
     //STATES
@@ -38,6 +38,10 @@ class WordInfoViewModel @Inject constructor(
 
     //job to manage coroutines
     private var searchJob: Job? = null
+
+    init {
+        getLastTenWords()
+    }
 
     /*everytime we type a character we trigger this function to make a request
     to the corresponding src (db or api) to get the result*/
@@ -114,7 +118,19 @@ class WordInfoViewModel @Inject constructor(
     fun getLastTenWords(){
 
 
-        getLastTenWords().onEach{}
+        getLastTenWordsUseCase().onEach{
+
+            result ->
+
+            when(result){
+                is Resource.Success -> {
+                    words.value = result.data?: emptyList()
+                }
+                is Resource.Error -> {}
+                is Resource.Loading -> {}
+
+            }
+        }
     }
 
     fun onTagClick(synonym:String){

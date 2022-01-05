@@ -22,5 +22,5 @@ interface WordDAO {
 
 
     @Query("SELECT * FROM wordinfoentity ORDER BY id DESC LIMIT 10")
-    suspend fun getLastTenWords():List<String>
+    suspend fun getLastTenWords():List<WordInfoEntity>
 }

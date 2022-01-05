@@ -80,4 +80,8 @@ class WordInfoRepositoryImpl(private val dao: WordDAO,
 
 
     }
+
+    override fun getLastTenWords(): Flow<Resource<List<WordInfo>>> {
+        TODO("Not yet implemented")
+    }
 }
