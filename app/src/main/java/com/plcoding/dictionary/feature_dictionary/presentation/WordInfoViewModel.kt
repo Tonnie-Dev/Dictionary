@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.plcoding.dictionary.core.util.Resource
+import com.plcoding.dictionary.feature_dictionary.domain.model.WordInfo
 import com.plcoding.dictionary.feature_dictionary.domain.use_case.GetLastTenWords
 import com.plcoding.dictionary.feature_dictionary.domain.use_case.GetWordInfo
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -33,7 +34,7 @@ class WordInfoViewModel @Inject constructor(
     var eventFlow = MutableSharedFlow<UIEvent>()
         private set
 
-    var words:MutableState<List<String>> = mutableStateOf(listOf())
+    var words:MutableState<List<WordInfo>> = mutableStateOf(listOf())
     private set
 
     //job to manage coroutines
@@ -126,6 +127,8 @@ class WordInfoViewModel @Inject constructor(
                 is Resource.Success -> {
                     words.value = result.data?: emptyList()
                 }
+
+                // TODO: 05-Jan-22 Implement Error and Loading
                 is Resource.Error -> {}
                 is Resource.Loading -> {}
 
