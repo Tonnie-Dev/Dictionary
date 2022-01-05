@@ -12,8 +12,10 @@ import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
 import java.io.IOException
 
-class WordInfoRepositoryImpl(private val dao: WordDAO,
-                             private val api: DictionaryAPI) :
+class WordInfoRepositoryImpl(
+    private val dao: WordDAO,
+    private val api: DictionaryAPI
+) :
     WordInfoRepository {
     override fun getWordInfo(word: String): Flow<Resource<List<WordInfo>>> = flow {
 
@@ -24,7 +26,8 @@ class WordInfoRepositoryImpl(private val dao: WordDAO,
 
         //EMIT FROM DATABASE
         // read the current word from database and convert it to domail level object
-        val wordInfos = dao.getWordInfos(word = word).map { it.toWordInfo()}
+        val wordInfos = dao.getWordInfos(word = word)
+                .map { it.toWordInfo() }
 
         //emit the cache in the meantime while awaiting an update from the API
 
@@ -44,7 +47,8 @@ class WordInfoRepositoryImpl(private val dao: WordDAO,
             //then we replace the word infos in the db with info from the API
             dao.insertWordInfos(remoteWordInfos.map { it.toWordInfoEntity() })
             //EMIT FROM THE DB WITH UPDATED INFO
-            val newWordInfos = dao.getWordInfos(word).map { it.toWordInfo() }
+            val newWordInfos = dao.getWordInfos(word)
+                    .map { it.toWordInfo() }
             emit(Resource.Success(data = newWordInfos))
         }
 
@@ -81,7 +85,16 @@ class WordInfoRepositoryImpl(private val dao: WordDAO,
 
     }
 
-    override fun getLastTenWords(): Flow<Resource<List<WordInfo>>> {
-        TODO("Not yet implemented")
+    override fun getLastTenWords(): Flow<Resource<List<WordInfo>>> = flow {
+
+
+        try {
+            val lastTenWordsList = dao.getLastTenWords()
+                    .map { it.toWordInfo() }
+            emit(Resource.Success(data = lastTenWordsList))
+        } catch (e: IOException) {
+
+            emit(Resource.Error(message = "${e.message} caused by ${e.cause}"))
+        }
     }
 }
