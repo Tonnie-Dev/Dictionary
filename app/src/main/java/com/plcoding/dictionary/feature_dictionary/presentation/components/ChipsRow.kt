@@ -32,12 +32,14 @@ fun WordChip(
     ) {
 
 
+        Row(modifier = Modifier.padding(8.dp)) {
 
-        Text(
-            text = word,
-            style = MaterialTheme.typography.button,
-            modifier = Modifier.clickable { onClickChip(word) }
-        )
+            Text(
+                text = word,
+                style = MaterialTheme.typography.button,
+                modifier = Modifier.clickable { onClickChip(word) }
+            )
+        }
 
     }
 
