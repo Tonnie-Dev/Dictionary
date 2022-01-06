@@ -4,6 +4,9 @@ import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -16,7 +19,8 @@ import com.plcoding.dictionary.feature_dictionary.domain.model.WordInfo
 @Composable
 fun WordChip(
     word: String,
-    onClickChip: (String) -> Unit
+    onClickChip: (String) -> Unit,
+    modifier: Modifier =Modifier 
 ) {
 
     //use surface for elevation
@@ -55,7 +59,8 @@ fun WordChipsRow(
         for (i in 1..10) {
 
 
-            WordChip(word = "Text $i ", onClickChip = {})
+            WordChip(word = "Text $i ", onClickChip = {}, modifier = Modifier.padding(8.dp))
+          Spacer(modifier = Modifier.width(8.dp))
         }
 
     }
