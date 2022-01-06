@@ -54,19 +54,19 @@ fun WordChipsRow(
 
     Row(modifier = Modifier.horizontalScroll(scrollState)) {
 
-        /*  for (wordInfo in words){
+        for (wordInfo in words) {
 
-              WordChip(word = wordInfo.word, onClickChip = onClickChip)
+            WordChip(word = wordInfo.word, onClickChip = onClickChip)
+            Spacer(modifier = Modifier.width(8.dp))
+        }
 
-          }*/
-
-
+/*
         for (i in 1..10) {
 
 
             WordChip(word = "Text $i ", onClickChip = {})
             Spacer(modifier = Modifier.width(8.dp))
-        }
+        }*/
 
     }
 

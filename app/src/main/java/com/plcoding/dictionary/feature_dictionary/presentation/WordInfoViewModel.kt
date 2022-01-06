@@ -12,6 +12,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.combineLatest
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -21,7 +22,8 @@ import javax.inject.Inject
 @HiltViewModel
 class WordInfoViewModel @Inject constructor(
     private val getWordInfoUseCase: GetWordInfo,
-    private val getLastTenWordsUseCase: GetLastTenWords) :
+    private val getLastTenWordsUseCase: GetLastTenWords
+) :
     ViewModel() {
 
     //STATES
@@ -34,8 +36,8 @@ class WordInfoViewModel @Inject constructor(
     var eventFlow = MutableSharedFlow<UIEvent>()
         private set
 
-    var words:MutableState<List<WordInfo>> = mutableStateOf(listOf())
-    private set
+    var words: MutableState<List<WordInfo>> = mutableStateOf(listOf())
+        private set
 
     //job to manage coroutines
     private var searchJob: Job? = null
@@ -75,12 +77,12 @@ class WordInfoViewModel @Inject constructor(
                 when (result) {
 
                     is Resource.Success -> {
-
-                       state.value = state.value.copy(
+Timber.i("Result X noted")
+                        state.value = state.value.copy(
                             wordInfoItems = result.data ?: emptyList(),
                             isLoading = false
                         )
-                         eventFlow.emit(UIEvent.HideKeyboard)
+                        eventFlow.emit(UIEvent.HideKeyboard)
 
                     }
 
@@ -98,7 +100,7 @@ class WordInfoViewModel @Inject constructor(
 
                         eventFlow.emit(UIEvent.HideKeyboard)
                         //show
-                        eventFlow.emit(UIEvent.ShowSnackbar(result.message?: "Unknown error"))
+                        eventFlow.emit(UIEvent.ShowSnackbar(result.message ?: "Unknown error"))
 
 
                     }
@@ -111,39 +113,47 @@ class WordInfoViewModel @Inject constructor(
                     }
                 }
                 //this refers to the current ViewModelScope
-            }.launchIn(this)
+            }
+                    .launchIn(this)
         }
     }
 
 
-    fun getLastTenWords(){
+    fun getLastTenWords() {
 
+        Timber.i("getLastTenWords function called")
 
-        getLastTenWordsUseCase().onEach{
+        getLastTenWordsUseCase().onEach {
 
-            result ->
+                result ->
 
-            when(result){
+            when (result) {
                 is Resource.Success -> {
-                    words.value = result.data?: emptyList()
+                    words.value = result.data ?: emptyList()
+
+                    Timber.i("Result success: word is ${words.value}")
                 }
 
                 // TODO: 05-Jan-22 Implement Error and Loading
-                is Resource.Error -> {}
-                is Resource.Loading -> {}
+                is Resource.Error -> {
+                    Timber.i("Result is error!!")
+                }
+                is Resource.Loading -> {
+                    Timber.i("Result is Loading!!")
+                }
 
             }
-        }
+        }.launchIn(viewModelScope)
     }
 
-    fun onTagClick(synonym:String){
+    fun onTagClick(synonym: String) {
 
         searchQuery.value = synonym
 
     }
 
 
-    fun onClearIconClick(){
+    fun onClearIconClick() {
 
         searchQuery.value = ""
     }
@@ -152,10 +162,10 @@ class WordInfoViewModel @Inject constructor(
 
     sealed class UIEvent {
 
-       data class ShowSnackbar(val message: String) : UIEvent()
-        object HideKeyboard:UIEvent()
-       data class TagClicked(val synonym:String):UIEvent()
-        object ClearIconClicked:UIEvent()
+        data class ShowSnackbar(val message: String) : UIEvent()
+        object HideKeyboard : UIEvent()
+        data class TagClicked(val synonym: String) : UIEvent()
+        object ClearIconClicked : UIEvent()
 
     }
 }

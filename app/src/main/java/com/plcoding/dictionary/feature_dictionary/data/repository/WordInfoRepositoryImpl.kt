@@ -10,6 +10,7 @@ import com.plcoding.dictionary.feature_dictionary.domain.repository.WordInfoRepo
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
+import timber.log.Timber
 import java.io.IOException
 
 class WordInfoRepositoryImpl(
@@ -94,6 +95,7 @@ class WordInfoRepositoryImpl(
             emit(Resource.Success(data = lastTenWordsList))
         } catch (e: IOException) {
 
+            Timber.i("Error detected")
             emit(Resource.Error(message = "${e.message} caused by ${e.cause}"))
         }
     }
