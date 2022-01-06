@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -20,7 +19,7 @@ import com.plcoding.dictionary.feature_dictionary.domain.model.WordInfo
 fun WordChip(
     word: String,
     onClickChip: (String) -> Unit,
-    modifier: Modifier =Modifier 
+    modifier: Modifier = Modifier
 ) {
 
     //use surface for elevation
@@ -28,11 +27,15 @@ fun WordChip(
     Surface(
         elevation = 8.dp,
         color = MaterialTheme.colors.primary,
-        shape = MaterialTheme.shapes.small
+        shape = MaterialTheme.shapes.small,
+        modifier = Modifier.padding(vertical = 8.dp)
     ) {
+
+
 
         Text(
             text = word,
+            style = MaterialTheme.typography.button,
             modifier = Modifier.clickable { onClickChip(word) }
         )
 
@@ -59,8 +62,8 @@ fun WordChipsRow(
         for (i in 1..10) {
 
 
-            WordChip(word = "Text $i ", onClickChip = {}, modifier = Modifier.padding(8.dp))
-          Spacer(modifier = Modifier.width(8.dp))
+            WordChip(word = "Text $i ", onClickChip = {})
+            Spacer(modifier = Modifier.width(8.dp))
         }
 
     }
