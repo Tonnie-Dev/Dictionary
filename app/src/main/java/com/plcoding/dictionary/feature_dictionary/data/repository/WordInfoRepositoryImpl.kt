@@ -94,7 +94,7 @@ class WordInfoRepositoryImpl(
             emit(Resource.Success(data = lastTenWordsList))
         } catch (e: IOException) {
 
-       
+
             emit(Resource.Error(message = "${e.message} caused by ${e.cause}"))
         }
     }

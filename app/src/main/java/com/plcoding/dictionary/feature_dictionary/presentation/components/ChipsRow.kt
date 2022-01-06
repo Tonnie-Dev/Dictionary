@@ -12,8 +12,10 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.unit.dp
 import com.plcoding.dictionary.feature_dictionary.domain.model.WordInfo
+import java.util.*
 
 @Composable
 fun WordChip(
@@ -56,17 +58,11 @@ fun WordChipsRow(
 
         for (wordInfo in words) {
 
-            WordChip(word = wordInfo.word, onClickChip = onClickChip)
+            WordChip(word = wordInfo.word.uppercase(), onClickChip = onClickChip)
             Spacer(modifier = Modifier.width(8.dp))
         }
 
-/*
-        for (i in 1..10) {
 
-
-            WordChip(word = "Text $i ", onClickChip = {})
-            Spacer(modifier = Modifier.width(8.dp))
-        }*/
 
     }
 
