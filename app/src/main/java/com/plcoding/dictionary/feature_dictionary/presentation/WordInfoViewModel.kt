@@ -77,7 +77,7 @@ class WordInfoViewModel @Inject constructor(
                 when (result) {
 
                     is Resource.Success -> {
-Timber.i("Result X noted")
+
                         state.value = state.value.copy(
                             wordInfoItems = result.data ?: emptyList(),
                             isLoading = false
@@ -121,7 +121,7 @@ Timber.i("Result X noted")
 
     fun getLastTenWords() {
 
-        Timber.i("getLastTenWords function called")
+
 
         getLastTenWordsUseCase().onEach {
 
@@ -131,15 +131,15 @@ Timber.i("Result X noted")
                 is Resource.Success -> {
                     words.value = result.data ?: emptyList()
 
-                    Timber.i("Result success: word is ${words.value}")
+
                 }
 
                 // TODO: 05-Jan-22 Implement Error and Loading
                 is Resource.Error -> {
-                    Timber.i("Result is error!!")
+
                 }
                 is Resource.Loading -> {
-                    Timber.i("Result is Loading!!")
+
                 }
 
             }
