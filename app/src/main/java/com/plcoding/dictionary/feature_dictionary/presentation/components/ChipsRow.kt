@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.plcoding.dictionary.feature_dictionary.domain.model.WordInfo
 
 @Composable
 fun WordChip(
@@ -18,18 +19,25 @@ fun WordChip(
 
 @Composable
 fun WordChipsRow(
-    words: List<String>,
+    words: List<WordInfo>,
     scrollState: ScrollState,
     onClickChip: (String) -> Unit
 ) {
 
     Row(modifier = Modifier.horizontalScroll(scrollState)) {
 
-        for (word in words){
+      /*  for (wordInfo in words){
 
-            WordChip(word = word, onClickChip = onClickChip)
+            WordChip(word = wordInfo.word, onClickChip = onClickChip)
 
-        }
+        }*/
+
+
+        for (i in 1..10){
+
+
+WordChip(word = "Text $i ", onClickChip = {})
+    }
 
     }
 

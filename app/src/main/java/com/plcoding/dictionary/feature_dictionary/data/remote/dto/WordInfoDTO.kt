@@ -32,6 +32,9 @@ fun WordInfoDTO.toWordInfoEntity(): WordInfoEntity {
 
 
 
+
+
+
 /*Null Check
 *
 *

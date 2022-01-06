@@ -104,10 +104,14 @@ function, where as a key you can pass a state you want to listen.*/
                                 value = viewModel.searchQuery.value,
                                 onValueChange = viewModel::onSearch, viewModel::onClearIconClick
                             )
+
+                            Spacer(modifier = Modifier.height(8.dp))
+                            WordChipsRow(words = words , scrollState = scrollState, onClickChip = { })
+
                         }
 
                         
-                        WordChipsRow(words = words , scrollState = scrollState, onClickChip = { })
+
                        
                     }
 
