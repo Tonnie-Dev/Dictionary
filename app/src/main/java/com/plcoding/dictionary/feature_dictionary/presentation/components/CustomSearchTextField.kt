@@ -1,9 +1,7 @@
 package com.plcoding.dictionary.feature_dictionary.presentation.components
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
@@ -11,6 +9,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.TextStyle
@@ -34,7 +34,6 @@ fun CustomSearchTextField(
         TextField(
             value = value,
             onValueChange = onValueChange,
-
 
             label = { Text("Search") },
           keyboardOptions = KeyboardOptions(
@@ -67,10 +66,15 @@ fun CustomSearchTextField(
                 trailingIconColor = MaterialTheme.colors.primary
             ),
 
-            maxLines = 1,
+
+
+            singleLine = true,
             modifier = Modifier
                     .fillMaxWidth(0.95f)
                     .padding(8.dp)
+                    .height(100.dp)
+
+            //, placeholder = { Text(text = "Search")}
             //.clip(shape = RoundedCornerShape(75f))
 
 
@@ -83,10 +87,20 @@ fun CustomSearchTextField(
 @Preview(name = "TextPreview")
 @Composable
 fun MyTextFieldPreview() {
-    TextField(
-        value = "",
-        onValueChange = {  },
+    Column (modifier = Modifier.fillMaxWidth()){
+        Row {
+            TextField(
+                value = "Semi",
+                onValueChange = { },
 
 
-        label = { Text("Search") })
+                label = { Text("Search") })
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        CustomSearchTextField(value = "", onValueChange = {}) {
+
+        }
+    }
 }

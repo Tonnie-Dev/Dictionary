@@ -36,6 +36,9 @@ class MainActivity : ComponentActivity() {
 
        
         setContent {
+
+
+
             DictionaryTheme {
 
 
@@ -90,7 +93,7 @@ function, where as a key you can pass a state you want to listen.*/
                 })
 
 
-                Scaffold(scaffoldState = scaffoldState, topBar = {
+               Scaffold(scaffoldState = scaffoldState, topBar = {
 
 
                     Surface(

@@ -35,12 +35,12 @@ fun WordChip(
 
 
         Row(modifier = Modifier.padding(8.dp)) {
-
+           // Spacer(modifier = Modifier.width(8.dp))
             Text(
                 text = word,
                 style = MaterialTheme.typography.button,
-                modifier = Modifier.clickable { onClickChip(word) }
-            )
+                modifier = Modifier.clickable { onClickChip(word) })
+
         }
 
     }
@@ -57,9 +57,9 @@ fun WordChipsRow(
     Row(modifier = Modifier.horizontalScroll(scrollState)) {
 
         for (wordInfo in words) {
-
-            WordChip(word = wordInfo.word.uppercase(), onClickChip = onClickChip)
             Spacer(modifier = Modifier.width(8.dp))
+            WordChip(word = wordInfo.word.uppercase(), onClickChip = onClickChip)
+
         }
 
 

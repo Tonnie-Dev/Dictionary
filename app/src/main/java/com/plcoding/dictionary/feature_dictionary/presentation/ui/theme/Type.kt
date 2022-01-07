@@ -22,7 +22,7 @@ private val RobotoCondensed = FontFamily(
     Font(resId = R.font.roboto_condensed_light, weight = FontWeight.W300),
     Font(resId = R.font.roboto_condensed_light_italic, weight = FontWeight.W200),
     Font(resId = R.font.roboto_condensed_regular, weight = FontWeight.W400),
-    Font(resId = R.font.roboto_condensed_bold, weight = FontWeight.W900)
+    Font(resId = R.font.roboto_condensed_bold, weight = FontWeight.W500)
 )
 
 
@@ -69,7 +69,7 @@ val Typography = Typography(
         color = Teal300,
         fontFamily = RobotoCondensed,
         fontSize = 16.sp,
-        fontWeight = FontWeight.W400
+      /*  fontWeight = FontWeight.W400*/
     ),
 
     overline = TextStyle(
@@ -77,7 +77,7 @@ val Typography = Typography(
         fontStyle = FontStyle.Italic,
         fontFamily = RobotoCondensed,
         fontSize = 16.sp,
-        fontWeight = FontWeight.W500
+     /*   fontWeight = FontWeight.Normal*/
     )
 
 
