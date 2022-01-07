@@ -1,18 +1,13 @@
 package com.plcoding.dictionary.feature_dictionary.presentation.ui.theme
 
 
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Typography
-import androidx.compose.material.icons.materialIcon
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
-
 import androidx.compose.ui.text.font.FontWeight
-
-
 import androidx.compose.ui.unit.sp
 import com.plcoding.dictionary.R
 
@@ -46,14 +41,15 @@ val Typography = Typography(
         fontFamily = RobotoCondensed,
         fontSize = 24.sp,
         fontStyle = FontStyle.Italic,
-        fontWeight = FontWeight.W400),
+        fontWeight = FontWeight.W400
+    ),
 
 
     body1 = TextStyle(
-        color = Black100,
         fontFamily = RobotoCondensed,
         fontSize = 20.sp,
-        fontWeight = FontWeight.Normal),
+        fontWeight = FontWeight.Normal
+    ),
 
     body2 = TextStyle(
         color = Black100,
@@ -63,21 +59,19 @@ val Typography = Typography(
         fontWeight = FontWeight.Medium
 
 
-
     ),
 
     caption = TextStyle(
         fontFamily = RobotoCondensed,
         fontSize = 16.sp,
-      /*  fontWeight = FontWeight.W400*/
+        fontWeight = FontWeight.W400
     ),
 
     overline = TextStyle(
-        color = Black100,
         fontStyle = FontStyle.Italic,
         fontFamily = RobotoCondensed,
         fontSize = 16.sp,
-     /*   fontWeight = FontWeight.Normal*/
+        fontWeight = FontWeight.Normal
     )
 
 
@@ -168,11 +162,14 @@ val QuickSandTypography = Typography(
         color = Color.White
     ),
 
-    caption = TextStyle(fontFamily = QuickSandFontFamily,
+    caption = TextStyle(
+        fontFamily = QuickSandFontFamily,
         fontWeight = FontWeight.Normal,
-        fontSize = 12.sp),
+        fontSize = 12.sp
+    ),
     overline = TextStyle(
         fontFamily = QuickSandFontFamily,
         fontWeight = FontWeight.W400,
         fontSize = 12.sp
-    ))
+    )
+)

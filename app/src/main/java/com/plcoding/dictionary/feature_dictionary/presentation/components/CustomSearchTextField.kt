@@ -72,7 +72,7 @@ fun CustomSearchTextField(
             modifier = Modifier
                     .fillMaxWidth(0.95f)
                     .padding(8.dp)
-                    .height(100.dp)
+
 
             //, placeholder = { Text(text = "Search")}
             //.clip(shape = RoundedCornerShape(75f))
