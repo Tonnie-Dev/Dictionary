@@ -67,7 +67,6 @@ val Typography = Typography(
     ),
 
     caption = TextStyle(
-        color = Teal300,
         fontFamily = RobotoCondensed,
         fontSize = 16.sp,
       /*  fontWeight = FontWeight.W400*/

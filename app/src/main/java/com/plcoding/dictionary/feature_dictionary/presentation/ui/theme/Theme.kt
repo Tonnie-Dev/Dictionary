@@ -47,7 +47,7 @@ fun DictionaryTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Compos
 
     MaterialTheme(
         colors = colors,
-        typography = QuickSandTypography,
+        typography = Typography,
         shapes = Shapes,
         content = content
     )
