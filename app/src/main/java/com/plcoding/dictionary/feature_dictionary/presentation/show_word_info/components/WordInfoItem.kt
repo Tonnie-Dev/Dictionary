@@ -8,13 +8,10 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.google.accompanist.flowlayout.FlowRow
 import com.plcoding.dictionary.feature_dictionary.domain.model.WordInfo
-import com.plcoding.dictionary.feature_dictionary.presentation.components.SynonymTag
+import com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.components.SynonymTag
 
 
 @Composable

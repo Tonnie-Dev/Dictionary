@@ -1,4 +1,4 @@
-package com.plcoding.dictionary.feature_dictionary.presentation.components
+package com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.components
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable

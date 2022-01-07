@@ -20,12 +20,12 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.plcoding.dictionary.feature_dictionary.presentation.components.CustomSearchTextField
-import com.plcoding.dictionary.feature_dictionary.presentation.components.WordChipsRow
+import com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.WordInfoViewModel
+import com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.components.CustomSearchTextField
+import com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.components.WordChipsRow
 import com.plcoding.dictionary.feature_dictionary.presentation.ui.theme.DictionaryTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import timber.log.Timber
 
 @AndroidEntryPoint
 @ExperimentalComposeUiApi
@@ -67,24 +67,24 @@ function, where as a key you can pass a state you want to listen.*/
 
                         when (event) {
 
-                            is WordInfoViewModel.UIEvent.ShowSnackbar -> {
+                            is WordInfoViewModel.UIEvent.OnShowSnackbar -> {
 
                                 scaffoldState.snackbarHostState.showSnackbar(event.message)
 
                             }
 
-                            is WordInfoViewModel.UIEvent.HideKeyboard -> {
+                            is WordInfoViewModel.UIEvent.OnHideKeyboard -> {
 
                                 keyboardController?.hide()
 
                             }
 
-                            is WordInfoViewModel.UIEvent.TagClicked -> run {
+                            is WordInfoViewModel.UIEvent.OnTagClicked -> run {
 
                                 viewModel::onTagClick
                             }
 
-                            is WordInfoViewModel.UIEvent.ClearIconClicked -> run {
+                            is WordInfoViewModel.UIEvent.OnClearSearchText -> run {
 
                                 viewModel::onClearIconClick
                             }

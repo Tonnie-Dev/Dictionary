@@ -1,4 +1,4 @@
-package com.plcoding.dictionary.feature_dictionary.presentation.components
+package com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.components
 
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.clickable
@@ -12,10 +12,8 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.unit.dp
 import com.plcoding.dictionary.feature_dictionary.domain.model.WordInfo
-import java.util.*
 
 @Composable
 fun WordChip(

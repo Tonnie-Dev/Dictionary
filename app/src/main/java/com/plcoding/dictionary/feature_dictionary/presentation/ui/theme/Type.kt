@@ -57,8 +57,6 @@ val Typography = Typography(
         fontSize = 18.sp,
         fontStyle = FontStyle.Italic,
         fontWeight = FontWeight.Medium
-
-
     ),
 
     caption = TextStyle(
@@ -72,21 +70,16 @@ val Typography = Typography(
         fontFamily = RobotoCondensed,
         fontSize = 16.sp,
         fontWeight = FontWeight.Normal
-    )
+    ),
 
 
-    /* Other default text styles to override
+    //Other default text styles to override
     button = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.W500,
         fontSize = 14.sp
-    ),
-    caption = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 12.sp
     )
-    */
+
 
 
 )

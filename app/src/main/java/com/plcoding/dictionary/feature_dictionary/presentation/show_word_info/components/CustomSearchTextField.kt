@@ -1,25 +1,18 @@
-package com.plcoding.dictionary.feature_dictionary.presentation.components
+package com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.plcoding.dictionary.feature_dictionary.presentation.ui.theme.DictionaryTheme
 
 
 @Composable
@@ -74,7 +67,7 @@ fun CustomSearchTextField(
                     .padding(8.dp)
 
 
-            //, placeholder = { Text(text = "Search")}
+
             //.clip(shape = RoundedCornerShape(75f))
 
 

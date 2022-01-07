@@ -1,4 +1,4 @@
-package com.plcoding.dictionary.feature_dictionary.presentation
+package com.plcoding.dictionary.feature_dictionary.presentation.show_word_info
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -12,7 +12,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.combineLatest
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -82,7 +81,7 @@ class WordInfoViewModel @Inject constructor(
                             wordInfoItems = result.data ?: emptyList(),
                             isLoading = false
                         )
-                        eventFlow.emit(UIEvent.HideKeyboard)
+                        eventFlow.emit(UIEvent.OnHideKeyboard)
 
                     }
 
@@ -98,9 +97,9 @@ class WordInfoViewModel @Inject constructor(
 
 
 
-                        eventFlow.emit(UIEvent.HideKeyboard)
+                        eventFlow.emit(UIEvent.OnHideKeyboard)
                         //show
-                        eventFlow.emit(UIEvent.ShowSnackbar(result.message ?: "Unknown error"))
+                        eventFlow.emit(UIEvent.OnShowSnackbar(result.message ?: "Unknown error"))
 
 
                     }
@@ -120,7 +119,6 @@ class WordInfoViewModel @Inject constructor(
 
 
     fun getLastTenWords() {
-
 
 
         getLastTenWordsUseCase().onEach {
@@ -143,7 +141,8 @@ class WordInfoViewModel @Inject constructor(
                 }
 
             }
-        }.launchIn(viewModelScope)
+        }
+                .launchIn(viewModelScope)
     }
 
     fun onTagClick(synonym: String) {
@@ -161,11 +160,9 @@ class WordInfoViewModel @Inject constructor(
     //EVENT FLOW
 
     sealed class UIEvent {
-
-        data class ShowSnackbar(val message: String) : UIEvent()
-        object HideKeyboard : UIEvent()
-        data class TagClicked(val synonym: String) : UIEvent()
-        object ClearIconClicked : UIEvent()
-
+        data class OnShowSnackbar(val message: String) : UIEvent()
+        object OnHideKeyboard : UIEvent()
+        data class OnTagClicked(val synonym: String) : UIEvent()
+        object OnClearSearchText : UIEvent()
     }
 }
