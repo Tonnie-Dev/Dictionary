@@ -1,6 +1,8 @@
 package com.plcoding.dictionary.feature_dictionary.presentation.show_word_info
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.rememberScaffoldState
@@ -9,7 +11,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.components.CustomSearchTextField
 import com.plcoding.dictionary.feature_dictionary.presentation.utils.UIEvent.OnHideKeyboard
 import com.plcoding.dictionary.feature_dictionary.presentation.utils.UIEvent.OnShowSnackbar
 
@@ -19,6 +23,7 @@ fun WordInfoScreen(viewModel: WordInfoViewModel = hiltViewModel()) {
 
     //States
     val wordInfoState by viewModel.wordInfoState
+    val searchQuery = viewModel.searchQuery
     val lastTenWords by viewModel.lastTenWords
     val scaffoldState = rememberScaffoldState()
     val keyboardController = LocalSoftwareKeyboardController.current
@@ -30,9 +35,9 @@ fun WordInfoScreen(viewModel: WordInfoViewModel = hiltViewModel()) {
     LaunchedEffect(key1 = true, block = {
 
 
-        val uiEvent = viewModel.uiEvent.collect{ event ->
+        val uiEvent = viewModel.uiEvent.collect { event ->
 
-            when (event){
+            when (event) {
 
                 is OnHideKeyboard -> {
                     keyboardController?.hide()
@@ -54,8 +59,27 @@ fun WordInfoScreen(viewModel: WordInfoViewModel = hiltViewModel()) {
 
     Scaffold(scaffoldState = scaffoldState, topBar = {}) {
 
-   Surface() {
-            
+        Surface(
+            elevation = 8.dp,
+            color = MaterialTheme.colors.surface
+        ) {
+            Column() {
+
+                CustomSearchTextField(
+                    value = searchQuery,
+
+                    onValueChange = {
+                        //takes a string which is passed to event
+                        viewModel.onWordInfoEvent(WordInfoEvent.OnSearchTextChange(it))
+                    },
+
+                    onClearIconClick = {
+
+                        viewModel.onWordInfoEvent(WordInfoEvent.OnClearSearchText)
+
+                    }
+                )
+            }
 
         }
     }
