@@ -1,8 +1,7 @@
 package com.plcoding.dictionary.feature_dictionary.presentation.show_word_info
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
@@ -16,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.plcoding.dictionary.feature_dictionary.presentation.WordInfoItem
 import com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.components.CustomSearchTextField
 import com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.components.WordChipsRow
 import com.plcoding.dictionary.feature_dictionary.presentation.utils.UIEvent.OnHideKeyboard
@@ -61,7 +61,7 @@ fun WordInfoScreen(viewModel: WordInfoViewModel = hiltViewModel()) {
         }
     })
 
-    Scaffold(scaffoldState = scaffoldState, topBar = {}) {
+    Scaffold(scaffoldState = scaffoldState, topBar = {
 
         Surface(
             elevation = 8.dp,
@@ -94,6 +94,53 @@ fun WordInfoScreen(viewModel: WordInfoViewModel = hiltViewModel()) {
             }
 
         }
+
+    }) {
+
+
+        Box {
+
+
+            Surface(
+                elevation = 8.dp,
+                color = MaterialTheme.colors.surface
+
+            ) {
+
+
+                Column(
+                    modifier = Modifier
+                            .fillMaxSize()
+                            .padding(8.dp)
+                ) {
+
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    LazyColumn {
+
+
+                        items(wordInfoState.wordInfoItems.size) {
+
+                                i ->
+
+                            val wordInfo = wordInfoState.wordInfoItems[i]
+
+                            //add a spacer for every item apart from the first item
+                            if (i > 0) {
+
+                                Spacer(modifier = Modifier.height(8.dp))
+                            }
+
+                            WordInfoItem(wordInfo = wordInfo, onClickTag = {
+                                viewModel.onWordInfoEvent(WordInfoEvent.OnTagClick(it))})
+                        }
+                    }
+                }
+
+            }
+        }
+
     }
 
 

@@ -96,7 +96,7 @@ class WordInfoViewModel @Inject constructor(
                 searchQuery= ""
             }
 
-            is WordInfoEvent.OnTagClicked -> {
+            is WordInfoEvent.OnTagClick -> {
 
                 searchQuery = event.synonym
             }
