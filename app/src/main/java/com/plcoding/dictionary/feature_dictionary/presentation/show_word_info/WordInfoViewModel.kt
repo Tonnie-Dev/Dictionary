@@ -8,6 +8,7 @@ import com.plcoding.dictionary.core.util.Resource
 import com.plcoding.dictionary.feature_dictionary.domain.model.WordInfo
 import com.plcoding.dictionary.feature_dictionary.domain.use_case.GetLastTenWords
 import com.plcoding.dictionary.feature_dictionary.domain.use_case.GetWordInfo
+import com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.WordInfoEvent.OnClearSearchText
 import com.plcoding.dictionary.feature_dictionary.presentation.utils.UIEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
@@ -160,10 +161,27 @@ class WordInfoViewModel @Inject constructor(
 
     fun onClearIconClick() {
 
-        searchQuery.value = ""
+
     }
 
-    private fun sendUIEvents(event:UIEvent){
+    fun onWordInfoEvent(event: WordInfoEvent) {
+
+        when (event) {
+
+            is OnClearSearchText -> {
+
+                searchQuery.value = ""
+            }
+            is WordInfoEvent.OnTagClicked -> {}
+            is WordInfoEvent.OnChipClick -> {}
+            is WordInfoEvent.OnSearchTextChange -> {}
+
+        }
+
+    }
+
+
+    private fun sendUIEvents(event: UIEvent) {
 
         viewModelScope.launch {
             _uiEvent.send(event)
@@ -173,10 +191,10 @@ class WordInfoViewModel @Inject constructor(
 
     //EVENT FLOW
 
-   /*sealed class UIEvent {
-        data class OnShowSnackbar(val message: String) : UIEvent()
-        object OnHideKeyboard : UIEvent()
-        data class OnTagClicked(val synonym: String) : UIEvent()
-        object OnClearSearchText : UIEvent()
-    }*/
+    /*sealed class UIEvent {
+         data class OnShowSnackbar(val message: String) : UIEvent()
+         object OnHideKeyboard : UIEvent()
+         data class OnTagClicked(val synonym: String) : UIEvent()
+         object OnClearSearchText : UIEvent()
+     }*/
 }
