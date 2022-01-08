@@ -1,7 +1,9 @@
 package com.plcoding.dictionary.feature_dictionary.presentation.show_word_info
 
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.plcoding.dictionary.core.util.Resource
@@ -30,7 +32,7 @@ class WordInfoViewModel @Inject constructor(
     ViewModel() {
 
     //STATES
-    var searchQuery = mutableStateOf("")
+    var searchQuery by mutableStateOf("")
         private set
 
     var state = mutableStateOf(WordInfoState())
@@ -159,10 +161,6 @@ class WordInfoViewModel @Inject constructor(
     }
 
 
-    fun onClearIconClick() {
-
-
-    }
 
     fun onWordInfoEvent(event: WordInfoEvent) {
 
@@ -172,7 +170,10 @@ class WordInfoViewModel @Inject constructor(
 
                 searchQuery.value = ""
             }
-            is WordInfoEvent.OnTagClicked -> {}
+            is WordInfoEvent.OnTagClicked -> {
+
+
+            }
             is WordInfoEvent.OnChipClick -> {}
             is WordInfoEvent.OnSearchTextChange -> {}
 
