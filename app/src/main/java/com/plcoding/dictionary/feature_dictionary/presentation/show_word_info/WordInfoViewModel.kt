@@ -59,7 +59,7 @@ class WordInfoViewModel @Inject constructor(
     fun onSearch(query: String) {
 
         //update query state
-        searchQuery.value = query
+        searchQuery = query
 
         Timber.i("Query is: $query")
         //cancel current coroutine job when we type a new character
@@ -156,7 +156,7 @@ class WordInfoViewModel @Inject constructor(
 
     fun onTagClick(synonym: String) {
 
-        searchQuery.value = synonym
+        searchQuery = synonym
 
     }
 
@@ -168,7 +168,7 @@ class WordInfoViewModel @Inject constructor(
 
             is OnClearSearchText -> {
 
-                searchQuery.value = ""
+                searchQuery= ""
             }
             is WordInfoEvent.OnTagClicked -> {
 
