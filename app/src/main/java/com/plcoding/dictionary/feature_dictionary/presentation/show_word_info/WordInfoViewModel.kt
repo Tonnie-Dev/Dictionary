@@ -50,18 +50,88 @@ class WordInfoViewModel @Inject constructor(
     //job to manage coroutines
     private var searchJob: Job? = null
 
+
+
     init {
         getLastTenWords()
     }
 
+
+
+
+    fun getLastTenWords() {
+
+        getLastTenWordsUseCase().onEach {
+
+                result ->
+
+            when (result) {
+
+                is Resource.Success -> {
+                    words.value = result.data ?: emptyList()
+
+                }
+
+                // TODO: 05-Jan-22 Implement Error and Loading
+                is Resource.Error -> {
+
+                }
+                is Resource.Loading -> {
+
+                }
+
+            }
+        }
+                .launchIn(viewModelScope)
+    }
+
+
+
+
+    fun onWordInfoEvent(event: WordInfoEvent) {
+
+        when (event) {
+
+            is OnClearSearchText -> {
+
+                searchQuery= ""
+            }
+
+            is WordInfoEvent.OnTagClicked -> {
+
+                searchQuery = event.synonym
+            }
+
+            is WordInfoEvent.OnChipClick -> {
+                searchQuery = event.word
+
+            }
+
+            is WordInfoEvent.OnSearchTextChange -> {
+
+                onSearch(event.text)
+            }
+
+        }
+
+    }
+
+
+    private fun sendUIEvents(event: UIEvent) {
+
+        viewModelScope.launch {
+            _uiEvent.send(event)
+
+        }
+    }
+
     /*everytime we type a character we trigger this function to make a request
-    to the corresponding src (db or api) to get the result*/
+      to the corresponding src (db or api) to get the result*/
     fun onSearch(query: String) {
 
         //update query state
         searchQuery = query
 
-        Timber.i("Query is: $query")
         //cancel current coroutine job when we type a new character
         searchJob?.cancel()
 
@@ -125,77 +195,4 @@ class WordInfoViewModel @Inject constructor(
                     .launchIn(this)
         }
     }
-
-
-    fun getLastTenWords() {
-
-
-        getLastTenWordsUseCase().onEach {
-
-                result ->
-
-            when (result) {
-                is Resource.Success -> {
-                    words.value = result.data ?: emptyList()
-
-
-                }
-
-                // TODO: 05-Jan-22 Implement Error and Loading
-                is Resource.Error -> {
-
-                }
-                is Resource.Loading -> {
-
-                }
-
-            }
-        }
-                .launchIn(viewModelScope)
-    }
-
-
-
-
-    fun onWordInfoEvent(event: WordInfoEvent) {
-
-        when (event) {
-
-            is OnClearSearchText -> {
-
-                searchQuery= ""
-            }
-
-            is WordInfoEvent.OnTagClicked -> {
-
-                searchQuery = event.synonym
-            }
-
-            is WordInfoEvent.OnChipClick -> {
-                
-
-            }
-            is WordInfoEvent.OnSearchTextChange -> {}
-
-        }
-
-    }
-
-
-    private fun sendUIEvents(event: UIEvent) {
-
-        viewModelScope.launch {
-            _uiEvent.send(event)
-
-        }
-    }
-
-    //EVENT FLOW
-
-    /*sealed class UIEvent {
-         data class OnShowSnackbar(val message: String) : UIEvent()
-         object OnHideKeyboard : UIEvent()
-         data class OnTagClicked(val synonym: String) : UIEvent()
-         object OnClearSearchText : UIEvent()
-     }*/
 }
