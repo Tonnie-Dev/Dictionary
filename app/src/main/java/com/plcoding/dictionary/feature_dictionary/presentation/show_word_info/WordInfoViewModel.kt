@@ -55,9 +55,6 @@ class WordInfoViewModel @Inject constructor(
         getLastTenWords()
     }
 
-
-
-
     fun getLastTenWords() {
 
         getLastTenWordsUseCase().onEach {
@@ -85,8 +82,6 @@ class WordInfoViewModel @Inject constructor(
     }
 
 
-
-
     fun onWordInfoEvent(event: WordInfoEvent) {
 
         when (event) {
@@ -99,16 +94,19 @@ class WordInfoViewModel @Inject constructor(
             is WordInfoEvent.OnTagClick -> {
 
                 searchQuery = event.synonym
+                onSearch(searchQuery)
             }
 
             is WordInfoEvent.OnChipClick -> {
                 searchQuery = event.word
+                onSearch(searchQuery)
 
             }
 
             is WordInfoEvent.OnSearchTextChange -> {
 
                 onSearch(event.text)
+
             }
 
         }
@@ -126,7 +124,7 @@ class WordInfoViewModel @Inject constructor(
 
     /*everytime we type a character we trigger this function to make a request
       to the corresponding src (db or api) to get the result*/
-    fun onSearch(query: String) {
+    private fun onSearch(query: String) {
 
         //update query state
         searchQuery = query
@@ -177,7 +175,7 @@ class WordInfoViewModel @Inject constructor(
 
                         sendUIEvents(UIEvent.OnHideKeyboard)
                         sendUIEvents(UIEvent.OnShowSnackbar(msg = result.message ?: "Unknown Error", action = ""))
-                        
+
 
 
                     }
