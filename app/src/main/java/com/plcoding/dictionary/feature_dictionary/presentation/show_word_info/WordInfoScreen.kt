@@ -1,6 +1,8 @@
 package com.plcoding.dictionary.feature_dictionary.presentation.show_word_info
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
@@ -10,10 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.components.CustomSearchTextField
+import com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.components.WordChipsRow
 import com.plcoding.dictionary.feature_dictionary.presentation.utils.UIEvent.OnHideKeyboard
 import com.plcoding.dictionary.feature_dictionary.presentation.utils.UIEvent.OnShowSnackbar
 
@@ -63,7 +67,7 @@ fun WordInfoScreen(viewModel: WordInfoViewModel = hiltViewModel()) {
             elevation = 8.dp,
             color = MaterialTheme.colors.surface
         ) {
-            Column() {
+            Column {
 
                 CustomSearchTextField(
                     value = searchQuery,
@@ -79,6 +83,14 @@ fun WordInfoScreen(viewModel: WordInfoViewModel = hiltViewModel()) {
 
                     }
                 )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                WordChipsRow(words = lastTenWords, scrollState = scrollState, onClickChip = {
+
+                    //chip click takes a String
+                    viewModel.onWordInfoEvent(WordInfoEvent.OnChipClick(it))
+                })
             }
 
         }
