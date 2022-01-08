@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
+import com.plcoding.dictionary.feature_dictionary.presentation.ui.theme.ShimmerColorShades
 
 @Composable
 fun ShimmerAnimation(Content: @Composable (Brush) -> Unit) {
