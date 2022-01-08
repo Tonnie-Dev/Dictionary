@@ -37,8 +37,8 @@ class WordInfoViewModel @Inject constructor(
     var wordInfoState = mutableStateOf(WordInfoState())
         private set
 
-    var eventFlow = MutableSharedFlow<UIEvent>()
-        private set
+   /* var eventFlow = MutableSharedFlow<UIEvent>()
+        private set*/
 
     private val _uiEvent = Channel<UIEvent>()
     val uiEvent = _uiEvent.receiveAsFlow()
@@ -159,7 +159,7 @@ class WordInfoViewModel @Inject constructor(
                             wordInfoItems = result.data ?: emptyList(),
                             isLoading = false
                         )
-                        eventFlow.emit(UIEvent.OnHideKeyboard)
+                        sendUIEvents(UIEvent.OnHideKeyboard)
 
                     }
 
@@ -175,9 +175,9 @@ class WordInfoViewModel @Inject constructor(
 
 
 
-                        eventFlow.emit(UIEvent.OnHideKeyboard)
-                        //show
-                        eventFlow.emit(UIEvent.OnShowSnackbar(result.message ?: "Unknown error"))
+                        sendUIEvents(UIEvent.OnHideKeyboard)
+                        sendUIEvents(UIEvent.OnShowSnackbar(msg = result.message ?: "Unknown Error", action = ""))
+                        
 
 
                     }
