@@ -46,7 +46,7 @@ class MainActivity : ComponentActivity() {
 
                 val viewModel: WordInfoViewModel = hiltViewModel()
                 val state by viewModel.wordInfoState
-                val words by viewModel.words
+                val words by viewModel.lastTenWords
                 val scaffoldState = rememberScaffoldState()
                 val keyboardController = LocalSoftwareKeyboardController.current
                 val scrollState = rememberScrollState()
