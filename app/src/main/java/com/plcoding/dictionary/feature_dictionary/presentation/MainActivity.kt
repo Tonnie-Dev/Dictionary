@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
                 //get reference to viewModel, state and scaffold state
 
                 val viewModel: WordInfoViewModel = hiltViewModel()
-                val state by viewModel.state
+                val state by viewModel.wordInfoState
                 val words by viewModel.words
                 val scaffoldState = rememberScaffoldState()
                 val keyboardController = LocalSoftwareKeyboardController.current

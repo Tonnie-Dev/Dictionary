@@ -21,7 +21,6 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -35,7 +34,7 @@ class WordInfoViewModel @Inject constructor(
     var searchQuery by mutableStateOf("")
         private set
 
-    var state = mutableStateOf(WordInfoState())
+    var wordInfoState = mutableStateOf(WordInfoState())
         private set
 
     var eventFlow = MutableSharedFlow<UIEvent>()
@@ -156,7 +155,7 @@ class WordInfoViewModel @Inject constructor(
 
                     is Resource.Success -> {
 
-                        state.value = state.value.copy(
+                        wordInfoState.value = wordInfoState.value.copy(
                             wordInfoItems = result.data ?: emptyList(),
                             isLoading = false
                         )
@@ -169,7 +168,7 @@ class WordInfoViewModel @Inject constructor(
                         /*here we show the same info as success as we may still get
                             data from the db to show to the UI*/
 
-                        state.value = state.value.copy(
+                        wordInfoState.value = wordInfoState.value.copy(
                             wordInfoItems = result.data ?: emptyList(),
                             isLoading = false
                         )
@@ -183,7 +182,7 @@ class WordInfoViewModel @Inject constructor(
 
                     }
                     is Resource.Loading -> {
-                        state.value = state.value.copy(
+                        wordInfoState.value = wordInfoState.value.copy(
                             //we might also have some data to display
                             wordInfoItems = result.data ?: emptyList(),
                             isLoading = true
