@@ -163,6 +163,14 @@ class WordInfoViewModel @Inject constructor(
         searchQuery.value = ""
     }
 
+    private fun sendUIEvents(event:UIEvent){
+
+        viewModelScope.launch {
+            _uiEvent.send(event)
+
+        }
+    }
+
     //EVENT FLOW
 
    /*sealed class UIEvent {
