@@ -154,11 +154,6 @@ class WordInfoViewModel @Inject constructor(
                 .launchIn(viewModelScope)
     }
 
-    fun onTagClick(synonym: String) {
-
-        searchQuery = synonym
-
-    }
 
 
 
@@ -170,11 +165,16 @@ class WordInfoViewModel @Inject constructor(
 
                 searchQuery= ""
             }
+
             is WordInfoEvent.OnTagClicked -> {
 
+                searchQuery = event.synonym
+            }
+
+            is WordInfoEvent.OnChipClick -> {
+                
 
             }
-            is WordInfoEvent.OnChipClick -> {}
             is WordInfoEvent.OnSearchTextChange -> {}
 
         }
