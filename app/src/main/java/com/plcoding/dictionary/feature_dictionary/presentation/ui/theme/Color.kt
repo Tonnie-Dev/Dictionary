@@ -13,3 +13,9 @@ val Black100 = Color(0xFF4F4F4F)
 
 val LightGray = Color(0xFFF2F2F2)
 
+val ShimmerColorShades = listOf(
+    Color.LightGray.copy(alpha =0.9f),
+    Color.LightGray.copy(alpha =0.29f),
+    Color.LightGray.copy(alpha =0.9f),
+
+    )
