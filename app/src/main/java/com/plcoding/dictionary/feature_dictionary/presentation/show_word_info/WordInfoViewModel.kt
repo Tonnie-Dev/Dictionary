@@ -95,11 +95,13 @@ class WordInfoViewModel @Inject constructor(
 
                 searchQuery = event.synonym
                 onSearch(searchQuery)
+                getLastTenWords()
             }
 
             is WordInfoEvent.OnChipClick -> {
                 searchQuery = event.word
                 onSearch(searchQuery)
+                getLastTenWords()
 
             }
 
@@ -158,7 +160,7 @@ class WordInfoViewModel @Inject constructor(
                             isLoading = false
                         )
                         sendUIEvents(UIEvent.OnHideKeyboard)
-
+getLastTenWords()
                     }
 
                     is Resource.Error -> {
@@ -186,7 +188,7 @@ class WordInfoViewModel @Inject constructor(
                             isLoading = true
                         )
 
-                      
+
                     }
                 }
                 //this refers to the current ViewModelScope
