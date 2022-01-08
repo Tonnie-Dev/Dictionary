@@ -185,6 +185,8 @@ class WordInfoViewModel @Inject constructor(
                             wordInfoItems = result.data ?: emptyList(),
                             isLoading = true
                         )
+
+                      
                     }
                 }
                 //this refers to the current ViewModelScope

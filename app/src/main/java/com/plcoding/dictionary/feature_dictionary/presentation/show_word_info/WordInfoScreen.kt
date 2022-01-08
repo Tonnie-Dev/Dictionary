@@ -54,6 +54,8 @@ fun WordInfoScreen(viewModel: WordInfoViewModel = hiltViewModel()) {
                     )
 
                 }
+
+
             }
 
         }
