@@ -3,10 +3,7 @@ package com.plcoding.dictionary.feature_dictionary.presentation.show_word_info
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Surface
-import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -132,12 +129,26 @@ fun WordInfoScreen(viewModel: WordInfoViewModel = hiltViewModel()) {
                                 Spacer(modifier = Modifier.height(8.dp))
                             }
 
-                            WordInfoItem(wordInfo = wordInfo, onClickTag = {
-                                viewModel.onWordInfoEvent(WordInfoEvent.OnTagClick(it))})
+                            WordInfoItem(
+                                wordInfo = wordInfo,
+                                onClickTag = {
+                                    viewModel.onWordInfoEvent(WordInfoEvent.OnTagClick(it))
+                                }
+                            )
+
+                            // add a divider for every item apart from the last item
+                            if (i < wordInfoState.wordInfoItems.size -1){
+
+                              Divider()
+                            }
                         }
                     }
                 }
 
+            }
+
+            if(wordInfoState.isLoading){
+                CircularProgressIndicator()
             }
         }
 
