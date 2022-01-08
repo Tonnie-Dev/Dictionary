@@ -8,12 +8,15 @@ import com.plcoding.dictionary.core.util.Resource
 import com.plcoding.dictionary.feature_dictionary.domain.model.WordInfo
 import com.plcoding.dictionary.feature_dictionary.domain.use_case.GetLastTenWords
 import com.plcoding.dictionary.feature_dictionary.domain.use_case.GetWordInfo
+import com.plcoding.dictionary.feature_dictionary.presentation.utils.UIEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
@@ -34,6 +37,9 @@ class WordInfoViewModel @Inject constructor(
 
     var eventFlow = MutableSharedFlow<UIEvent>()
         private set
+
+    private val _uiEvent = Channel<UIEvent>()
+    val uiEvent = _uiEvent.receiveAsFlow()
 
     var words: MutableState<List<WordInfo>> = mutableStateOf(listOf())
         private set
@@ -159,10 +165,10 @@ class WordInfoViewModel @Inject constructor(
 
     //EVENT FLOW
 
-    sealed class UIEvent {
+   /*sealed class UIEvent {
         data class OnShowSnackbar(val message: String) : UIEvent()
         object OnHideKeyboard : UIEvent()
         data class OnTagClicked(val synonym: String) : UIEvent()
         object OnClearSearchText : UIEvent()
-    }
+    }*/
 }
