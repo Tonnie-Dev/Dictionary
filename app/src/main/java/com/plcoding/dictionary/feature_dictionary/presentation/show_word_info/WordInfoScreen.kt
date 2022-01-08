@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.plcoding.dictionary.feature_dictionary.presentation.WordInfoItem
 import com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.components.CustomSearchTextField
+import com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.components.ShowShimmerCard
 import com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.components.WordChipsRow
 import com.plcoding.dictionary.feature_dictionary.presentation.utils.UIEvent.OnHideKeyboard
 import com.plcoding.dictionary.feature_dictionary.presentation.utils.UIEvent.OnShowSnackbar
@@ -148,7 +149,9 @@ fun WordInfoScreen(viewModel: WordInfoViewModel = hiltViewModel()) {
             }
 
             if(wordInfoState.isLoading){
-                CircularProgressIndicator()
+               // CircularProgressIndicator()
+
+                ShowShimmerCard()
             }
         }
 

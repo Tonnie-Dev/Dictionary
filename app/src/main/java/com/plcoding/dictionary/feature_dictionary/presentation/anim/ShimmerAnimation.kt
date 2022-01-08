@@ -1,8 +1,13 @@
 package com.plcoding.dictionary.feature_dictionary.presentation.anim
 
 import androidx.compose.animation.core.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.height
+import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import com.plcoding.dictionary.feature_dictionary.presentation.ui.theme.ShimmerColorShades
@@ -40,7 +45,11 @@ fun ShimmerAnimation(Content: @Composable (Brush) -> Unit) {
         start = Offset(-40f, -40f),
         end = Offset(translateAnim, translateAnim)
     )
-    Content(brush)
+
+
+    Surface(modifier = Modifier.fillMaxHeight()){
+        Content(brush)
+    }
     //ShimmerRecipeCardItem(brush = brush)
 
 }

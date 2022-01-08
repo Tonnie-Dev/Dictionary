@@ -13,20 +13,22 @@ import com.plcoding.dictionary.feature_dictionary.presentation.anim.ShimmerAnima
 fun ShimmerCardItem(brush: Brush) {
 
 
-    Column(modifier = Modifier.padding(16.dp)) {
+    Column(modifier = Modifier.height(700.dp).padding(8.dp)) {
 
-
-        Spacer(
-            modifier = Modifier
-                    .height(32.dp)
-                    .fillMaxWidth()
-                    .background(brush = brush)
-        )
 
         Spacer(
             modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f)
+                  /*  .height(50.dp)*/
+                    .background(brush = brush)
+        )
+
+        Spacer(
+            modifier = Modifier
+                   .fillMaxWidth()
+                   /* .height(7000.dp)*/
+               .weight(3f)
                     .padding(vertical = 16.dp)
                     .background(brush = brush)
         )
@@ -43,7 +45,7 @@ fun ShowShimmerCard() {
         item { 
             
             ShimmerAnimation {
-                brush -> ShimmerCardItem(brush = brush) 
+                brush -> ShimmerCardItem(brush = brush)
             }
         }
     })
