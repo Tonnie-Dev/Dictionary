@@ -19,5 +19,5 @@ interface WordInfoRepository {
 
     fun getLastTenWords():Flow<Resource<List<WordInfo>>>
 
-    suspend fun getTheLastSearchWord():WordInfo
+    suspend fun getTheLastSearchWord():WordInfo?
 }

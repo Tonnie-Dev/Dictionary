@@ -26,5 +26,5 @@ interface WordDAO {
     suspend fun getLastTenWords(): List<WordInfoEntity>
 
     @Query("SELECT * FROM wordinfoentity ORDER BY id DESC LIMIT 1")
-    suspend fun getTheLastSearchWord(): WordInfoEntity
+    suspend fun getTheLastSearchWord(): WordInfoEntity?
 }
