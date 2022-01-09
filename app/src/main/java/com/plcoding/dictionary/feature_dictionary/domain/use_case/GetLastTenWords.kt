@@ -14,20 +14,5 @@ class GetLastTenWords(private val repository: WordInfoRepository) {
     }
 
 
-    private fun cleanLastTenWords(wordInfos: List<WordInfo>):List<String>{
 
-
-
-        val list = mutableListOf<String>()
-
-
-        for (wordInfo in wordInfos){
-
-
-            list.add(wordInfo.word.lowercase())
-
-        }
-
-        return list.distinct().dropLast(10)
-    }
 }

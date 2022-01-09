@@ -64,7 +64,9 @@ class WordInfoViewModel @Inject constructor(
             when (result) {
 
                 is Resource.Success -> {
-                    lastTenWords.value = result.data?.distinct() ?: emptyList()
+
+                   val list = result.data?.distinct() ?: emptyList()
+                    lastTenWords.value = cleanLastTenWords(list)
 
                 }
 
@@ -198,5 +200,20 @@ getLastTenWords()
     }
 
 
+    private fun cleanLastTenWords(wordInfos: List<WordInfo>):List<String>{
 
+
+
+        val list = mutableListOf<String>()
+
+
+        for (wordInfo in wordInfos){
+
+
+            list.add(wordInfo.word.lowercase())
+
+        }
+
+        return list.distinct().dropLast(10)
+    }
 }
