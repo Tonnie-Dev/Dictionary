@@ -64,7 +64,7 @@ class WordInfoViewModel @Inject constructor(
             when (result) {
 
                 is Resource.Success -> {
-                    lastTenWords.value = result.data ?: emptyList()
+                    lastTenWords.value = result.data?.distinct() ?: emptyList()
 
                 }
 
@@ -196,4 +196,7 @@ getLastTenWords()
                     .launchIn(this)
         }
     }
+
+
+
 }

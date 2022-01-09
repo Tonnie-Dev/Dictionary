@@ -21,6 +21,7 @@ interface WordDAO {
     suspend fun getWordInfos(word:String): List<WordInfoEntity>
 
 
-    @Query("SELECT * FROM wordinfoentity ORDER BY id DESC LIMIT 10")
+   /* @Query("SELECT DISTINCT word,meanings FROM wordinfoentity ORDER BY id DESC LIMIT 10")*/
+    @Query("SELECT word, meanings FROM wordinfoentity GROUP BY word ORDER BY id DESC LIMIT 10")
     suspend fun getLastTenWords():List<WordInfoEntity>
 }
