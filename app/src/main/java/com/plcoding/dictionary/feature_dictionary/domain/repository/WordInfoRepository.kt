@@ -17,5 +17,5 @@ interface WordInfoRepository {
     fun getWordInfo(word:String): Flow<Resource<List<WordInfo>>>
 
 
-    fun getLastTenWords():Flow<Resource<List<WordInfo>>>
+    fun getLastTenWords():List<WordInfo>
 }
