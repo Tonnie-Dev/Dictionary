@@ -7,6 +7,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
@@ -90,7 +91,8 @@ fun WordInfoScreen(viewModel: WordInfoViewModel = hiltViewModel()) {
 
                     //chip click takes a String
                     viewModel.onWordInfoEvent(WordInfoEvent.OnChipClick(it))
-                })
+                }, coroutineScope = rememberCoroutineScope()
+                )
             }
 
         }

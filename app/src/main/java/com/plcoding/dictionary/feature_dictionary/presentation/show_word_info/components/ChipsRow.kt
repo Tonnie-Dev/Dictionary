@@ -61,7 +61,11 @@ fun WordChipsRow(
     Row(modifier = Modifier.horizontalScroll(scrollState)) {
         coroutineScope.launch {
 
-            scrollState.animateScrollTo(value = 0, animationSpec = spring( dampingRatio = Spring.DampingRatioHighBouncy))
+            scrollState.animateScrollTo(
+                value = 0,
+                animationSpec = spring(dampingRatio = Spring.DampingRatioHighBouncy,
+                stiffness = Spring.StiffnessHigh)
+            )
         }
 
         for ((i, word) in words.withIndex()) {
