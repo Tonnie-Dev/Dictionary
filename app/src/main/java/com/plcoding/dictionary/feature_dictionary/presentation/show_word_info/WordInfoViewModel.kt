@@ -43,7 +43,7 @@ class WordInfoViewModel @Inject constructor(
     private val _uiEvent = Channel<UIEvent>()
     val uiEvent = _uiEvent.receiveAsFlow()
 
-    var lastTenWords: MutableState<List<WordInfo>> = mutableStateOf(listOf())
+    var lastTenWords: MutableState<List<String>> = mutableStateOf(listOf())
         private set
 
     //job to manage coroutines
