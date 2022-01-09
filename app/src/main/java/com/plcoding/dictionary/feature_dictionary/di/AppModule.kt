@@ -11,6 +11,7 @@ import com.plcoding.dictionary.feature_dictionary.data.remote.DictionaryAPI
 import com.plcoding.dictionary.feature_dictionary.data.repository.WordInfoRepositoryImpl
 import com.plcoding.dictionary.feature_dictionary.domain.repository.WordInfoRepository
 import com.plcoding.dictionary.feature_dictionary.domain.use_case.GetLastTenWords
+import com.plcoding.dictionary.feature_dictionary.domain.use_case.GetTheLastSearchWordUseCase
 import com.plcoding.dictionary.feature_dictionary.domain.use_case.GetWordInfo
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -46,6 +47,16 @@ object AppModule {
     fun provideLastTenWordsUseCase (repository: WordInfoRepository):GetLastTenWords{
 
         return GetLastTenWords(repository = repository)
+    }
+
+    //USE CASE 2
+    @Provides
+    @Singleton
+
+    fun provideLastSearchWordUseCase(repository: WordInfoRepository):GetTheLastSearchWordUseCase{
+
+
+        return GetTheLastSearchWordUseCase(repository = repository)
     }
 
     //REPOSITORY
