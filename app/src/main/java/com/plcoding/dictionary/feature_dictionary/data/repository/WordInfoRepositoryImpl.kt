@@ -98,4 +98,9 @@ class WordInfoRepositoryImpl(
             emit(Resource.Error(message = "${e.message} caused by ${e.cause}"))
         }
     }
+
+    override suspend fun getTheLastSearchWord(): WordInfo {
+
+        return dao.getTheLastSearchWord().toWordInfo()
+    }
 }
