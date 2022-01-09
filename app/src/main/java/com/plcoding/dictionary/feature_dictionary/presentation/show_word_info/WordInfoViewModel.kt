@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.plcoding.dictionary.core.util.Resource
 import com.plcoding.dictionary.feature_dictionary.domain.model.WordInfo
 import com.plcoding.dictionary.feature_dictionary.domain.use_case.GetLastTenWords
+import com.plcoding.dictionary.feature_dictionary.domain.use_case.GetTheLastSearchWordUseCase
 import com.plcoding.dictionary.feature_dictionary.domain.use_case.GetWordInfo
 import com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.WordInfoEvent.OnClearSearchText
 import com.plcoding.dictionary.feature_dictionary.presentation.utils.UIEvent
@@ -26,7 +27,8 @@ import javax.inject.Inject
 @HiltViewModel
 class WordInfoViewModel @Inject constructor(
     private val getWordInfoUseCase: GetWordInfo,
-    private val getLastTenWordsUseCase: GetLastTenWords
+    private val getLastTenWordsUseCase: GetLastTenWords,
+    private val getTheLastSearchWordUseCase: GetTheLastSearchWordUseCase
 ) :
     ViewModel() {
 
@@ -52,6 +54,7 @@ class WordInfoViewModel @Inject constructor(
 
 
     init {
+        getLastSearchWord()
         getLastTenWords()
     }
 
@@ -215,5 +218,13 @@ getLastTenWords()
         }
 
         return list.distinct().dropLast(10)
+    }
+
+    private fun getLastSearchWord(){
+
+  viewModelScope.launch {
+
+      searchQuery = getTheLastSearchWordUseCase().word
+  }
     }
 }
