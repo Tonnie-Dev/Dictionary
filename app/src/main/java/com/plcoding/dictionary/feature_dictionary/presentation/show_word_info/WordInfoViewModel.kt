@@ -224,7 +224,8 @@ getLastTenWords()
 
   viewModelScope.launch {
 
-      searchQuery = getTheLastSearchWordUseCase().word
+      searchQuery = getTheLastSearchWordUseCase().word.uppercase()
+   onSearch(searchQuery)
   }
     }
 }
