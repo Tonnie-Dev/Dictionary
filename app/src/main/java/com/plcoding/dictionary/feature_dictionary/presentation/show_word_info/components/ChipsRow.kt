@@ -12,13 +12,14 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.plcoding.dictionary.feature_dictionary.domain.model.WordInfo
 
 @Composable
 fun WordChip(
     word: String,
     onClickChip: (String) -> Unit,
+    isSelected: Boolean = false,
     modifier: Modifier = Modifier
 ) {
 
@@ -26,14 +27,14 @@ fun WordChip(
 
     Surface(
         elevation = 8.dp,
-        color = MaterialTheme.colors.primary,
+        color = if (isSelected) Color.Gray else MaterialTheme.colors.primary,
         shape = MaterialTheme.shapes.small,
         modifier = Modifier.padding(vertical = 8.dp)
     ) {
 
 
         Row(modifier = Modifier.padding(8.dp)) {
-           // Spacer(modifier = Modifier.width(8.dp))
+            // Spacer(modifier = Modifier.width(8.dp))
             Text(
                 text = word,
                 style = MaterialTheme.typography.button,
@@ -49,17 +50,21 @@ fun WordChip(
 fun WordChipsRow(
     words: List<String>,
     scrollState: ScrollState,
+   
     onClickChip: (String) -> Unit
 ) {
 
     Row(modifier = Modifier.horizontalScroll(scrollState)) {
 
-        for (word in words) {
+        for ((i, word) in words.withIndex()) {
             Spacer(modifier = Modifier.width(8.dp))
-            WordChip(word = word.uppercase(), onClickChip = onClickChip)
+            WordChip(
+                word = word.uppercase(),
+                onClickChip = onClickChip,
+                isSelected = (i == 0)
+            )
 
         }
-
 
 
     }
