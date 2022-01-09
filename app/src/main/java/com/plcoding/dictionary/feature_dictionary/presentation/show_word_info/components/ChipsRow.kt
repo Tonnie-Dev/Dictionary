@@ -1,5 +1,7 @@
 package com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.components
 
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
@@ -14,6 +16,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 @Composable
 fun WordChip(
@@ -50,11 +54,15 @@ fun WordChip(
 fun WordChipsRow(
     words: List<String>,
     scrollState: ScrollState,
-   
+   coroutineScope: CoroutineScope,
     onClickChip: (String) -> Unit
 ) {
 
     Row(modifier = Modifier.horizontalScroll(scrollState)) {
+        coroutineScope.launch {
+
+            scrollState.animateScrollTo(value = 0, animationSpec = spring( dampingRatio = Spring.DampingRatioHighBouncy))
+        }
 
         for ((i, word) in words.withIndex()) {
             Spacer(modifier = Modifier.width(8.dp))
