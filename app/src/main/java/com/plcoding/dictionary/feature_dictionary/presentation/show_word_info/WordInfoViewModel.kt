@@ -214,6 +214,6 @@ getLastTenWords()
 
         }
 
-        return list.distinct().dropLast(10)
+        return list.distinct()
     }
 }

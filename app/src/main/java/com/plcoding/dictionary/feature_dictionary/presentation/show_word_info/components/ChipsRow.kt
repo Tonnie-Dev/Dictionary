@@ -47,16 +47,16 @@ fun WordChip(
 
 @Composable
 fun WordChipsRow(
-    words: List<WordInfo>,
+    words: List<String>,
     scrollState: ScrollState,
     onClickChip: (String) -> Unit
 ) {
 
     Row(modifier = Modifier.horizontalScroll(scrollState)) {
 
-        for (wordInfo in words) {
+        for (word in words) {
             Spacer(modifier = Modifier.width(8.dp))
-            WordChip(word = wordInfo.word.uppercase(), onClickChip = onClickChip)
+            WordChip(word = word.uppercase(), onClickChip = onClickChip)
 
         }
 
