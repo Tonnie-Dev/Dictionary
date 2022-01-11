@@ -5,7 +5,7 @@ import com.plcoding.dictionary.feature_dictionary.domain.repository.WordInfoRepo
 
 class GetTheLastSearchWordUseCase(private  val repository: WordInfoRepository) {
 
-    suspend operator fun invoke(): WordInfo {
+    suspend operator fun invoke(): WordInfo? {
 
         return repository.getTheLastSearchWord()
     }

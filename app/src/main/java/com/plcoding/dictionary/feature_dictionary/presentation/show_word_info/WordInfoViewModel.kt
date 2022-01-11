@@ -17,11 +17,11 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -39,8 +39,8 @@ class WordInfoViewModel @Inject constructor(
     var wordInfoState = mutableStateOf(WordInfoState())
         private set
 
-   /* var eventFlow = MutableSharedFlow<UIEvent>()
-        private set*/
+    /* var eventFlow = MutableSharedFlow<UIEvent>()
+         private set*/
 
     private val _uiEvent = Channel<UIEvent>()
     val uiEvent = _uiEvent.receiveAsFlow()
@@ -50,7 +50,6 @@ class WordInfoViewModel @Inject constructor(
 
     //job to manage coroutines
     private var searchJob: Job? = null
-
 
 
     init {
@@ -68,7 +67,7 @@ class WordInfoViewModel @Inject constructor(
 
                 is Resource.Success -> {
 
-                   val list = result.data?.distinct() ?: emptyList()
+                    val list = result.data?.distinct() ?: emptyList()
                     lastTenWords.value = cleanLastTenWords(list)
 
                 }
@@ -93,7 +92,7 @@ class WordInfoViewModel @Inject constructor(
 
             is OnClearSearchText -> {
 
-                searchQuery= ""
+                searchQuery = ""
             }
 
             is WordInfoEvent.OnTagClick -> {
@@ -165,7 +164,7 @@ class WordInfoViewModel @Inject constructor(
                             isLoading = false
                         )
                         sendUIEvents(UIEvent.OnHideKeyboard)
-getLastTenWords()
+                        getLastTenWords()
                     }
 
                     is Resource.Error -> {
@@ -181,8 +180,12 @@ getLastTenWords()
 
 
                         sendUIEvents(UIEvent.OnHideKeyboard)
-                        sendUIEvents(UIEvent.OnShowSnackbar(msg = result.message ?: "Unknown Error", action = ""))
-
+                        sendUIEvents(
+                            UIEvent.OnShowSnackbar(
+                                msg = result.message ?: "Unknown Error",
+                                action = ""
+                            )
+                        )
 
 
                     }
@@ -203,29 +206,44 @@ getLastTenWords()
     }
 
 
-    private fun cleanLastTenWords(wordInfos: List<WordInfo>):List<String>{
-
+    private fun cleanLastTenWords(wordInfos: List<WordInfo>): List<String> {
 
 
         val list = mutableListOf<String>()
 
 
-        for (wordInfo in wordInfos){
+        for (wordInfo in wordInfos) {
 
 
             list.add(wordInfo.word.lowercase())
 
         }
+        Timber.i(
+            "${
+                list.distinct()
+                        .dropLast(10)
+            }"
+        )
 
-        return list.distinct().dropLast(10)
+        return if (list.size > 10){
+
+            list.distinct()
+                    .dropLast(10)
+
+        }else{
+            list
+
+        }
+
+
     }
 
-    private fun getLastSearchWord(){
+    private fun getLastSearchWord() {
 
-  viewModelScope.launch {
+        viewModelScope.launch {
 
-      searchQuery = getTheLastSearchWordUseCase().word.uppercase()
-   onSearch(searchQuery)
-  }
+            searchQuery = getTheLastSearchWordUseCase()?.word?.uppercase() ?: ""
+            onSearch(searchQuery)
+        }
     }
 }

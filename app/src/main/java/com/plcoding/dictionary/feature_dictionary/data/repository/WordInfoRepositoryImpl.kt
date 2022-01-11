@@ -99,8 +99,8 @@ class WordInfoRepositoryImpl(
         }
     }
 
-    override suspend fun getTheLastSearchWord(): WordInfo {
+    override suspend fun getTheLastSearchWord(): WordInfo? {
 
-        return dao.getTheLastSearchWord().toWordInfo()
+        return dao.getTheLastSearchWord()?.toWordInfo()
     }
 }
