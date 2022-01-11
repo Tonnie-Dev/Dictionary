@@ -217,16 +217,16 @@ class WordInfoViewModel @Inject constructor(
         }
 
 
+return list.distinct().take(10)
 
-
-        return if (list.size > 10) {
+   /*     return if (list.size > 11) {
 
             list.distinct()
                     .dropLast(10)
         } else {
             list
 
-        }
+        }*/
 
 
     }
