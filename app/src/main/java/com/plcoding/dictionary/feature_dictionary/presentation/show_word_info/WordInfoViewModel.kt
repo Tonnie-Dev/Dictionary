@@ -208,29 +208,22 @@ class WordInfoViewModel @Inject constructor(
 
     private fun cleanLastTenWords(wordInfos: List<WordInfo>): List<String> {
 
-
         val list = mutableListOf<String>()
 
-
         for (wordInfo in wordInfos) {
-
 
             list.add(wordInfo.word.lowercase())
 
         }
-        Timber.i(
-            "${
-                list.distinct()
-                        .dropLast(10)
-            }"
-        )
 
-        return if (list.size > 10){
+
+
+
+        return if (list.size > 10) {
 
             list.distinct()
                     .dropLast(10)
-
-        }else{
+        } else {
             list
 
         }

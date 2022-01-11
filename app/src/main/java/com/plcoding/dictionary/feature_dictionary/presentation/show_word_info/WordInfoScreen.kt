@@ -8,6 +8,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
@@ -119,12 +121,16 @@ fun WordInfoScreen(viewModel: WordInfoViewModel = hiltViewModel()) {
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    LazyColumn {
+                    LazyColumn() {
 
                         if (wordInfoState.wordInfoItems.isEmpty()){
                             item {
 
-                                Text(text = "Type a word to search")
+                                Column(modifier = Modifier.fillMaxSize(),
+
+                                horizontalAlignment = Alignment.CenterHorizontally) {
+                                    Text(text = "Type a word to search", style = MaterialTheme.typography.h5)
+                                }
 
                             }
 
