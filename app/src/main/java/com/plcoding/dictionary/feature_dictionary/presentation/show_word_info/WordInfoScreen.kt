@@ -121,32 +121,44 @@ fun WordInfoScreen(viewModel: WordInfoViewModel = hiltViewModel()) {
 
                     LazyColumn {
 
+                        if (wordInfoState.wordInfoItems.isEmpty()){
+                            item {
 
-                        items(wordInfoState.wordInfoItems.size) {
+                                Text(text = "Type a word to search")
 
-                                i ->
-
-                            val wordInfo = wordInfoState.wordInfoItems[i]
-
-                            //add a spacer for every item apart from the first item
-                            if (i > 0) {
-
-                                Spacer(modifier = Modifier.height(8.dp))
                             }
 
-                            WordInfoItem(
-                                wordInfo = wordInfo,
-                                onClickTag = {
-                                    viewModel.onWordInfoEvent(WordInfoEvent.OnTagClick(it))
+                        } else {
+
+                            items(wordInfoState.wordInfoItems.size) {
+
+                                    i ->
+
+                                val wordInfo = wordInfoState.wordInfoItems[i]
+
+                                //add a spacer for every item apart from the first item
+                                if (i > 0) {
+
+                                    Spacer(modifier = Modifier.height(8.dp))
                                 }
-                            )
 
-                            // add a divider for every item apart from the last item
-                            if (i < wordInfoState.wordInfoItems.size -1){
+                                WordInfoItem(
+                                    wordInfo = wordInfo,
+                                    onClickTag = {
+                                        viewModel.onWordInfoEvent(WordInfoEvent.OnTagClick(it))
+                                    }
+                                )
 
-                              Divider()
+                                // add a divider for every item apart from the last item
+                                if (i < wordInfoState.wordInfoItems.size -1){
+
+                                    Divider()
+                                }
                             }
                         }
+
+
+
                     }
                 }
 
