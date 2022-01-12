@@ -33,11 +33,11 @@ fun WordChip(
         elevation = 8.dp,
         color = if (isSelected) Color.Gray else MaterialTheme.colors.primary,
         shape = MaterialTheme.shapes.small,
-        modifier = Modifier.padding(vertical = 8.dp)
+        modifier = Modifier.padding( vertical = 8.dp)
     ) {
 
 
-        Row(modifier = Modifier.padding(8.dp)) {
+        Row (Modifier.padding(8.dp)){
             // Spacer(modifier = Modifier.width(8.dp))
             Text(
                 text = word,
@@ -58,7 +58,7 @@ fun WordChipsRow(
     onClickChip: (String) -> Unit
 ) {
 
-    Row(modifier = Modifier.horizontalScroll(scrollState)) {
+    Row(modifier = Modifier.horizontalScroll(scrollState). padding(horizontal = 8.dp)) {
         coroutineScope.launch {
 
             scrollState.animateScrollTo(
@@ -73,7 +73,8 @@ fun WordChipsRow(
             WordChip(
                 word = word.uppercase(),
                 onClickChip = onClickChip,
-                isSelected = (i == 0)
+                isSelected = (i == 0),
+                modifier = if (i==9) Modifier.padding(end = 8.dp) else Modifier.padding(0.dp)
             )
 
         }
