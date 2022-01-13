@@ -18,23 +18,6 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun SynonymTag(synonym: String, onClickTag: (String) -> Unit) {
 
-/* Box(modifier = Modifier
-            .border(
-                width = 1.5.dp,
-                color = MaterialTheme.colors.primary,
-                shape = RoundedCornerShape(20.dp)
-            )
-            .clickable { onClickTag(synonym) }) {
-
-
-        Text(
-            text = synonym,
-            style = MaterialTheme.typography.overline,
-            textAlign = TextAlign.Center,
-
-            modifier = Modifier.padding(8.dp)
-        )
-    }*/
 
     Surface(
         elevation = 8.dp,

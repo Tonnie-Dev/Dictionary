@@ -102,7 +102,7 @@ fun WordInfoScreen(viewModel: WordInfoViewModel = hiltViewModel()) {
     }) {
 
 
-        Box {
+        Box (modifier = Modifier.padding(it)){
 
 
             Surface(
@@ -119,7 +119,7 @@ fun WordInfoScreen(viewModel: WordInfoViewModel = hiltViewModel()) {
                 ) {
 
 
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(0.dp))
 
                     LazyColumn() {
 
