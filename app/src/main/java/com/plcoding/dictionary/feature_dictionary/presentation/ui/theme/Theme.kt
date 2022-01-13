@@ -1,5 +1,6 @@
 package com.plcoding.dictionary.feature_dictionary.presentation.ui.theme
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
@@ -7,34 +8,37 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
+@SuppressLint("ConflictingOnColor")
 private val DarkColorPalette = darkColors(
-    /*primary = Purple200,
-    primaryVariant = Purple700,
-    secondary = Teal200*/
 
     primary = Teal300,
-    primaryVariant = Teal200,
-    secondary = Black100
+    primaryVariant = Color.White,
+    onPrimary =Color.White,
+    secondary = Black1,
+    secondaryVariant = Color.White,
+    onSecondary = Color.White,
+    error = RedErrorLight,
+    onError = RedErrorDark,
+    background = Color.Black,
+    onBackground = Color.White,
+    surface = Black1,
+    onSurface =Color.White
 )
 
 private val LightColorPalette = lightColors(
 
-
-    primary = Teal300,
-    primaryVariant = Teal200,
-    secondary = Black100,
-
-    /*primary = Purple500,
-    primaryVariant = Purple700,
-    secondary = Teal200*/
-
-    /* Other default colors to override*/
-    background = Color.White,
-    surface = Color.White,
-    onPrimary = Color.White,
+    primary = Teal200,
+    primaryVariant = Teal300,
+    onPrimary = Black2,
+    secondary = Green300,
+    secondaryVariant = Green400,
     onSecondary = Color.Black,
+    error = RedErrorDark,
+    onError = RedErrorLight,
+    background = Grey1,
     onBackground = Color.Black,
-    onSurface = Color.Black,
+    surface = Color.White,
+    onSurface =Black2,
 
     )
 
