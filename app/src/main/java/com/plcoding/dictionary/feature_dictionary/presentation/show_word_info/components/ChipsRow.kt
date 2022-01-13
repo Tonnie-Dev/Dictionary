@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.plcoding.dictionary.feature_dictionary.presentation.ui.theme.Green400
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -31,7 +32,7 @@ fun WordChip(
 
     Surface(
         elevation = 8.dp,
-        color = if (isSelected) Color.Gray else MaterialTheme.colors.primary,
+        color = if (isSelected) Green400  else  MaterialTheme.colors.primary,
         shape = MaterialTheme.shapes.small,
         modifier = Modifier.padding( vertical = 8.dp)
     ) {
