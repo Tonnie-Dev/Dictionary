@@ -12,7 +12,7 @@ private val DarkColorPalette = darkColors(
     primaryVariant = Purple700,
     secondary = Teal200*/
 
-            primary = Teal300,
+    primary = Teal300,
     primaryVariant = Teal200,
     secondary = Black100
 )
@@ -36,7 +36,7 @@ private val LightColorPalette = lightColors(
     onBackground = Color.Black,
     onSurface = Color.Black,
 
-)
+    )
 
 @Composable
 fun DictionaryTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {

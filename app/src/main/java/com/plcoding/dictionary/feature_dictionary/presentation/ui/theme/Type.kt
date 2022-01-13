@@ -8,17 +8,34 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.font.FontWeight.Companion.W200
+import androidx.compose.ui.text.font.FontWeight.Companion.W300
+import androidx.compose.ui.text.font.FontWeight.Companion.W400
+import androidx.compose.ui.text.font.FontWeight.Companion.W500
 import androidx.compose.ui.unit.sp
 import com.plcoding.dictionary.R
 
 
 //initialize font family - FontFamily takes a list of fonts
 
-private val RobotoCondensed = FontFamily(
+/*private val RobotoCondensed = FontFamily(
     Font(resId = R.font.roboto_condensed_light, weight = FontWeight.W300),
     Font(resId = R.font.roboto_condensed_light_italic, weight = FontWeight.W200),
     Font(resId = R.font.roboto_condensed_regular, weight = FontWeight.W400),
     Font(resId = R.font.roboto_condensed_bold, weight = FontWeight.W500)
+)*/
+
+
+
+private val RobotoCondensed = FontFamily(
+
+
+    Font(resId = R.font.rajdhani_bold, weight = W500),
+    Font(resId = R.font.rajdhani_medium, weight = W400),
+    Font(resId = R.font.rajdhani_regular, weight = W300),
+    Font(resId = R.font.rajdhani_light, weight = W200)
+
+
 )
 
 
