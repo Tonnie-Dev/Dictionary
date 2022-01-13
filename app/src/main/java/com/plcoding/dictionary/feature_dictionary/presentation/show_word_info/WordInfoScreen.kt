@@ -108,7 +108,6 @@ fun WordInfoScreen(viewModel: WordInfoViewModel = hiltViewModel()) {
             Surface(
                 elevation = 8.dp,
                 color = MaterialTheme.colors.surface
-
             ) {
 
 

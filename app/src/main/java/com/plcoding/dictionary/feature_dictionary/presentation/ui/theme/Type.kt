@@ -52,7 +52,7 @@ val Typography = Typography(
     ),
 
     body2 = TextStyle(
-        color = Black100,
+
         fontFamily = RobotoCondensed,
         fontSize = 18.sp,
         fontStyle = FontStyle.Italic,
