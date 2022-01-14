@@ -9,14 +9,13 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.plcoding.dictionary.feature_dictionary.presentation.WordInfoItem
-import com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.components.CustomSearchTextField
+import com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.components.CustomSearchRow
 import com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.components.ShowShimmerCard
 import com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.components.WordChipsRow
 import com.plcoding.dictionary.feature_dictionary.presentation.utils.UIEvent.OnHideKeyboard
@@ -72,7 +71,7 @@ fun WordInfoScreen(viewModel: WordInfoViewModel = hiltViewModel()) {
         ) {
             Column {
 
-                CustomSearchTextField(
+                CustomSearchRow(
                     value = searchQuery,
 
                     onValueChange = {

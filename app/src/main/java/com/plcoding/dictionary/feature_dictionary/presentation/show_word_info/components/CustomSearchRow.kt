@@ -18,7 +18,7 @@ import com.plcoding.dictionary.R
 
 
 @Composable
-fun CustomSearchTextField(
+fun CustomSearchRow(
     value: String,
     onValueChange: (String) -> Unit,
     onClearIconClick: () -> Unit,
@@ -88,7 +88,7 @@ fun SearchTextField(
 
     )
 
-    Spacer(modifier = Modifier.width(2.dp))
+    //Spacer(modifier = Modifier.width(2.dp))
 
     ThemeTogIconButton (onClickTogIcon = onClearIconClick)
 
@@ -125,7 +125,7 @@ fun MyTextFieldPreview() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        CustomSearchTextField(value = "", onValueChange = {}, {}) {
+        CustomSearchRow(value = "", onValueChange = {}, {}) {
 
         }
     }
