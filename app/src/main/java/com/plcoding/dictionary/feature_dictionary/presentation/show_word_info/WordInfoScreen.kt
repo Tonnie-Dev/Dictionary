@@ -84,7 +84,9 @@ fun WordInfoScreen(viewModel: WordInfoViewModel = hiltViewModel()) {
 
                         viewModel.onWordInfoEvent(WordInfoEvent.OnClearSearchText)
 
-                    }
+                    },
+
+                    onClickTogIcon = {}
                 )
 
                 Spacer(modifier = Modifier.height(8.dp))
