@@ -7,6 +7,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
@@ -23,7 +24,7 @@ fun CustomSearchTextField(
 ) {
 
 
-    Row (){
+    Row (modifier = Modifier.fillMaxSize(0.95f)){
         TextField(
             value = value,
             onValueChange = onValueChange,
@@ -63,15 +64,16 @@ fun CustomSearchTextField(
 
             singleLine = true,
             modifier = Modifier
-                    .fillMaxWidth(0.95f)
                     .padding(8.dp)
 
 
 
-            //.clip(shape = RoundedCornerShape(75f))
+    
 
 
         )
+        
+
     }
 
 
