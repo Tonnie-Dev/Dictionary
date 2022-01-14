@@ -8,6 +8,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -26,13 +28,17 @@ fun CustomSearchRow(
 ) {
 
 
-    Row(modifier = Modifier.fillMaxWidth(0.95f)) {
+    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
 
         SearchTextField(
             value = value,
             onValueChange = onValueChange,
             onClearIconClick = onClearIconClick
         )
+
+
+        ThemeTogIconButton (onClickTogIcon = onClickTogIcon, modifier = Modifier.align(CenterVertically))
+
     }
 
 
@@ -90,13 +96,12 @@ fun SearchTextField(
 
     //Spacer(modifier = Modifier.width(2.dp))
 
-    ThemeTogIconButton (onClickTogIcon = onClearIconClick)
 
 }
 
 
 @Composable
-fun ThemeTogIconButton(onClickTogIcon: () -> Unit) {
+fun ThemeTogIconButton(onClickTogIcon: () -> Unit, modifier: Modifier = Modifier) {
 
     IconButton(onClick = { onClickTogIcon() }) {
 
