@@ -21,7 +21,6 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -221,9 +220,11 @@ class WordInfoViewModel @Inject constructor(
         }
 
 
-return list.distinct().take(10)
+        /*return list.distinct().take(10)*/
 
 
+        return if (list.size > 10) list.distinct()
+                .dropLast(10) else list.distinct()
 
     }
 

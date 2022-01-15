@@ -10,6 +10,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterVertically
@@ -58,7 +59,7 @@ fun SearchTextField(
     onValueChange: (String) -> Unit,
     onClearIconClick: () -> Unit
 ) {
-    OutlinedTextField(
+  TextField(
         value = value,
         onValueChange = onValueChange,
 
@@ -108,20 +109,6 @@ fun SearchTextField(
 }
 
 
-@Composable
-fun ThemeTogIconButton(onThemeToggle: () -> Unit, modifier: Modifier = Modifier) {
-
-    IconButton(onClick = { onThemeToggle() }, modifier.fillMaxWidth()) {
-
-        Icon(
-            painter = painterResource(id = R.drawable.tog_theme),
-            contentDescription = null
-        )
-
-    }
-
-
-}
 
 @Preview(name = "TextPreview")
 @Composable

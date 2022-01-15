@@ -65,7 +65,7 @@ fun WordChipsRow(
             scrollState.animateScrollTo(
                 value = 0,
                 animationSpec = spring(dampingRatio = Spring.DampingRatioHighBouncy,
-                stiffness = Spring.StiffnessHigh)
+                stiffness = Spring.StiffnessLow)
             )
         }
 
