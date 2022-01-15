@@ -15,9 +15,16 @@ import androidx.constraintlayout.widget.ConstraintLayout
 fun ThemeTogIconButton(onThemeToggle: () -> Unit, modifier: Modifier = Modifier) {
     ConstraintLayout {
 
-    }
+        //create id
+        val icon = createRef()
+        IconButton(onClick = { onThemeToggle() }, modifier.constrainAs(icon){
 
-        IconButton(onClick = { onThemeToggle() }, modifier) {
+            end.linkTo(parent.end)
+            bottom.linkTo(parent.bottom)
+            top.linkTo(parent.bottom)
+
+
+        }) {
 
             Icon(
 
@@ -27,6 +34,9 @@ fun ThemeTogIconButton(onThemeToggle: () -> Unit, modifier: Modifier = Modifier)
             )
 
         }
+
+    }
+
 
 
 
