@@ -59,7 +59,7 @@ fun WordChipsRow(
     onClickChip: (String) -> Unit
 ) {
 
-    Row(modifier = Modifier.horizontalScroll(scrollState). padding(horizontal = 8.dp)) {
+    Row(modifier = Modifier.horizontalScroll(scrollState). padding(end = 8.dp)) {
         coroutineScope.launch {
 
             scrollState.animateScrollTo(

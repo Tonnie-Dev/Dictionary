@@ -88,7 +88,7 @@ fun WordInfoScreen( onThemeToggle : () -> Unit,viewModel: WordInfoViewModel = hi
                     onThemeToggle =  onThemeToggle
                 )
 
-                Spacer(modifier = Modifier.height(8.dp))
+               // Spacer(modifier = Modifier.height(8.dp))
 
                 WordChipsRow(words = lastTenWords, scrollState = scrollState, onClickChip = {
 
