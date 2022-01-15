@@ -98,7 +98,7 @@ fun SearchTextField(
         singleLine = true,
         modifier = Modifier
                 .fillMaxWidth(0.90f)
-                .padding(8.dp)
+             .padding(vertical = 8.dp)
 
 
     )

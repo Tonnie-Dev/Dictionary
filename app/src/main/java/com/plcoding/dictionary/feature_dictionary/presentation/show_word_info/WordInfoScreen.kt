@@ -67,6 +67,7 @@ fun WordInfoScreen( onThemeToggle : () -> Unit,viewModel: WordInfoViewModel = hi
 
         Surface(
             elevation = 8.dp,
+            modifier = Modifier.padding(4.dp),
             color = MaterialTheme.colors.surface
         ) {
             Column {
@@ -88,7 +89,7 @@ fun WordInfoScreen( onThemeToggle : () -> Unit,viewModel: WordInfoViewModel = hi
                     onThemeToggle =  onThemeToggle
                 )
 
-               // Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(8.dp))
 
                 WordChipsRow(words = lastTenWords, scrollState = scrollState, onClickChip = {
 
@@ -103,7 +104,7 @@ fun WordInfoScreen( onThemeToggle : () -> Unit,viewModel: WordInfoViewModel = hi
     }) {
 
 
-        Box (modifier = Modifier.padding(it)){
+        Box (modifier = Modifier.padding(4.dp)){
 
 
             Surface(
