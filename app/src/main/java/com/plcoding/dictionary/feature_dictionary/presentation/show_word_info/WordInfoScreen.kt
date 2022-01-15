@@ -85,7 +85,7 @@ fun WordInfoScreen(viewModel: WordInfoViewModel = hiltViewModel()) {
 
                     },
 
-                    onClickTogIcon = {}
+                    onThemeToggle = {}
                 )
 
                 Spacer(modifier = Modifier.height(8.dp))

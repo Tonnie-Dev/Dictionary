@@ -1,7 +1,9 @@
 package com.plcoding.dictionary
 
 import android.app.Application
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
@@ -16,7 +18,7 @@ class DictionaryApp : Application(){
         Timber.plant(Timber.DebugTree())
     }
 
-    
+
     fun toggleTheme(){
 
         isDark = !isDark

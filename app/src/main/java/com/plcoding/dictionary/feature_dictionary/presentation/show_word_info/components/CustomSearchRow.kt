@@ -12,7 +12,6 @@ import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.Bottom
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -28,7 +27,7 @@ fun CustomSearchRow(
     value: String,
     onValueChange: (String) -> Unit,
     onClearIconClick: () -> Unit,
-    onClickTogIcon: () -> Unit
+    onThemeToggle: () -> Unit
 ) {
 
 
@@ -45,7 +44,7 @@ fun CustomSearchRow(
         )
 
 
-        ThemeTogIconButton(onClickTogIcon = onClickTogIcon, modifier = Modifier.align(CenterVertically))
+        ThemeTogIconButton(onThemeToggle = onThemeToggle, modifier = Modifier.align(CenterVertically))
 
     }
 
@@ -110,9 +109,9 @@ fun SearchTextField(
 
 
 @Composable
-fun ThemeTogIconButton(onClickTogIcon: () -> Unit, modifier: Modifier = Modifier) {
+fun ThemeTogIconButton(onThemeToggle: () -> Unit, modifier: Modifier = Modifier) {
 
-    IconButton(onClick = { onClickTogIcon() }, modifier.fillMaxWidth()) {
+    IconButton(onClick = { onThemeToggle() }, modifier.fillMaxWidth()) {
 
         Icon(
             painter = painterResource(id = R.drawable.tog_theme),
