@@ -3,6 +3,7 @@ package com.plcoding.dictionary.feature_dictionary.di
 import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.plcoding.dictionary.DictionaryApp
 import com.plcoding.dictionary.feature_dictionary.data.local.Converters
 import com.plcoding.dictionary.feature_dictionary.data.local.WordDAO
 import com.plcoding.dictionary.feature_dictionary.data.local.WordInfoDatabase
@@ -103,6 +104,15 @@ object AppModule {
                 .build()
     }
 
+    //APPLICATION
+@Provides
+@Singleton
+
+fun provideApplication(@ApplicationContext app:Context): DictionaryApp {
+
+
+    return app as DictionaryApp
+}
 
 }
 
