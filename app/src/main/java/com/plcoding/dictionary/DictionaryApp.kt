@@ -9,10 +9,16 @@ import timber.log.Timber
 class DictionaryApp : Application(){
 
     //create an observable mutable state
-    val isDark = mutableStateOf(false)
+    var isDark by mutableStateOf(false)
 
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
+    }
+
+    
+    fun toggleTheme(){
+
+        isDark = !isDark
     }
 }
