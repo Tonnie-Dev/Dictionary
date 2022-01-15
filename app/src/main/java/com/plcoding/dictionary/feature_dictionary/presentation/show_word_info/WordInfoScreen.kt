@@ -23,7 +23,7 @@ import com.plcoding.dictionary.feature_dictionary.presentation.utils.UIEvent.OnS
 
 @ExperimentalComposeUiApi
 @Composable
-fun WordInfoScreen(viewModel: WordInfoViewModel = hiltViewModel()) {
+fun WordInfoScreen( onThemeToggle : () -> Unit,viewModel: WordInfoViewModel = hiltViewModel()) {
 
     //States
     val wordInfoState by viewModel.wordInfoState
@@ -85,7 +85,7 @@ fun WordInfoScreen(viewModel: WordInfoViewModel = hiltViewModel()) {
 
                     },
 
-                    onThemeToggle = {}
+                    onThemeToggle =  onThemeToggle
                 )
 
                 Spacer(modifier = Modifier.height(8.dp))
