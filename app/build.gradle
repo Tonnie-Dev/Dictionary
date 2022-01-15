@@ -107,5 +107,8 @@ dependencies {
     //FlowRow
     implementation 'com.google.accompanist:accompanist-flowlayout:0.20.0'
 
+    //ConstraintLayout
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0"
+
 
 }
