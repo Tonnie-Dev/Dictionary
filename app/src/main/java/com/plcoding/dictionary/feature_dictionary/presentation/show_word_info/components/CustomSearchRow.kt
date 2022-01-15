@@ -1,7 +1,10 @@
 package com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.components
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -9,6 +12,7 @@ import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.Bottom
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -28,7 +32,11 @@ fun CustomSearchRow(
 ) {
 
 
-    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
 
         SearchTextField(
             value = value,
@@ -37,7 +45,7 @@ fun CustomSearchRow(
         )
 
 
-        ThemeTogIconButton (onClickTogIcon = onClickTogIcon, modifier = Modifier.align(CenterVertically))
+        ThemeTogIconButton(onClickTogIcon = onClickTogIcon, modifier = Modifier.align(CenterVertically))
 
     }
 
@@ -51,7 +59,7 @@ fun SearchTextField(
     onValueChange: (String) -> Unit,
     onClearIconClick: () -> Unit
 ) {
-    TextField(
+    OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
 
@@ -89,6 +97,7 @@ fun SearchTextField(
 
         singleLine = true,
         modifier = Modifier
+                .fillMaxWidth(0.85f)
                 .padding(8.dp)
 
 
@@ -103,7 +112,7 @@ fun SearchTextField(
 @Composable
 fun ThemeTogIconButton(onClickTogIcon: () -> Unit, modifier: Modifier = Modifier) {
 
-    IconButton(onClick = { onClickTogIcon() }) {
+    IconButton(onClick = { onClickTogIcon() }, modifier.fillMaxWidth()) {
 
         Icon(
             painter = painterResource(id = R.drawable.tog_theme),
@@ -118,20 +127,10 @@ fun ThemeTogIconButton(onClickTogIcon: () -> Unit, modifier: Modifier = Modifier
 @Preview(name = "TextPreview")
 @Composable
 fun MyTextFieldPreview() {
-    Column(modifier = Modifier.fillMaxWidth()) {
-        Row {
-            TextField(
-                value = "Semi",
-                onValueChange = { },
 
 
-                label = { Text("Search") })
-        }
+    CustomSearchRow(value = "", onValueChange = {}, {}) {
 
-        Spacer(modifier = Modifier.height(16.dp))
-
-        CustomSearchRow(value = "", onValueChange = {}, {}) {
-
-        }
     }
+
 }
