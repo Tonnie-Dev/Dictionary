@@ -7,8 +7,12 @@ import androidx.activity.compose.setContent
 
 import androidx.compose.ui.ExperimentalComposeUiApi
 import com.plcoding.dictionary.DictionaryApp
+import com.plcoding.dictionary.feature_dictionary.domain.use_case.GetLastTenWords
+import com.plcoding.dictionary.feature_dictionary.domain.use_case.GetTheLastSearchWordUseCase
+import com.plcoding.dictionary.feature_dictionary.domain.use_case.GetWordInfo
 
 import com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.WordInfoScreen
+import com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.WordInfoViewModel
 import com.plcoding.dictionary.feature_dictionary.presentation.ui.theme.DictionaryTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -28,7 +32,10 @@ class MainActivity : ComponentActivity() {
 
          DictionaryTheme(darkTheme = app.isDark) {
 
-             WordInfoScreen()
+             WordInfoScreen(
+                 onThemeToggle = { app.toggleTheme() }
+
+             )
 
          }
         }
