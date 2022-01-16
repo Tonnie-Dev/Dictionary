@@ -3,6 +3,7 @@ package com.plcoding.dictionary.feature_dictionary.presentation.show_word_info.c
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Row
@@ -17,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.plcoding.dictionary.feature_dictionary.presentation.ui.theme.Green400
+import com.plcoding.dictionary.feature_dictionary.presentation.ui.theme.Teal200
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -34,7 +36,14 @@ fun WordChip(
         elevation = 8.dp,
         color = if (isSelected) Green400  else  MaterialTheme.colors.primary,
         shape = MaterialTheme.shapes.small,
-        modifier = Modifier.padding( vertical = 8.dp)
+        modifier = Modifier .padding( vertical = 8.dp).clickable {
+            onClickChip(word)
+        }
+               .border(
+                width = 1.dp,
+        color = Green400
+    )
+
     ) {
 
 
@@ -42,8 +51,8 @@ fun WordChip(
             // Spacer(modifier = Modifier.width(8.dp))
             Text(
                 text = word,
-                style = MaterialTheme.typography.button,
-                modifier = Modifier.clickable { onClickChip(word) })
+                style = MaterialTheme.typography.button
+               )
 
         }
 
