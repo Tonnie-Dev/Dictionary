@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -35,13 +36,14 @@ fun WordChip(
     Surface(
         elevation = 8.dp,
         color = if (isSelected) Green400  else  MaterialTheme.colors.primary,
-        shape = MaterialTheme.shapes.small,
-        modifier = Modifier .padding( vertical = 8.dp).clickable {
+        shape = RoundedCornerShape(20.dp),
+        modifier = Modifier .clickable {
             onClickChip(word)
-        }
+        }.padding( vertical = 8.dp)
                .border(
                 width = 1.dp,
-        color = Green400
+        color = Green400,
+                   shape = RoundedCornerShape(20.dp)
     )
 
     ) {
