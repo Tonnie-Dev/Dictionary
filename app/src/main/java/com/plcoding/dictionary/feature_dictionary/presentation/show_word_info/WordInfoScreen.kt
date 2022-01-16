@@ -90,13 +90,15 @@ fun WordInfoScreen( onThemeToggle : () -> Unit,viewModel: WordInfoViewModel = hi
                 )
 
                 Spacer(modifier = Modifier.height(8.dp))
-
                 WordChipsRow(words = lastTenWords, scrollState = scrollState, onClickChip = {
 
                     //chip click takes a String
                     viewModel.onWordInfoEvent(WordInfoEvent.OnChipClick(it))
                 }, coroutineScope = rememberCoroutineScope()
                 )
+
+
+
             }
 
         }
