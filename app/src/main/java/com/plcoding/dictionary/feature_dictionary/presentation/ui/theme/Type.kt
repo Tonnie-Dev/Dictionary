@@ -1,6 +1,7 @@
 package com.plcoding.dictionary.feature_dictionary.presentation.ui.theme
 
 
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Typography
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -12,6 +13,7 @@ import androidx.compose.ui.text.font.FontWeight.Companion.W200
 import androidx.compose.ui.text.font.FontWeight.Companion.W300
 import androidx.compose.ui.text.font.FontWeight.Companion.W400
 import androidx.compose.ui.text.font.FontWeight.Companion.W500
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.plcoding.dictionary.R
 
@@ -52,14 +54,17 @@ val Typography = Typography(
     h5 = TextStyle(
         fontFamily = Rajdhani,
         fontSize = 24.sp,
-        fontWeight = FontWeight.W400
+        fontWeight = FontWeight.W500,
+        textAlign = TextAlign.Center,
+
     ),
     h6 = TextStyle(
         color = Teal200,
         fontFamily = Rajdhani,
         fontSize = 24.sp,
         fontStyle = FontStyle.Italic,
-        fontWeight = FontWeight.W400
+        fontWeight = FontWeight.W400,
+        textAlign = TextAlign.Center
     ),
 
 

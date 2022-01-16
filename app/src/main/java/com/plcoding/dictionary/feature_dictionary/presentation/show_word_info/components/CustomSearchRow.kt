@@ -86,7 +86,7 @@ fun SearchTextField(
         },
 
 
-        textStyle = MaterialTheme.typography.body1,
+        textStyle = MaterialTheme.typography.h5,
 /*
         textStyle = TextStyle(color = MaterialTheme.colors.onSurface),*/
         colors = TextFieldDefaults.textFieldColors(
