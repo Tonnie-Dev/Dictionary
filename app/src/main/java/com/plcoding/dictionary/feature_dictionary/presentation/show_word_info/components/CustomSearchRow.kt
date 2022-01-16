@@ -10,17 +10,13 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.plcoding.dictionary.R
 
 
 @Composable
@@ -45,7 +41,10 @@ fun CustomSearchRow(
         )
 
 
-        ThemeTogIconButton(onThemeToggle = onThemeToggle, modifier = Modifier.align(CenterVertically))
+        ThemeTogIconButton(
+            onThemeToggle = onThemeToggle,
+            modifier = Modifier.align(CenterVertically)
+        )
 
     }
 
@@ -59,7 +58,7 @@ fun SearchTextField(
     onValueChange: (String) -> Unit,
     onClearIconClick: () -> Unit
 ) {
-  TextField(
+    TextField(
         value = value,
         onValueChange = onValueChange,
 
@@ -87,7 +86,9 @@ fun SearchTextField(
         },
 
 
-        textStyle = TextStyle(color = MaterialTheme.colors.onSurface),
+        textStyle = MaterialTheme.typography.body1,
+/*
+        textStyle = TextStyle(color = MaterialTheme.colors.onSurface),*/
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = MaterialTheme.colors.surface,
             leadingIconColor = MaterialTheme.colors.primary,
@@ -98,7 +99,7 @@ fun SearchTextField(
         singleLine = true,
         modifier = Modifier
                 .fillMaxWidth(0.90f)
-             .padding(start = 8.dp, top = 8.dp, bottom = 8.dp)
+                .padding(start = 8.dp, top = 8.dp, bottom = 8.dp)
 
     )
 
@@ -106,7 +107,6 @@ fun SearchTextField(
 
 
 }
-
 
 
 @Preview(name = "TextPreview")

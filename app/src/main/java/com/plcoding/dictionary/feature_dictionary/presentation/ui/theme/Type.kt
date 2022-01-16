@@ -27,7 +27,8 @@ import com.plcoding.dictionary.R
 
 
 
-private val RobotoCondensed = FontFamily(
+
+private val Rajdhani = FontFamily(
 
 
     Font(resId = R.font.rajdhani_bold, weight = W500),
@@ -44,18 +45,18 @@ val Typography = Typography(
 
     h4 = TextStyle(
         color = Teal300,
-        fontFamily = RobotoCondensed,
+        fontFamily = Rajdhani,
         fontSize = 36.sp,
         fontWeight = FontWeight.W500
     ),
     h5 = TextStyle(
-        fontFamily = RobotoCondensed,
+        fontFamily = Rajdhani,
         fontSize = 24.sp,
         fontWeight = FontWeight.W400
     ),
     h6 = TextStyle(
         color = Teal200,
-        fontFamily = RobotoCondensed,
+        fontFamily = Rajdhani,
         fontSize = 24.sp,
         fontStyle = FontStyle.Italic,
         fontWeight = FontWeight.W400
@@ -63,28 +64,28 @@ val Typography = Typography(
 
 
     body1 = TextStyle(
-        fontFamily = RobotoCondensed,
+        fontFamily = Rajdhani,
         fontSize = 20.sp,
         fontWeight = FontWeight.Normal
     ),
 
     body2 = TextStyle(
 
-        fontFamily = RobotoCondensed,
+        fontFamily = Rajdhani,
         fontSize = 18.sp,
         fontStyle = FontStyle.Italic,
         fontWeight = FontWeight.Medium
     ),
 
     caption = TextStyle(
-        fontFamily = RobotoCondensed,
+        fontFamily = Rajdhani,
         fontSize = 16.sp,
         fontWeight = FontWeight.W400
     ),
 
     overline = TextStyle(
         fontStyle = FontStyle.Italic,
-        fontFamily = RobotoCondensed,
+        fontFamily = Rajdhani,
         fontSize = 16.sp,
         fontWeight = FontWeight.Normal
     ),
