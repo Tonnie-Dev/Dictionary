@@ -73,7 +73,7 @@ fun WordInfoScreen( onThemeToggle : () -> Unit,viewModel: WordInfoViewModel = hi
             Column {
 
                 CustomSearchRow(
-                    value = searchQuery,
+                    value = searchQuery.uppercase(),
 
                     onValueChange = {
                         //takes a string which is passed to event
