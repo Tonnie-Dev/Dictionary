@@ -59,7 +59,7 @@ fun SearchTextField(
     onClearIconClick: () -> Unit
 ) {
     TextField(
-        value = value,
+        value = value.uppercase(),
         onValueChange = onValueChange,
 
         label = { Text("Search") },

@@ -40,11 +40,15 @@ fun ShimmerAnimation(Content: @Composable (Brush) -> Unit) {
      end = Animate the end position to give the shimmer effect using the transition created above
    */
 
-    val brush = Brush.linearGradient(
+    val brush = Brush.verticalGradient(
         colors = ShimmerColorShades,
-        start = Offset(-40f, -40f),
-        end = Offset(translateAnim, translateAnim)
+
+        startY = -40f, endY = translateAnim
     )
+
+//Linear gradient
+    /*  start = Offset(-40f, -40f),
+        end = Offset(translateAnim, translateAnim)*/
 
 
     Surface(modifier = Modifier.fillMaxHeight()){
