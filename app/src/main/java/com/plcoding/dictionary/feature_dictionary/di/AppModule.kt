@@ -50,7 +50,7 @@ object AppModule {
         return GetLastTenWords(repository = repository)
     }
 
-    //USE CASE 2
+    //USE CASE 3
     @Provides
     @Singleton
 

@@ -38,31 +38,35 @@ private val Rajdhani = FontFamily(
 )
 
 
+/*
 private val BitterFontFamily = FontFamily(
     Font(resId = R.font.bitter_extra_bold, FontWeight.ExtraBold),
     Font(resId = R.font.bitter_bold, FontWeight.Bold),
     Font(resId = R.font.bitter_semi_bold, FontWeight.SemiBold),
     Font(resId = R.font.bitter_medium, FontWeight.Medium),
     Font(resId = R.font.bitter_regular, FontWeight.Normal),
-/*    Font(resId = R.font.bitter_italic, FontWeight.W300),*/
+*/
+/*    Font(resId = R.font.bitter_italic, FontWeight.W300),*//*
+
     Font(resId = R.font.bitter_light, FontWeight.Light),
     Font(resId = R.font.bitter_italic_light, FontWeight.W200),
     Font(resId = R.font.bitter_thin, FontWeight.Thin),
 
 
 )
+*/
 
 // Set of Material typography styles to start with
 val Typography = Typography(
 
     h4 = TextStyle(
         color = Teal300,
-        fontFamily = BitterFontFamily,
+        fontFamily = Rajdhani,
         fontSize = 36.sp,
         fontWeight = FontWeight.W500
     ),
     h5 = TextStyle(
-        fontFamily = BitterFontFamily,
+        fontFamily = Rajdhani,
         fontSize = 24.sp,
         fontWeight = FontWeight.W500,
         textAlign = TextAlign.Center,
@@ -70,7 +74,7 @@ val Typography = Typography(
     ),
     h6 = TextStyle(
         color = Teal200,
-        fontFamily = BitterFontFamily,
+        fontFamily = Rajdhani,
         fontSize = 24.sp,
         fontStyle = FontStyle.Italic,
         fontWeight = FontWeight.W400,
@@ -79,28 +83,28 @@ val Typography = Typography(
 
 
     body1 = TextStyle(
-        fontFamily = BitterFontFamily,
+        fontFamily = Rajdhani,
         fontSize = 20.sp,
         fontWeight = FontWeight.Normal
     ),
 
     body2 = TextStyle(
 
-        fontFamily = BitterFontFamily,
+        fontFamily = Rajdhani,
         fontSize = 18.sp,
         fontStyle = FontStyle.Italic,
         fontWeight = FontWeight.Medium
     ),
 
     caption = TextStyle(
-        fontFamily = BitterFontFamily,
+        fontFamily = Rajdhani,
         fontSize = 16.sp,
         fontWeight = FontWeight.W400
     ),
 
     overline = TextStyle(
         fontStyle = FontStyle.Italic,
-        fontFamily = BitterFontFamily,
+        fontFamily = Rajdhani,
         fontSize = 16.sp,
         fontWeight = FontWeight.Normal
     ),
@@ -108,7 +112,7 @@ val Typography = Typography(
 
     //Other default text styles to override
     button = TextStyle(
-        fontFamily = BitterFontFamily,
+        fontFamily = Rajdhani,
         fontWeight = FontWeight.W500,
         fontSize = 14.sp
     )
