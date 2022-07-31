@@ -7,10 +7,15 @@ import com.plcoding.dictionary.feature_dictionary.data.local.util.JsonParser
 import com.plcoding.dictionary.feature_dictionary.domain.model.Meaning
 
 
+/*nnotate the class with @ProvidedTypeConverter because we need
+to provide our instance of a TypeConverter.*/
 @ProvidedTypeConverter
 class Converters(
     private val jsonParser: JsonParser
 ) {
+
+
+    // @TypeConverter annotation to mark it as a type converter function
     @TypeConverter
     fun fromMeaningsJson(json: String): List<Meaning> {
         return jsonParser.fromJson<ArrayList<Meaning>>(
@@ -19,6 +24,7 @@ class Converters(
         ) ?: emptyList()
     }
 
+    // @TypeConverter annotation to mark it as a type converter function
     @TypeConverter
     fun toMeaningsJson(meanings: List<Meaning>): String {
         return jsonParser.toJson(
